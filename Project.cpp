@@ -1,11 +1,29 @@
 #include "TXLib.h"
 
+//-----------------------------------------------------------------------------
+
+
 void DrawYellowCharacter (int x, int y);
 
+void DrawGreenCharacter (int x, int y);
+
+void DrawBlueCharacter (int x, int y);
+
+void DrawJetPack (int x, int y);
+
+void DrawPinkCharacter (int x, int y);
+
+void DrawCannonball (int x, int y);
+
+void DrawCannon (int x, int y);
+
+void DrawEvilMinion (int x, int y);
+
+void DrawLaser (int x, int y);
 
 
+//-----------------------------------------------------------------------------
 
-//=============================================================================
 
 int main()
     {
@@ -13,337 +31,376 @@ int main()
 
     DrawYellowCharacter (235, 134);
 
-    DrawYellowCharacter (535, 634);
+    DrawGreenCharacter (560, 130);
 
-    DrawYellowCharacter (835, 734);
+    DrawBlueCharacter (805, 134);
 
-    DrawYellowCharacter (335, 534);
+    DrawPinkCharacter (233, 322);
 
-    DrawYellowCharacter (635, 534);
+    DrawJetPack (1010, 152);
+
+    DrawCannonball (547, 337);
+
+    DrawCannon (723, 362);
+
+    DrawEvilMinion (980, 320);
+
+    DrawLaser (808, 440);
+
+    return 0;
+    }
 
 
+//-----------------------------------------------------------------------------
 
 
+void DrawYellowCharacter (int x, int y)
+    {
+    txSetFillColor (RGB (255, 255, 0));
+
+    txSetColor (RGB (84, 84, 84), 8);
+
+    txRectangle (x-60, y-57, x+59, y+60);
+
+    txRectangle (x-(235-143), y-(134-135), x-(235-174), y-(134-174));
+
+    txRectangle (x-(235-295), y-(134-135), x-(235-325), y-(134-174));
+
+    txRectangle (x-(235-190), y-(134-195), x-(235-224), y-(134-224));
+
+    txRectangle (x-(235-245), y-(134-195), x-(235-279), y-(134-224));
+
+    txSetColor (TX_BLACK);
+
+    txSetFillColor (TX_BLACK);
+
+    txCircle (x-(235-262), y-(134-106), 11);
+
+    txCircle (x-(235-216), y-(134-106), 11);
+
+    txSetColor (RGB (0, 0, 0), 6);
+
+    txLine (x-(235-219), y-(134-141), x-(235-205), y-(134-154));
+
+    txLine (x-(235-214), y-(134-149), x-(235-227), y-(134-161));
+
+    txLine (x-(235-227), y-(134-161), x-(235-251), y-(134-161));
+    }
 
 
+//-----------------------------------------------------------------------------
 
 
+void DrawGreenCharacter (int x, int y)
+    {
     txSetFillColor (RGB (0, 128, 0));
 
     txSetColor (RGB (84, 84, 84), 8);
 
-    txRectangle (500, 71, 619, 188);
+    txRectangle (x-(560-500), y-(130-71), x-(560-619), y-(130-188));
 
-    txRectangle (515, 191, 549, 220);
+    txRectangle (x-(560-515), y-(130-191), x-(560-549), y-(130-220));
 
-    txRectangle (570, 191, 604, 220);
+    txRectangle (x-(560-570), y-(130-191), x-(560-604), y-(130-220));
 
-    txRectangle (468, 131, 499, 170);
+    txRectangle (x-(560-468), y-(130-131), x-(560-499), y-(130-170));
 
-    txRectangle (620, 131, 651, 170);
+    txRectangle (x-(560-620), y-(130-131), x-(560-651), y-(130-170));
 
     txSetFillColor (TX_BLACK);
 
     txSetColor (TX_BLACK);
 
-    txRectangle (520, 94, 544, 109);
+    txRectangle (x-(560-520), y-(130-94), x-(560-544), y-(130-109));
 
-    txRectangle (565, 94, 589, 109);
+    txRectangle (x-(560-565), y-(130-94), x-(560-589), y-(130-109));
 
     txSetColor (RGB (0, 0, 0), 6);
 
-    txLine (523, 173, 536, 159);
+    txLine (x-(560-523), y-(130-173), x-(560-536), y-(130-159));
 
-    txLine (536, 159, 584, 159);
+    txLine (x-(560-536), y-(130-159), x-(560-584), y-(130-159));
 
-    txLine (584, 159, 597, 173);
+    txLine (x-(560-584), y-(130-159), x-(560-597), y-(130-173));
 
-    txLine (538, 83, 552, 92);
+    txLine (x-(560-538), y-(130-83), x-(560-552), y-(130-92));
 
-    txLine (573, 83, 559, 92);
+    txLine (x-(560-573), y-(130-83), x-(560-559), y-(130-92));
+    }
 
 
 
+//-----------------------------------------------------------------------------
+
+
+void DrawBlueCharacter (int x, int y)
+    {
     txSetColor (RGB (84, 84, 84), 8);
 
     txSetFillColor (RGB (0, 0, 255));
 
-    txCircle (805, 134, 52);
+    txCircle (x, y, 52);
 
-    txCircle (779, 205, 20);
+    txCircle (x-(805-779), y-(134-205), 20);
 
-    txCircle (829, 205, 20);
+    txCircle (x-(805-829), y-(134-205), 20);
 
-    txCircle (875, 156, 20);
+    txCircle (x-(805-875), y-(134-156), 20);
 
-    txCircle (735, 156, 20);
+    txCircle (x-(805-735), y-(134-156), 20);
 
     txSetColor (RGB (0, 0, 0));
 
     txSetFillColor (TX_BLACK);
 
-    txRectangle (769, 109, 793, 124);
+    txRectangle (x-(805-769), y-(134-109), x-(805-793), y-(134-124));
 
-    txRectangle (809, 109, 833, 124);
+    txRectangle (x-(805-809), y-(134-109), x-(805-833), y-(134-124));
 
     txSetColor (RGB (0, 0, 0), 8);
 
-    txLine (779, 100, 793, 100);
+    txLine (x-(805-779), y-(134-100), x-(805-793), y-(134-100));
 
-    txLine (809, 100, 825, 100);
+    txLine (x-(805-809), y-(134-100), x-(805-825), y-(134-100));
 
-    txLine (797, 165, 819, 165);
+    txLine (x-(805-797), y-(134-165), x-(805-819), y-(134-165));
 
-    txLine (819, 165, 815, 150);
+    txLine (x-(805-819), y-(134-165), x-(805-815), y-(134-150));
 
     txSetColor (RGB (160, 82, 45), 8);
 
     txSetFillColor (RGB (160, 82, 45));
 
-    txCircle (725, 163, 10);
+    txCircle (x-(805-725), 163, 10);
 
-    txLine (725, 170, 725, 234);
+    txLine (x-(805-725), y-(134-170), x-(805-725), y-(134-234));
 
     txSetColor (RGB (210, 105, 30), 6);
 
-    txLine (810, 155, 822, 168);
+    txLine (x-(805-810), y-(134-155), x-(805-822), y-(134-168));
 
     txSetColor (TX_GREY);
 
     txSetFillColor (TX_GREY);
 
-    txCircle (822, 168, 4);
+    txCircle (x-(805-822), y-(134-168), 4);
 
     txSetColor (RGB (0, 0, 0), 8);
 
     txSetFillColor (TX_BLACK);
 
-    txLine (815, 150, 797, 161);
+    txLine (x-(805-815), y-(134-150), x-(805-797), y-(134-161));
 
     txSetColor (RGB (84, 84, 84));
 
     txSetFillColor (RGB (84, 84, 84));
 
-    txRectangle (772, 75, 837, 85);
+    txRectangle (x-(805-772), y-(134-75), x-(805-837), y-(134-85));
 
-    txRectangle (790, 33, 820, 75);
-
-
-
-    txSetColor (RGB (84, 84, 84), 8);
-
-    txSetFillColor (RGB (255, 0, 255));
-
-    txRectangle (173, 262, 292, 381);
-
-    txRectangle (141, 322, 172, 361);
-
-    txRectangle (293, 322, 323, 361);
-
-    txRectangle (188, 382, 222, 411);
-
-    txRectangle (243, 382, 277, 411);
-
-    txSetColor (TX_BLACK);
-
-    txSetFillColor (TX_BLACK);
-
-    txCircle (215, 293, 11);
-
-    txCircle (260, 293, 11);
-
-    txSetColor (RGB (0, 0, 0), 6);
-
-    txLine (211, 275, 197, 289);
-
-    txLine (267, 275, 281, 289);
-
-    txSetColor (RGB (0, 0, 0), 8);
-
-    txSetFillColor (RGB (255, 0, 255));
-
-    txCircle (236, 349, 14);
+    txRectangle (x-(805-790), y-(134-33), x-(805-820), y-(134-75));
+    }
 
 
+//-----------------------------------------------------------------------------
 
+
+void DrawJetPack (int x, int y)
+    {
     txSetColor (TX_GRAY);
 
     txSetFillColor (TX_GRAY);
 
-    txRectangle (970, 109, 989, 193);
+    txRectangle (x-(1010-970), y-(152-109), x-(1010-989), y-(152-193));
 
-    txRectangle (1030, 109, 1049, 193);
+    txRectangle (x-(1010-1030), y-(152-109), x-(1010-1049), y-(152-193));
 
-    txRectangle (974, 95, 984, 110);
+    txRectangle (x-(1010-974), y-(152-95), x-(1010-984), y-(152-110));
 
-    txRectangle (1035, 95, 1045, 110);
+    txRectangle (x-(1010-1035), y-(152-95), x-(1010-1045), y-(152-110));
 
     txSetColor (RGB (218, 165, 32));
 
     txSetFillColor (RGB (218, 165, 32));
 
-    txRectangle (975, 115, 1044, 189);
+    txRectangle (x-(1010-975), y-(152-115), x-(1010-1044), y-(152-189));
 
     txSetColor (RGB (0, 0, 0), 8);
 
     txSetFillColor (TX_BLACK);
 
-    txLine (987, 120, 987, 184);
+    txLine (x-(1010-987), y-(152-120), x-(1010-987), y-(152-184));
 
-    txLine (1032, 120, 1032, 184);
+    txLine (x-(1010-1032), y-(152-120), x-(1010-1032), y-(152-184));
+    }
 
 
+//-----------------------------------------------------------------------------
 
+
+void DrawPinkCharacter (int x, int y)
+    {
+    txSetColor (RGB (84, 84, 84), 8);
+
+    txSetFillColor (RGB (255, 0, 255));
+
+    txRectangle (x-(233-173), y-(322-262), x-(233-292), y-(322-381));
+
+    txRectangle (x-(233-141), y-(322-322), x-(233-172), y-(322-361));
+
+    txRectangle (x-(233-293), y-(322-322), x-(233-323), y-(322-361));
+
+    txRectangle (x-(233-188), y-(322-382), x-(233-222), y-(322-411));
+
+    txRectangle (x-(233-243), y-(322-382), x-(233-277), y-(322-411));
+
+    txSetColor (TX_BLACK);
+
+    txSetFillColor (TX_BLACK);
+
+    txCircle (x-(233-215), y-(322-293), 11);
+
+    txCircle (x-(233-260), y-(322-293), 11);
+
+    txSetColor (RGB (0, 0, 0), 6);
+
+    txLine (x-(233-211), y-(322-275), x-(233-197), y-(322-289));
+
+    txLine (x-(233-267), y-(322-275), x-(233-281), y-(322-289));
+
+    txSetColor (RGB (0, 0, 0), 8);
+
+    txSetFillColor (RGB (255, 0, 255));
+
+    txCircle (x-(233-236), y-(322-349), 14);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawCannonball (int x, int y)
+    {
     txSetColor (RGB (105, 105, 105));
 
     txSetFillColor (RGB (105, 105, 105));
 
-    txCircle (547, 337, 30);
+    txCircle (x, y, 30);
+    }
 
+
+//-----------------------------------------------------------------------------
+
+
+void DrawCannon (int x, int y)
+    {
     txSetColor (RGB (105, 105, 105));
 
     txSetFillColor (RGB (105, 105, 105));
 
     txRectangle (629, 300, 754, 370);
 
-    txCircle (754, 335, 35);
+    txCircle (x-(723-754), y-(362-335), 35);
 
     txSetColor (TX_GRAY);
 
     txSetFillColor (TX_GRAY);
 
-    txCircle (629, 335, 34);
+    txCircle (x-(723-629), y-(362-335), 34);
 
     txSetColor (RGB (139, 69, 19));
 
     txSetFillColor (RGB (139, 69, 19));
 
-    txCircle (723, 362, 40);
+    txCircle (x, y, 40);
 
     txSetColor (TX_BLACK);
 
     txSetFillColor (TX_BLACK);
 
-    txCircle (723, 362, 12);
+    txCircle (x, y, 12);
 
     txSetColor (RGB (244, 164, 96), 8);
 
-    txLine (787, 330, 824, 300);
+    txLine (x-(723-787), y-(362-330), x-(723-824), y-(362-300));
 
     txSetColor (TX_RED);
 
     txSetFillColor (TX_RED);
 
-    txCircle (824, 300, 6);
+    txCircle (x-(723-824), y-(362-300), 6);
+    }
 
 
+//-----------------------------------------------------------------------------
 
+
+void DrawEvilMinion (int x, int y)
+    {
     txSetColor (RGB (105, 105, 105), 8);
 
     txSetFillColor (RGB (119, 136, 153));
 
-    txRectangle (940, 280, 1019, 359);
+    txRectangle (x-(980-940), y-(320-280), x-(980-1019), y-(320-359));
 
     txSetFillColor (TX_RED);
 
-    txRectangle (915, 320, 939, 339);
+    txRectangle (x-(980-915), y-(320-320), x-(980-939), y-(320-339));
 
-    txRectangle (1020, 320, 1044, 339);
+    txRectangle (x-(980-1020), y-(320-320), x-(980-1044), y-(320-339));
 
-    txRectangle (950, 360, 969, 384);
+    txRectangle (x-(980-950), y-(320-360), x-(980-969), y-(320-384));
 
-    txRectangle (990, 360, 1009, 384);
+    txRectangle (x-(980-990), y-(320-360), x-(980-1009), y-(320-384));
 
-    txCircle (910, 329, 10);
+    txCircle (x-(980-910), y-(320-329), 10);
 
     txSetColor (TX_RED);
 
-    txRectangle (955, 300, 974, 309);
+    txRectangle (x-(980-955), y-(320-300), x-(980-974), y-(320-309));
 
-    txRectangle (980, 300, 999, 309);
+    txRectangle (x-(980-980), y-(320-300), x-(980-999), y-(320-309));
 
     txSetColor (TX_BLACK);
 
     txSetFillColor (TX_BLACK);
 
-    txRectangle (955, 335, 999, 344);
+    txRectangle (x-(980-955), y-(320-335), x-(980-999), y-(320-344));
 
     txSetColor (RGB (255, 0, 0));
 
     txSetFillColor (RGB (255, 0, 0));
 
-    txCircle (875, 329, 9);
+    txCircle (x-(980-875), y-(320-329), 9);
 
     txSetColor (RGB (255, 0, 0), 8);
 
-    txLine (875, 324, 893, 329);
+    txLine (x-(980-875), y-(320-324), x-(980-893), y-(320-329));
 
-    txLine (893, 329, 875, 334);
+    txLine (x-(980-893), y-(320-329), x-(980-875), y-(320-334));
+    }
 
+
+//-----------------------------------------------------------------------------
+
+
+void DrawLaser (int x, int y)
+    {
     txSetColor (RGB (105, 105, 105));
 
     txSetFillColor (RGB (105, 105, 105));
 
-    txRectangle (771, 420, 844, 459);
+    txRectangle (x-(808-771), y-(440-420), x-(808-844), y-(440-459));
 
     txSetColor (RGB (105, 105, 105), 8);
 
-    txLine (774, 423, 766, 439);
+    txLine (x-(808-774), y-(440-423), x-(808-766), y-(440-439));
 
-    txLine (774, 455, 766, 439);
+    txLine (x-(808-774), y-(440-455), x-(808-766), y-(440-439));
 
     txSetColor (RGB (128, 0, 0), 8);
 
-    txLine (762, 439, 590, 440);
-
-
-
-    return 0;
+    txLine (x-(808-762), y-(440-439), x-(808-590), y-(440-440));
     }
 
-void DrawYellowCharacter (int x, int y)
-
-//x=235, y=134
-
-    {
-    txSetFillColor (RGB (255, 255, 0));
-
-    txSetColor (RGB (84, 84, 84), 8);
-
-    txRectangle (x-(235-175), y-57, x+59, y+60);
-
-//    txRectangle (x-60, y-57, x+59, y+60);
-
-//  txRectangle (235-60, 134-57, 235+59, 134+60);
-
-    txRectangle (143, 135, 174, 174);
-
-    txRectangle (295, 135, 325, 174);
-
-    txRectangle (190, 195, 224, 224);
-
-    txRectangle (245, 195, 279, 224);
-
-    txSetColor (TX_BLACK);
-
-    txSetFillColor (TX_BLACK);
-
-    txCircle (262, 106, 11);
-
-    txCircle (216, 106, 11);
-
-    txSetColor (RGB (0, 0, 0), 6);
-
-    txLine (219, 141, 205, 154);
-
-    txLine (214, 149, 227, 161);
-
-    txLine (227, 161, 251, 161);
-
-    txSetFillColor (TX_PINK);
-
-    txCircle (235, 134, 10);
 
 
-
-    }
