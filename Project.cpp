@@ -2,7 +2,7 @@
 
 //-----------------------------------------------------------------------------
 
-//Прототипы
+//ДЋД‘Г®Е€Г®Е€ДЌДЏЕ±
 
 void DrawYellowCharacter (int x, int y, double xSize, double ySize, double faceSize,
                             COLORREF bodyColor, COLORREF contourColor, int moveNose);
@@ -46,7 +46,7 @@ int main()
 
     txClear();
 
-    DrawYellowCharacter (235, 134, 1.5, 1.5, 1.5, RGB (255, 255, 0), (TX_BLACK), 10); //Вызовы
+    DrawYellowCharacter (235, 134, 1.5, 1.5, 1.5, RGB (255, 255, 0), (TX_BLACK), 10); //Г‚Е±Г§Г®ГўЕ±
 
     DrawGreenCharacter (560, 130,  0.5, 0.5, 0.5, RGB (0, 128, 0), (TX_BLACK), -10);
 
@@ -468,20 +468,12 @@ void DrawLaser (int x, int y, double xSize, double ySize, double faceSize)
                         double xScale, double yScale, int moveNose)
     {
     txSetFillColor (bodyColor);
-
     txSetColor (contourColor, 8);
-
     txRectangle (x - 60*xScale, y - 57*yScale, x + 59*xScale, y + 60*yScale);
-
     txRectangle (x - 92*xScale, y + 1*yScale, x - 61*xScale, y + 40*yScale);
-
     txRectangle (x + 60*xScale, y + 1*yScale, x + 90*xScale, y + 40*yScale);
-
     txRectangle (x - 45*xScale, y + 61*yScale, x - 11*xScale, y + 90*yScale);
-
     txRectangle (x + 10*xScale, y + 61*yScale, x + 44*xScale, y + 90*yScale);
-
     txSetColor (contourColor, 6);
-
     txCircle (x+moveNose, y, 9);
     }*/
