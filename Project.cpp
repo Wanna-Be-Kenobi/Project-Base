@@ -5,10 +5,11 @@
 //Ďđîňîňčďű
 
 void DrawYellowCharacter (int x, int y, double xSize, double ySize, double faceSize,
-                            COLORREF bodyColor, COLORREF contourColor, int moveNose);
+                            COLORREF bodyColor, COLORREF contourColor, int moveNose, int rightStep, int leftStep, int rightPunch, int leftPunch,
+                                double rightEye, double leftEye, double noseSize);
 
 void DrawGreenCharacter (int x, int y, double xSize, double ySize, double faceSize,
-                            COLORREF bodyColor, COLORREF contourColor, int moveNose);
+                            COLORREF bodyColor, COLORREF contourColor, int moveNose, int rightStep, int leftStep, int rightHand, int leftHand);
 
 void DrawBlueCharacter (int x, int y, double xSize, double ySize, double faceSize,
                             COLORREF bodyColor, COLORREF contourColor);
@@ -16,7 +17,7 @@ void DrawBlueCharacter (int x, int y, double xSize, double ySize, double faceSiz
 void DrawJetPack (int x, int y, double xSize, double ySize, double faceSize);
 
 void DrawPinkCharacter (int x, int y, double xSize, double ySize, double faceSize,
-                            COLORREF bodyColor, COLORREF contourColor, int moveNose);
+                            COLORREF bodyColor, COLORREF contourColor, int moveNose, int rightStep, int leftStep, int rightHand, int leftHand);
 
 void DrawCannonball (int x, int y, double faceSize, COLORREF bodyColor, COLORREF contourColor);
 
@@ -30,8 +31,8 @@ void DrawLaserCannon (int x, int y, double xSize, double ySize, double faceSize)
 
 void DrawLaser (int x, int y, double xSize, double ySize, double faceSize);
 
-/*void DrawCharacterBase (int x, int y, COLORREF bodyColor, COLORREF contourColor,
-                        double xScale, double yScale, int moveNose);*/
+void DrawCharacterBase (int x, int y, COLORREF bodyColor, COLORREF contourColor,
+                        double xScale, double yScale, double faceSize, int leftStep, int rightStep, int rightHand, int leftHand);
 
 
 //-----------------------------------------------------------------------------
@@ -40,19 +41,23 @@ void DrawLaser (int x, int y, double xSize, double ySize, double faceSize);
 
 int main()
     {
-    txCreateWindow (1200, 800);
+    txCreateWindow (1500, 1000);
 
     txSetFillColor (TX_WHITE);
 
     txClear();
 
-    DrawYellowCharacter (235, 134, 1.5, 1.5, 1.5, RGB (255, 255, 0), (TX_BLACK), 10); //Âűçîâű
+    DrawYellowCharacter (235, 134, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 5, 1, 1, 15, 1, 0.6, 1);
 
-    DrawGreenCharacter (560, 130,  0.5, 0.5, 0.5, RGB (0, 128, 0), (TX_BLACK), -10);
+    DrawYellowCharacter (255, 554, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 5, 15, 1, 0.7, 0.7, 1.3);
+
+    DrawGreenCharacter (560, 130, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1);
+
+    DrawGreenCharacter (560, 630, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1);
 
     DrawBlueCharacter (805, 134, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK));
 
-    DrawPinkCharacter (233, 322, 0.3, 0.3, 0.3, RGB (255, 0, 255), (TX_BLACK), 10);
+    DrawPinkCharacter (233, 322, 0.3, 0.3, 0.3, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1);
 
     DrawJetPack (1010, 152, 1, 1, 1);
 
@@ -76,33 +81,18 @@ int main()
 
 
 void DrawYellowCharacter (int x, int y, double xSize, double ySize, double faceSize,
-                            COLORREF bodyColor, COLORREF contourColor, int moveNose)
+                            COLORREF bodyColor, COLORREF contourColor, int moveNose, int leftStep, int rightStep, int rightPunch, int leftPunch,
+                                double rightEye, double leftEye, double noseSize)
     {
-    txSetFillColor (bodyColor);
-
-    txSetColor (contourColor, 8*faceSize);
-
-    txRectangle (x - 60*xSize, y - 57*ySize, x + 59*xSize, y + 60*ySize);
-
-    txRectangle (x - 92*xSize, y + 1*ySize, x - 61*xSize, y + 40*ySize);
-
-    txRectangle (x + 60*xSize, y + 1*ySize, x + 90*xSize, y + 40*ySize);
-
-    txRectangle (x - 45*xSize, y + 61*ySize, x - 11*xSize, y + 90*ySize);
-
-    txRectangle (x + 10*xSize, y + 61*ySize, x + 44*xSize, y + 90*ySize);
-
-    txSetColor (contourColor, 6*faceSize);
-
-    txCircle (x + moveNose*xSize, y, 9*faceSize);
+    DrawCharacterBase (x, y, bodyColor, contourColor, xSize, ySize, faceSize, rightStep, leftStep, rightPunch, leftPunch);
 
     txSetColor (contourColor);
 
     txSetFillColor (contourColor);
 
-    txCircle (x + 27*xSize, y - 28*ySize, 11*faceSize);
+    txEllipse (x + 16, y - 17, x + 38, y - 39*rightEye);
 
-    txCircle (x - 19*xSize, y - 28*ySize, 11*faceSize);
+    txEllipse (x - 8, y - 17, x - 30, y - 39*leftEye);
 
     txSetColor (RGB (0, 0, 0), 6*faceSize);
 
@@ -111,32 +101,21 @@ void DrawYellowCharacter (int x, int y, double xSize, double ySize, double faceS
     txLine (x - 21*xSize, y + 15*ySize, x - 8*xSize, y + 27*ySize);
 
     txLine (x - 8*xSize, y + 27*ySize, x + 16*xSize, y + 27*ySize);
-    }
 
+    txSetFillColor (bodyColor);
+
+    txSetColor (contourColor, 6*faceSize);
+
+    txCircle (x + moveNose*noseSize, y, 9*noseSize);
+    }
 
 //-----------------------------------------------------------------------------
 
 
 void DrawGreenCharacter (int x, int y, double xSize, double ySize, double faceSize,
-                            COLORREF bodyColor, COLORREF contourColor, int moveNose)
+                            COLORREF bodyColor, COLORREF contourColor, int moveNose, int rightStep, int leftStep, int rightHand, int leftHand)
     {
-    txSetFillColor (bodyColor);
-
-    txSetColor (contourColor, 8*faceSize);
-
-    txRectangle (x - 60*xSize, y - 57*ySize, x + 59*xSize, y + 60*ySize);
-
-    txRectangle (x - 92*xSize, y + 1*ySize, x - 61*xSize, y + 40*ySize);
-
-    txRectangle (x + 60*xSize, y + 1*ySize, x + 90*xSize, y + 40*ySize);
-
-    txRectangle (x - 45*xSize, y + 61*ySize, x - 11*xSize, y + 90*ySize);
-
-    txRectangle (x + 10*xSize, y + 61*ySize, x + 44*xSize, y + 90*ySize);
-
-    txSetColor (contourColor, 6*faceSize);
-
-    txCircle (x + moveNose*xSize, y, 9*faceSize);
+    DrawCharacterBase (x, y, bodyColor, contourColor, xSize, ySize, faceSize, rightStep, leftStep,  rightHand, leftHand);
 
     txSetFillColor (TX_BLACK);
 
@@ -157,6 +136,12 @@ void DrawGreenCharacter (int x, int y, double xSize, double ySize, double faceSi
     txLine (x - 22*xSize, y - 47*ySize, x - 8*xSize, y - 38*ySize);
 
     txLine (x + 13*xSize, y - 47*ySize, x - 1*xSize, y - 38*ySize);
+
+    txSetFillColor (bodyColor);
+
+    txSetColor (contourColor, 6*faceSize);
+
+    txCircle (x + moveNose*faceSize, y, 9*faceSize);
     }
 
 
@@ -270,25 +255,9 @@ void DrawJetPack (int x, int y, double xSize, double ySize, double faceSize)
 
 
 void DrawPinkCharacter (int x, int y, double xSize, double ySize, double faceSize,
-                            COLORREF bodyColor, COLORREF contourColor, int moveNose)
+                            COLORREF bodyColor, COLORREF contourColor, int moveNose, int rightStep, int leftStep, int rightHand, int leftHand)
     {
-    txSetFillColor (bodyColor);
-
-    txSetColor (contourColor, 8*faceSize);
-
-    txRectangle (x - 60*xSize, y - 57*ySize, x + 59*xSize, y + 60*ySize);
-
-    txRectangle (x - 92*xSize, y + 1*ySize, x - 61*xSize, y + 40*ySize);
-
-    txRectangle (x + 60*xSize, y + 1*ySize, x + 90*xSize, y + 40*ySize);
-
-    txRectangle (x - 45*xSize, y + 61*ySize, x - 11*xSize, y + 90*ySize);
-
-    txRectangle (x + 10*xSize, y + 61*ySize, x + 44*xSize, y + 90*ySize);
-
-    txSetColor (contourColor, 6*faceSize);
-
-    txCircle (x + moveNose*xSize, y, 9*faceSize);
+    DrawCharacterBase (x, y, bodyColor, contourColor, xSize, ySize, faceSize, rightStep, leftStep, rightHand, leftHand);
 
     txSetFillColor (TX_BLACK);
 
@@ -298,7 +267,7 @@ void DrawPinkCharacter (int x, int y, double xSize, double ySize, double faceSiz
 
     txCircle (x + 27*xSize, y - 29*ySize, 11*faceSize);
 
-    txSetColor (RGB (0, 0, 0), 6);
+    txSetColor (RGB (0, 0, 0), 6*faceSize);
 
     txLine (x - 22*xSize, y - 47*ySize, x - 36*xSize, y - 33*ySize);
 
@@ -309,6 +278,12 @@ void DrawPinkCharacter (int x, int y, double xSize, double ySize, double faceSiz
     txSetFillColor (RGB (255, 0, 255));
 
     txCircle (x + 3*xSize, y + 29*ySize, 14*faceSize);
+
+    txSetFillColor (bodyColor);
+
+    txSetColor (contourColor, 6*faceSize);
+
+    txCircle (x + moveNose*faceSize, y, 9*faceSize);
     }
 
 
@@ -464,16 +439,20 @@ void DrawLaser (int x, int y, double xSize, double ySize, double faceSize)
 //-----------------------------------------------------------------------------
 
 
-/*void DrawCharacterBase (int x, int y, COLORREF bodyColor, COLORREF contourColor,
-                        double xScale, double yScale, int moveNose)
+void DrawCharacterBase (int x, int y, COLORREF bodyColor, COLORREF contourColor,
+                        double xScale, double yScale, double faceSize, int rightStep, int leftStep, int rightHand, int leftHand)
     {
     txSetFillColor (bodyColor);
-    txSetColor (contourColor, 8);
+
+    txSetColor (contourColor, 8*faceSize);
+
     txRectangle (x - 60*xScale, y - 57*yScale, x + 59*xScale, y + 60*yScale);
-    txRectangle (x - 92*xScale, y + 1*yScale, x - 61*xScale, y + 40*yScale);
-    txRectangle (x + 60*xScale, y + 1*yScale, x + 90*xScale, y + 40*yScale);
-    txRectangle (x - 45*xScale, y + 61*yScale, x - 11*xScale, y + 90*yScale);
-    txRectangle (x + 10*xScale, y + 61*yScale, x + 44*xScale, y + 90*yScale);
-    txSetColor (contourColor, 6);
-    txCircle (x+moveNose, y, 9);
-    }*/
+
+    txRectangle (x  - 92*xScale - leftHand, y + 1*yScale, x - 61*xScale - leftHand, y + 40*yScale);
+
+    txRectangle (x  + 60*xScale + rightHand, y  + 1*yScale, x + 90*xScale + rightHand, y + 40*yScale);
+
+    txRectangle (x - 45*xScale, y + 61*yScale - rightStep, x - 11*xScale, y + 90*yScale - rightStep);
+
+    txRectangle (x + 10*xScale, y + 61*yScale - leftStep, x + 44*xScale, y + 90*yScale - leftStep);
+    }
