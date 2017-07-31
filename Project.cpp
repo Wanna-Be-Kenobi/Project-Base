@@ -37,9 +37,22 @@ void DrawLaser (int x, int y, double xSize, double ySize, double faceSize);
 void DrawCharacterBase (int x, int y, COLORREF bodyColor, COLORREF contourColor,
                         double xScale, double yScale, double faceSize, int leftStep, int rightStep, int leftHand, int rightHand);
 
-void MovePinkCharacter(int xStart, int yStart, int xStop, int vX, int vY);
+void MovePinkCharacter (int xStart, int yStart, int vX, int vY, int xStop);
+
+void MoveYellowCharacter (int xStart, int yStart, int vX, int vY, int xStop);
+
+void DrawBackground();
+
+void MoveGreenCharacter (int xStart, int yStart, int vX, int vY, int yStop);
+
+void DrawBackground2();
+
+void DrawScaredPink();
+
+void DrawBackground3();
 
 void DrawPinkBackground();
+
 
 
 //-----------------------------------------------------------------------------
@@ -50,9 +63,13 @@ int main()
     {
     txCreateWindow (1500, 1000);
 
-    MovePinkCharacter(100, 250, 200, 10, -10);
+    MovePinkCharacter (100, 800, 10, 0, 300);
 
-    MovePinkCharacter(200, 150, 400, 10, 10);
+    MoveYellowCharacter (100, 800, 10, 0, 490);
+
+    MoveGreenCharacter (700, 100, 0, 10, 810);
+
+    DrawScaredPink();
 
     return 0;
     }
@@ -274,7 +291,7 @@ void DrawPinkCharacter (int x, int y, double xSize, double ySize, double faceSiz
 //-----------------------------------------------------------------------------
 
 
-void MovePinkCharacter(int xStart, int yStart, int xStop, int vX, int vY)
+void MovePinkCharacter (int xStart, int yStart, int vX, int vY, int xStop)
 
     {
     int x = xStart, y = yStart;
@@ -285,18 +302,116 @@ void MovePinkCharacter(int xStart, int yStart, int xStop, int vX, int vY)
 
         txClear();
 
-        DrawPinkBackground();
-
         DrawPinkCharacter (x, y, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
 
-        x += vX;
+        x += vX; //x = x+20;
 
         y += vY;
 
         txSleep (10);
-        //x = x+20;
         }
     }
+
+
+//-----------------------------------------------------------------------------
+
+
+void MoveYellowCharacter (int xStart, int yStart, int vX, int vY, int xStop)
+
+    {
+    int x = xStart, y = yStart;
+
+    while (x < xStop)
+        {
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawBackground();
+
+        DrawYellowCharacter (x, y, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+        x += vX; //x = x+20;
+
+        y += vY;
+
+        txSleep (10);
+        }
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawBackground()
+    {
+    DrawPinkCharacter (300, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void MoveGreenCharacter (int xStart, int yStart, int vX, int vY, int yStop)
+
+    {
+    int x = xStart, y = yStart;
+
+    while (y < yStop)
+        {
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawBackground2();
+
+        DrawGreenCharacter (x, y, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+        x += vX; //x = x+20;
+
+        y += vY;
+
+        txSleep (10);
+        }
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawBackground2()
+
+    {
+    DrawPinkCharacter (300, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
+
+    DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawScaredPink()
+    {
+    txSetFillColor (TX_WHITE);
+
+    txClear();
+
+    DrawBackground3();
+
+    DrawPinkCharacter (300, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawBackground3()
+    {
+     DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+     DrawGreenCharacter (700, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+     }
 
 
 //-----------------------------------------------------------------------------
