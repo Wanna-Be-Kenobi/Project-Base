@@ -37,31 +37,29 @@ void DrawLaser (int x, int y, double xSize, double ySize, double faceSize);
 void DrawCharacterBase (int x, int y, COLORREF bodyColor, COLORREF contourColor,
                         double xScale, double yScale, double faceSize, int leftStep, int rightStep, int leftHand, int rightHand);
 
-void MovePinkCharacter (int xStart, int yStart, int vX, int vY, int xStop);
-
-void MoveYellowCharacter (int xStart, int yStart, int vX, int vY, int xStop);
-
-void DrawBackground();
-
-void MoveGreenCharacter (int xStart, int yStart, int vX, int vY, int yStop);
-
-void DrawBackground2();
-
-void DrawScaredPink (int x, int y);
-
-void DrawBackground3();
-
-void YellowPunch (int x, int y);
-
-void DrawBackground4();
-
-void DrawRedCharacter (int x, int y);
-
-void DrawBackground5();
-
 void DrawPinkBackground();
 
 void MoveAll();
+
+void DrawBackground();
+
+void DrawBackground2();
+
+void DrawBackground3();
+
+void DrawBackground4();
+
+void DrawBackground5();
+
+void DrawBackground6();
+
+void DrawPinkGreen();
+
+void YellowPunch();
+
+void Explosion();
+
+void Titles();
 
 
 //-----------------------------------------------------------------------------
@@ -72,19 +70,9 @@ int main()
     {
     txCreateWindow (1500, 1000);
 
-    /*MovePinkCharacter (100, 800, 10, 0, 300);
-
-    MoveYellowCharacter (100, 800, 10, 0, 490);
-
-    MoveGreenCharacter (700, 100, 0, 7, 100);
-
-    DrawScaredPink (300, 800);
-
-    YellowPunch (490, 800);
-
-    DrawRedCharacter (700, 800);*/
-
     MoveAll();
+
+    Explosion();
 
     return 0;
     }
@@ -306,187 +294,6 @@ void DrawPinkCharacter (int x, int y, double xSize, double ySize, double faceSiz
 //=============================================================================
 
 
-void MovePinkCharacter (int xStart, int yStart, int vX, int vY, int xStop)
-
-    {
-    int x = xStart, y = yStart;
-
-    while (x < xStop)
-        {
-        txSetFillColor (TX_WHITE);
-
-        txClear();
-
-        DrawPinkCharacter (x, y, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
-
-        x += vX; //x = x+20;
-
-        y += vY;
-
-        txSleep (10);
-        }
-    }
-
-
-//-----------------------------------------------------------------------------
-
-
-void MoveYellowCharacter (int xStart, int yStart, int vX, int vY, int xStop)
-
-    {
-    int x = xStart, y = yStart;
-
-    while (x < xStop)
-        {
-        txSetFillColor (TX_WHITE);
-
-        txClear();
-
-        DrawBackground();
-
-        DrawYellowCharacter (x, y, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
-
-        x += vX; //x = x+20;
-
-        y += vY;
-
-        txSleep (10);
-        }
-    }
-
-
-//-----------------------------------------------------------------------------
-
-
-void DrawBackground()
-    {
-    DrawPinkCharacter (300, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
-    }
-
-
-//-----------------------------------------------------------------------------
-
-
-void MoveGreenCharacter (int xStart, int yStart, int vX, int vY, int tStop)
-
-    {
-
-    int t = 0;
-
-    while (t < tStop)
-        {
-        txSetFillColor (TX_WHITE);
-
-        txClear();
-
-        printf ("Âðåìÿ = %d\n", t);
-
-        DrawBackground2();
-
-        DrawGreenCharacter (xStart + t * vX, yStart + t * vY, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
-
-        t ++ ;
-
-        txSleep (10);
-        }
-    }
-
-
-//-----------------------------------------------------------------------------
-
-
-void DrawBackground2()
-
-    {
-    DrawPinkCharacter (300, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
-
-    DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
-    }
-
-
-//-----------------------------------------------------------------------------
-
-
-void DrawScaredPink (int x, int y)
-    {
-    txSetFillColor (TX_WHITE);
-
-    txClear();
-
-    DrawBackground3();
-
-    DrawPinkCharacter (x, y, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
-    }
-
-
-//-----------------------------------------------------------------------------
-
-
-void DrawBackground3()
-    {
-     DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
-
-     DrawGreenCharacter (700, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
-     }
-
-
-//-----------------------------------------------------------------------------
-
-
-void YellowPunch (int x, int y)
-    {
-    txSetFillColor (TX_WHITE);
-
-    txClear();
-
-    DrawBackground4();
-
-    DrawYellowCharacter (x, y, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 20, 1, 1, 1, 1);
-
-    txSleep (100);
-    }
-
-
-//-----------------------------------------------------------------------------
-
-
-void DrawBackground4()
-    {
-    DrawPinkCharacter (300, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
-
-    DrawGreenCharacter (700, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
-    }
-
-
-//-----------------------------------------------------------------------------
-
-
-void DrawRedCharacter (int x, int y)
-    {
-    txSetFillColor (TX_WHITE);
-
-    txClear();
-
-    DrawBackground5();
-
-    DrawGreenCharacter (x, y, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 5, 1, 1, 28, 12);
-    }
-
-
-//-----------------------------------------------------------------------------
-
-
-void DrawBackground5()
-    {
-    DrawPinkCharacter (300, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
-
-    DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
-    }
-
-
-//-----------------------------------------------------------------------------
-
-
 void MoveAll()
     {
     int t = 0;
@@ -497,28 +304,273 @@ void MoveAll()
 
         txClear();
 
-        DrawYellowCharacter (100 + 5 * t, 1000 - 2 * t, 0.5 + t / 50.0, 0.5 + t / 50.0, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1 + 0.5 * t, 1, 1, 1, 1, 1, 1);
+        DrawPinkCharacter (100 + 3 * t, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
 
-        DrawGreenCharacter (900 + 4 * t, 150 + 4 * t, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
-
-        DrawPinkCharacter (200 + 3 * t, 1000 - 3 * t, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
+        DrawYellowCharacter (290 + 3 * t, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
 
         t ++ ;
 
         txSleep (10);
         }
+
+        {
+        DrawGreenCharacter (800, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+        txSleep (500);
+
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawBackground();
+
+        DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+        }
+
+        {
+        txSleep (500);
+
+        YellowPunch();
+
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawBackground2();
+
+        DrawGreenCharacter (800, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+        }
+
+        {
+        txSleep (500);
+
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawBackground3();
+
+        txSleep (500);
+
+        DrawGreenCharacter (800, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+
+        txTextOut (750, 700, "I NEED THIS");
+
+        DrawJetPack (800, 650, 1, 1, 1);
+
+        txSleep (1000);
+
+        DrawPinkCharacter (400, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, -30, 1);
+
+        txTextOut (390, 700, "???");
+
+        txTextOut (580, 700, "?");
+
+        txSleep (2000);
+
+        DrawGreenCharacter (800, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+        txSleep (1000);
+
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawBackground4();
+
+        txSleep (1000);
+
+        DrawGreenCharacter (1200, 500, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+        txSleep (1000);
+
+        DrawEvilMinion (900 , 800, 1, 1, 1);
+
+        DrawEvilMinion (1050, 800, 1, 1, 1);
+
+        DrawEvilMinion (1200 , 800, 1, 1, 1);
+
+        DrawEvilMinion (1350, 800, 1, 1, 1);
+
+        txSleep (250);
+
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawBackground5();
+
+        DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+
+        txSleep (2000);
+        }
     }
 
 
+//-----------------------------------------------------------------------------
 
 
+void Explosion()
+    {
+    int t = 0;
 
+    while (t < 10)
+        {
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawBackground5();
+
+        DrawPinkCharacter (400, 800, 1 + 1 * t, 1 + 1 * t, 0.5 + 1 * t, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+
+        t ++ ;
+
+        txSleep (100);
+
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        txSelectFont ("Comic Sans MS", 50);
+
+        txTextOut (650, 500, "ÇÂÓÊ ÂÇÐÛÂÀ");
+        }
+
+        {
+        txSleep (3000);
+
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        txSelectFont ("Comic Sans MS", 50);
+
+        txTextOut (700, 500, "ÊÎÍÅÖ!");
+
+        DrawBlueCharacter (1000, 500, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), 5, 1, 1, 1, 1);
+        }
+    }
 
 
 //-----------------------------------------------------------------------------
 
 
 
+
+
+void DrawBackground()
+    {
+    DrawGreenCharacter (800, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+    DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawBackground2()
+    {
+    DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+    DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void YellowPunch()
+    {
+    txSleep (100);
+
+    txSetFillColor (TX_WHITE);
+
+    txClear();
+
+    DrawPinkGreen();
+
+    DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 20, 1, 1, 1, 1);
+
+    txSleep (400);
+
+    txSetFillColor (TX_WHITE);
+
+    txClear();
+
+    DrawPinkGreen();
+
+    DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawBackground3()
+    {
+    DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+    DrawGreenCharacter (800, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+    DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawBackground4()
+    {
+    DrawPinkCharacter (400, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, -30, 1);
+
+    DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawBackground5()
+    {
+    DrawGreenCharacter (1200, 500, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+    DrawEvilMinion (900 , 800, 1, 1, 1);
+
+    DrawEvilMinion (1050, 800, 1, 1, 1);
+
+    DrawEvilMinion (1200 , 800, 1, 1, 1);
+
+    DrawEvilMinion (1350, 800, 1, 1, 1);
+
+    DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawBackground6()
+    {
+    DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+    DrawGreenCharacter (1200, 500, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+    }
+
+
+
+
+
+void DrawPinkGreen()
+    {
+    DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+
+    DrawGreenCharacter (800, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+    }
+
+
+//-----------------------------------------------------------------------------
 
 
 void DrawPinkBackground()
@@ -540,8 +592,6 @@ void DrawPinkBackground()
     DrawPinkCharacter (1200, 622, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 5, 1, 1, -30, 1);
 
     DrawJetPack (1010, 152, 1, 1, 1);
-
-    DrawJetPack (1010, 500, 1, 1, 1);
 
     DrawCannon (723, 362, 1, 1, 1);
 
@@ -698,17 +748,6 @@ void DrawLaserCannon (int x, int y, double xSize, double ySize, double faceSize)
 //-----------------------------------------------------------------------------
 
 
-void DrawLaser (int x, int y, double xSize, double ySize, double faceSize)
-    {
-    txSetColor (RGB (255, 0, 0), 20*faceSize);
-
-    txLine (x + 6*xSize, y - 1*ySize, x - 350*xSize, y - 1*ySize);
-    }
-
-
-//-----------------------------------------------------------------------------
-
-
 void DrawCharacterBase (int x, int y, COLORREF bodyColor, COLORREF contourColor,
                         double xScale, double yScale, double faceSize, int leftStep, int rightStep, int leftHand, int rightHand)
     {
@@ -726,3 +765,15 @@ void DrawCharacterBase (int x, int y, COLORREF bodyColor, COLORREF contourColor,
 
     txRectangle (x + 10*xScale, y + 61*yScale - rightStep, x + 44*xScale, y + 90*yScale - rightStep);
     }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawLaser (int x, int y, double xSize, double ySize, double faceSize)
+    {
+    txSetColor (RGB (255, 0, 0), 20*faceSize);
+
+    txLine (x + 6*xSize, y - 1*ySize, x - 350*xSize, y - 1*ySize);
+    }
+
