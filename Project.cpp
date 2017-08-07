@@ -41,6 +41,12 @@ void DrawPinkBackground();
 
 void MoveAll();
 
+void WierdTalk();
+
+void ScaryMeeting();
+
+void Punch();
+
 void DrawBackground();
 
 void DrawBackground2();
@@ -59,22 +65,254 @@ void YellowPunch();
 
 void Explosion();
 
-void Titles();
+void FirstScene();
+
+void DrawPark();
+
+void SecondScene();
+
+void DrawFightClub();
+
+void DrawCage();
 
 
 //-----------------------------------------------------------------------------
-
 
 
 int main()
     {
     txCreateWindow (1500, 1000);
 
-    MoveAll();
+    /*MoveAll();
 
-    Explosion();
+    ScaryMeeting();
+
+    Punch();
+
+    WierdTalk();
+
+    Explosion();*/
+
+    //FirstScene();
+
+    SecondScene();
 
     return 0;
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void FirstScene()
+    {
+    int t = 0;
+
+    while (t < 100)
+        {
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawPark();
+
+        DrawYellowCharacter (290 + 3 * t, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1, 1);
+
+        DrawPinkCharacter (100 + 3 * t, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1);
+
+        txSelectFont ("Comic Sans MS", 40);
+
+        txTextOut (250 + 3 * t, 700, "Would you like some ice cream?");
+
+        t ++ ;
+
+        txSleep (20);
+        }
+
+    while (t < 315)
+        {
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawPark();
+
+        DrawEvilMinion (1600 - 7 * t, 200, 1, 1, 1);
+
+        DrawEvilMinion (1800 - 7 * t, 200, 1, 1, 1);
+
+        DrawEvilMinion (2000 - 7 * t, 200, 1, 1, 1);
+
+        DrawEvilMinion (1700 - 7 * t, 400, 1, 1, 1);
+
+        DrawEvilMinion (1900 - 7 * t, 400, 1, 1, 1);
+
+        DrawEvilMinion (2100 - 7 * t, 400, 1, 1, 1);
+
+        DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+        DrawPinkCharacter (400, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, -30, 1);
+
+        t ++ ;
+
+        txSleep (5);
+        }
+
+        {
+        DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+        DrawPinkCharacter (400, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
+
+        DrawGreenCharacter (800, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+
+        txSelectFont ("Comic Sans MS", 40);
+
+        txTextOut (700, 700, "IT WAS MY ROBO-ARMY");
+
+        txSleep (3000);
+
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawPark();
+
+        DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+        DrawPinkCharacter (400, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
+
+        DrawGreenCharacter (800, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+
+        txSelectFont ("Comic Sans MS", 40);
+
+        txTextOut (700, 700, "AND NOW I'll TAKE YOUR GIRLFRIEND >:)");
+
+        txSleep (3000);
+
+        txSetFillColor (TX_WHITE);
+
+        txClear();
+
+        DrawPark();
+
+        DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+        DrawGreenCharacter (800, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+
+        DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+        }
+    }
+
+
+//-----------------------------------------------------------------------------
+void DrawPark()
+    {
+    txSetColor (TX_YELLOW);
+
+    txSetFillColor (TX_YELLOW);
+
+    txCircle (1, 1, 150);
+
+    txSetColor (TX_GREEN);
+
+    txSetFillColor (TX_GREEN);
+
+    txRectangle (1, 850, 1500, 1000);
+
+    txSetColor (RGB (110, 139, 61));
+
+    txSetFillColor (RGB (110, 139, 61));
+
+    txEllipse (850, 350, 1100, 700);
+
+    txEllipse (50, 350, 300, 700);
+
+    txEllipse (450, 350, 700, 700);
+
+    txSetColor (RGB (139, 90, 43));
+
+    txSetFillColor (RGB (139, 90, 43));
+
+    txRectangle (930, 550, 1020, 850);
+
+    txRectangle (130, 550, 220, 850);
+
+    txRectangle (530, 550, 620, 850);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void SecondScene()
+    {
+    txSetFillColor (TX_BLACK);
+
+    txClear();
+
+    txSleep (1000);
+
+    txSetFillColor (TX_GRAY);
+
+    txClear();
+
+    DrawFightClub();
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawFightClub()
+    {
+    DrawCage();
+
+    DrawPinkCharacter (750, 300, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+
+    txSetColor (RGB (255, 185, 15), 10);
+
+    txLine (400, 550, 1100, 550);
+
+    txLine (400, 580, 1100, 580);
+
+    txLine (400, 610, 1100, 610);
+
+    txLine (400, 640, 1100, 640);
+
+    txLine (400, 550, -500, 1550);
+
+    txLine (400, 580, -500, 1580);
+
+    txLine (400, 610, -500, 1610);
+
+    txLine (400, 640, -500, 1640);
+
+    txLine (1100, 550, 2300, 1550);
+
+    txLine (1100, 580, 2300, 1580);
+
+    txLine (1100, 610, 2300, 1610);
+
+    txLine (1100, 640, 2300, 1640);
+
+    txSetColor (RGB (139, 69, 19), 20);
+
+    txLine (400, 500, 400, 700);
+
+    txLine (1100, 500, 1100, 700);
+    }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawCage()
+    {
+    txSetColor ((TX_BLACK), 10);
+
+    txRectangle (666, 236, 832, 382);
+
+    txLine (750, 1, 750, 236);
     }
 
 
@@ -306,108 +544,116 @@ void MoveAll()
 
         DrawPinkCharacter (100 + 3 * t, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
 
-        DrawYellowCharacter (290 + 3 * t, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+        DrawYellowCharacter (290 + 3 * t, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1, 1);
+
+        //t = 0 1 2 3 4 5 6 7 8 9
+
+        //    0 1 0 1 0 1 0 1 0 1
+        //    1 0 1 0 1 0 1 0 1 0
 
         t ++ ;
 
         txSleep (10);
         }
-
-        {
-        DrawGreenCharacter (800, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
-
-        txSleep (500);
-
-        txSetFillColor (TX_WHITE);
-
-        txClear();
-
-        DrawBackground();
-
-        DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
-        }
-
-        {
-        txSleep (500);
-
-        YellowPunch();
-
-        txSetFillColor (TX_WHITE);
-
-        txClear();
-
-        DrawBackground2();
-
-        DrawGreenCharacter (800, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
-        }
-
-        {
-        txSleep (500);
-
-        txSetFillColor (TX_WHITE);
-
-        txClear();
-
-        DrawBackground3();
-
-        txSleep (500);
-
-        DrawGreenCharacter (800, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
-
-        txTextOut (750, 700, "I NEED THIS");
-
-        DrawJetPack (800, 650, 1, 1, 1);
-
-        txSleep (1000);
-
-        DrawPinkCharacter (400, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, -30, 1);
-
-        txTextOut (390, 700, "???");
-
-        txTextOut (580, 700, "?");
-
-        txSleep (2000);
-
-        DrawGreenCharacter (800, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
-
-        txSleep (1000);
-
-        txSetFillColor (TX_WHITE);
-
-        txClear();
-
-        DrawBackground4();
-
-        txSleep (1000);
-
-        DrawGreenCharacter (1200, 500, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
-
-        txSleep (1000);
-
-        DrawEvilMinion (900 , 800, 1, 1, 1);
-
-        DrawEvilMinion (1050, 800, 1, 1, 1);
-
-        DrawEvilMinion (1200 , 800, 1, 1, 1);
-
-        DrawEvilMinion (1350, 800, 1, 1, 1);
-
-        txSleep (250);
-
-        txSetFillColor (TX_WHITE);
-
-        txClear();
-
-        DrawBackground5();
-
-        DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
-
-        txSleep (2000);
-        }
     }
 
 
-//-----------------------------------------------------------------------------
+void ScaryMeeting()
+    {
+    DrawGreenCharacter (800, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+    txSleep (500);
+
+    txSetFillColor (TX_WHITE);
+
+    txClear();
+
+    DrawBackground();
+
+    DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+    }
+
+
+void Punch()
+    {
+    txSleep (500);
+
+    YellowPunch();
+
+    txSetFillColor (TX_WHITE);
+
+    txClear();
+
+    DrawBackground2();
+
+    DrawGreenCharacter (800, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+    }
+
+
+void WierdTalk()
+    {
+    txSleep (500);
+
+    txSetFillColor (TX_WHITE);
+
+    txClear();
+
+    DrawBackground3();
+
+    txSleep (500);
+
+    DrawGreenCharacter (800, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+
+    txTextOut (750, 700, "I NEED THIS");
+
+    DrawJetPack (800, 650, 1, 1, 1);
+
+    txSleep (1000);
+
+    DrawPinkCharacter (400, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, -30, 1);
+
+    txTextOut (390, 700, "???");
+
+    txTextOut (580, 700, "?");
+
+    txSleep (2000);
+
+    DrawGreenCharacter (800, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+    txSleep (1000);
+
+    txSetFillColor (TX_WHITE);
+
+    txClear();
+
+    DrawBackground4();
+
+    txSleep (1000);
+
+    DrawGreenCharacter (1200, 500, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+    txSleep (1000);
+
+    DrawEvilMinion (900 , 800, 1, 1, 1);
+
+    DrawEvilMinion (1050, 800, 1, 1, 1);
+
+    DrawEvilMinion (1200 , 800, 1, 1, 1);
+
+    DrawEvilMinion (1350, 800, 1, 1, 1);
+
+    txSleep (250);
+
+    txSetFillColor (TX_WHITE);
+
+    txClear();
+
+    DrawBackground5();
+
+    DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+
+    txSleep (2000);
+    }
 
 
 void Explosion()
@@ -454,9 +700,6 @@ void Explosion()
 
 
 //-----------------------------------------------------------------------------
-
-
-
 
 
 void DrawBackground()
