@@ -201,6 +201,14 @@ void FirstScene()
 
         DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
         }
+
+        {
+        txSetFillColor (TX_BLACK);
+
+        txClear();
+
+        txSleep (1000);
+        }
     }
 
 
@@ -246,17 +254,80 @@ void DrawPark()
 
 void SecondScene()
     {
-    txSetFillColor (TX_BLACK);
+    int t = 0;
+
+    {
+    txSetFillColor (TX_GRAY);
 
     txClear();
 
-    txSleep (1000);
+    DrawFightClub();
+
+    DrawYellowCharacter (390, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+    DrawGreenCharacter (1000, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+
+    txSelectFont ("Comic Sans MS", 200, 40);
+
+    txTextOut (650, 550, "VS");
+
+    txSleep (2000);
 
     txSetFillColor (TX_GRAY);
 
     txClear();
 
     DrawFightClub();
+
+    DrawYellowCharacter (390, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+    DrawGreenCharacter (1000, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+
+    txSelectFont ("Comic Sans MS", 200, 40);
+
+    txTextOut (570, 550, "FIGHT");
+
+    txSleep (2000);
+    }
+
+    while (t < 100)
+        {
+        txSetFillColor (TX_GRAY);
+
+        txClear();
+
+        DrawFightClub();
+
+        DrawYellowCharacter (390 + 4 * t, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1, 1);
+
+        DrawGreenCharacter (1000, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+
+        t ++ ;
+
+        txSleep (5);
+        }
+
+        {
+        txSetFillColor (TX_GRAY);
+
+        txClear();
+
+        DrawFightClub();
+
+        DrawGreenCharacter (1000, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+
+        DrawYellowCharacter (790, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+        }
+
+     while (t < 100)
+        {
+        DrawYellowCharacter (790, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, ((t % 2) * 5), 1, 1, 1);
+
+        t ++;
+
+        txSleep (10);
+        }
+
     }
 
 
