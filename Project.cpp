@@ -75,6 +75,8 @@ void DrawFightClub();
 
 void DrawCage();
 
+void ThirdScene();
+
 
 //-----------------------------------------------------------------------------
 
@@ -96,6 +98,8 @@ int main()
     //FirstScene();
 
     SecondScene();
+
+    ThirdScene();
 
     return 0;
     }
@@ -317,21 +321,104 @@ void SecondScene()
         DrawGreenCharacter (1000, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
 
         DrawYellowCharacter (790, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+        txSleep (1000);
+
+        txSetFillColor (TX_GRAY);
+
+        txClear();
+
+        DrawFightClub();
+
+        DrawGreenCharacter (1000, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+
+        DrawYellowCharacter (790, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 20, 1, 1, 1, 1);
+
+        txSleep (1000);
+
+        txSetFillColor (TX_GRAY);
+
+        txClear();
+
+        DrawFightClub();
+
+        DrawGreenCharacter (1000, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+
+        DrawYellowCharacter (790, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+        txSleep (1000);
+
+        txSetFillColor (TX_GRAY);
+
+        txClear();
+
+        DrawFightClub();
+
+        DrawYellowCharacter (790, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+        DrawGreenCharacter (1000, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+        txSleep (1000);
+
+        txSetFillColor (TX_GRAY);
+
+        txClear();
+
+        DrawFightClub();
+
+        DrawYellowCharacter (790, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+        DrawGreenCharacter (1000, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+
+        txSleep (1000);
+
+        txSelectFont ("Comic Sans MS", 50);
+
+        txTextOut (900, 650, "I'll meet you again... Later...");
+
+        txSleep (3000);
+
+        txSetFillColor (TX_GRAY);
+
+        txClear();
+
+        DrawFightClub();
+
+        DrawYellowCharacter (790, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+        txSleep (2000);
         }
-
-     while (t < 100)
-        {
-        DrawYellowCharacter (790, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, ((t % 2) * 5), 1, 1, 1);
-
-        t ++;
-
-        txSleep (10);
-        }
-
     }
 
 
 //-----------------------------------------------------------------------------
+
+
+void ThirdScene()
+    {
+    txSetFillColor (TX_BLACK);
+
+    txClear();
+
+    txSleep (1000);
+
+    txSetFillColor (TX_GRAY);
+
+    txClear();
+
+    txSleep (1000);
+
+    DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+
+    DrawPinkCharacter (300, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
+
+    DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), 5, 1, 1, 1, 1);
+
+
+
+
+
+    }
 
 
 void DrawFightClub()
