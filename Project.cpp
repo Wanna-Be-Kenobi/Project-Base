@@ -77,6 +77,10 @@ void DrawCage();
 
 void ThirdScene();
 
+void DrawDarkPark();
+
+void DrawRoboArmy (int x, int y, int t);
+
 
 //-----------------------------------------------------------------------------
 
@@ -95,11 +99,11 @@ int main()
 
     Explosion();*/
 
-    //FirstScene();
+    FirstScene();
 
-    SecondScene();
+    //SecondScene();
 
-    ThirdScene();
+    //ThirdScene();
 
     return 0;
     }
@@ -141,17 +145,7 @@ void FirstScene()
 
         DrawPark();
 
-        DrawEvilMinion (1600 - 7 * t, 200, 1, 1, 1);
-
-        DrawEvilMinion (1800 - 7 * t, 200, 1, 1, 1);
-
-        DrawEvilMinion (2000 - 7 * t, 200, 1, 1, 1);
-
-        DrawEvilMinion (1700 - 7 * t, 400, 1, 1, 1);
-
-        DrawEvilMinion (1900 - 7 * t, 400, 1, 1, 1);
-
-        DrawEvilMinion (2100 - 7 * t, 400, 1, 1, 1);
+        DrawRoboArmy (1600 - 10 * t, 200, t);
 
         DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
 
@@ -161,6 +155,8 @@ void FirstScene()
 
         txSleep (5);
         }
+
+// The characters' talk
 
         {
         DrawYellowCharacter (590, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
@@ -204,9 +200,7 @@ void FirstScene()
         DrawGreenCharacter (800, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
 
         DrawPinkCharacter (400, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
-        }
 
-        {
         txSetFillColor (TX_BLACK);
 
         txClear();
@@ -214,6 +208,28 @@ void FirstScene()
         txSleep (1000);
         }
     }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawRoboArmy (int x, int y, int t)
+    {
+    int n = 0 ;
+
+    while (n <= 5)
+        {
+        DrawEvilMinion  (x        + 200 * n, y,       (t % 2) * 0.2 + 1, (t % 2) * 0.2 + 1, (t % 2) + 1);
+
+        DrawEvilMinion ((x + 100) + 200 * n, y + 200, (t % 2) * 0.2 + 1, (t % 2) * 0.2 + 1, (t % 2) + 1);   // 0  1   2  3   4  5     t
+                                                                                                            // 0  1   0  1   0  1     t % 2
+                                                                                                            // 0  0.2 0  0.2 0  0.2   t % 2 * 0.2
+                                                                                                            // 1  1.2 1  1.2 1  1.2   t % 2 * 0.2 + 1
+
+        n ++ ;
+        }
+    }
+
 
 
 //-----------------------------------------------------------------------------
@@ -402,23 +418,61 @@ void ThirdScene()
 
     txSleep (1000);
 
-    txSetFillColor (TX_GRAY);
-
-    txClear();
-
-    txSleep (1000);
+    DrawDarkPark();
 
     DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
 
     DrawPinkCharacter (300, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
 
-    DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), 5, 1, 1, 1, 1);
-
-
-
-
-
+    DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), 1, 1, 1, 1, 1);
     }
+
+
+//-----------------------------------------------------------------------------
+
+
+void DrawDarkPark()
+    {
+    txSetFillColor (RGB (25, 25, 112));
+
+    txClear();
+
+    txSetColor (TX_WHITE);
+
+    txSetFillColor (TX_WHITE);
+
+    txCircle (1250, 850, 100);
+
+    txSetColor (RGB (0, 100, 0));
+
+    txSetFillColor (RGB (0, 100, 0));
+
+    txRectangle (1, 850, 1500, 1000);
+
+    txSetColor (RGB (110, 139, 61));
+
+    txSetFillColor (RGB (110, 139, 61));
+
+    txEllipse (850, 350, 1100, 700);
+
+    txEllipse (50, 350, 300, 700);
+
+    txEllipse (450, 350, 700, 700);
+
+    txSetColor (RGB (139, 90, 43));
+
+    txSetFillColor (RGB (139, 90, 43));
+
+    txRectangle (930, 550, 1020, 850);
+
+    txRectangle (130, 550, 220, 850);
+
+    txRectangle (530, 550, 620, 850);
+    }
+
+
+//-----------------------------------------------------------------------------
+
 
 
 void DrawFightClub()
