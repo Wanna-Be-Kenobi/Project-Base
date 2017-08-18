@@ -57,9 +57,7 @@ void Dance();
 
 void Appearance();
 
-void LeftAttack (int x, int y, int t);
-
-void RightAttack (int x, int y, int t);
+void RoboAttack (int x, int y, int speedX, int speedY, int distX, int distY, int amount, int t);
 
 void UpAttack (int x, int y, int t);
 
@@ -96,9 +94,9 @@ void FirstScene()
 
         DrawPark();
 
-        DrawYellowCharacter (290 + 3 * t, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1, 1);
+        DrawYellowCharacter (290 + 3 * t, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, (t % 2), ((t + 1) % 2), 1);
 
-        DrawPinkCharacter (100 + 3 * t, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1);
+        DrawPinkCharacter (100 + 3 * t, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, ((t + 1) % 3 * 5), (t % 3) * 5);
 
         txSelectFont ("Comic Sans MS", 40);
 
@@ -281,9 +279,9 @@ void SecondScene()
 
         DrawFightClub();
 
-        DrawYellowCharacter (390 + 4 * t, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1, 1);
+        DrawYellowCharacter (390 + 4 * t, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, (t % 5), 1);
 
-        DrawGreenCharacter (1000, 800, 1, 1, 1, RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
+        DrawGreenCharacter (1000, 800, 1, 1, (t % 4), RGB (0, 128, 0), (TX_BLACK), -10, 1, 1, 1, 1, 28, 1);
 
         t ++ ;
 
@@ -374,7 +372,7 @@ void SecondScene()
 void ThirdScene()
     {
     int t = 0;
-        /*{
+        {
         txSetFillColor (TX_BLACK);
 
         txClear();
@@ -383,7 +381,7 @@ void ThirdScene()
 
         DrawDarkPark();
 
-        DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+        DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, (t % 2) * 0.5, (t % 2) * 0.5, 1);
 
         DrawPinkCharacter (300, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
 
@@ -425,7 +423,7 @@ void ThirdScene()
 
         DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
 
-        DrawPinkCharacter (300, 800, 1, 1, 1, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
+        DrawPinkCharacter (300, 800, 1, 1, (t % 3) * 10, RGB (255, 0, 255), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1);
 
         DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), 1, 1, 1, 1, 1);
 
@@ -450,24 +448,31 @@ void ThirdScene()
 
         DrawDarkPark();
 
-        DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
-
+        DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), (t % 2) * 2 + 9, 1, 1, 1, 1, 1, 1, 1); // 0   1  2   3  4   5  6  t
+                                                                                                                      // 0   1  0   1  0   1  0  t % 2
+                                                                                                                      // 0   9  0   9  0   9  0  t % 2 * 9
+                                                                                                                      // 9  10  9  10  9  10  9  (t % 2) + 9
+                                                                                                                      // 9  11  9  11  9  11  9  (t % 2) * 2 + 9
         DrawPinkCharacter (300, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
 
-        DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), 1, 1, 1, 1, 1);
+        DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), ((t + 1) % 3 * 2), (t % 3) * 2, (t % 2) * 0.5 + 2, (t % 4) * 0.6 + 3, ((t + 2) % 4) * 0.6 + 3);
 
         DrawGreenCharacter (1400, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
 
-        LeftAttack (-50, 100, t);
+        RoboAttack ( -50, 100,  2, 0,    0, 150, 3, t);
 
-        RightAttack (1550, 100, t);
+        RoboAttack (1550, 100, -2, 0,    0, 150, 3, t);
 
-        UpAttack (300, -50, t);
+        RoboAttack ( 300, -50,  0, 2,  180,   0, 6, t);
+
+        RoboAttack (   1,   1,  2, 2,  100, 100, 5, t);
+
+        RoboAttack (1500,   1, -2, 2, -100, 100, 5, t);
 
         t ++ ;
 
         txSleep (5);
-        }*/
+        }
 
     while (t < 250)
         {
@@ -477,11 +482,11 @@ void ThirdScene()
 
         DrawDarkPark();
 
-        DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
-
-        DrawPinkCharacter (300, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
+        DrawPinkCharacter (300, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, (t % 2) * 5, (t % 2) * 5, -(t % 2) * 5, -(t % 2) * 5, 1, 1);
 
         DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), 1, 1, 1, 1, 1);
+
+        DrawYellowCharacter (490 + 2 * t, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, (t % 4) * 10, 1, 1, 1, 1);
 
         DrawGreenCharacter (1400 - 5 * t, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1);
 
@@ -505,13 +510,13 @@ void PinkRobbery()
 
         DrawDarkPark();
 
-        DrawYellowCharacter (490, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
-
         DrawPinkCharacter (300 - 5 * t, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
 
         DrawGreenCharacter (150 - 5 * t, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1);
 
-        DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), 1, 1, 1, 1, 1);
+        DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), (t % 8), (t % 15), (t % 11), 1, 1);
+
+        DrawYellowCharacter (990, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
 
         t ++;
 
@@ -521,41 +526,13 @@ void PinkRobbery()
 
 //-----------------------------------------------------------------------------
 
-void UpAttack (int x, int y, int t)
+void RoboAttack (int x, int y, int speedX, int speedY, int distX, int distY, int amount, int t)
     {
-    int n = 0 ;
+    int n = 0;
 
-    while (n <= 5 )
+    while (n < amount)
         {
-        DrawEvilMinion (x + 180 * n, y + 2 * t, 1, 1, 1);
-
-        n ++ ;
-        }
-    }
-
-//-----------------------------------------------------------------------------
-
-void RightAttack (int x, int y, int t)
-    {
-    int n = 0 ;
-
-    while (n <= 2)
-        {
-        DrawEvilMinion (x - 2 * t, y + 150 * n, 1, 1, 1);
-
-        n ++ ;
-        }
-    }
-
-//-----------------------------------------------------------------------------
-
-void LeftAttack (int x, int y, int t)
-    {
-    int n = 0 ;
-
-    while (n <= 2)
-        {
-        DrawEvilMinion (x + 2 * t, y + 150 * n, 1, 1, 1);
+        DrawEvilMinion (x + speedX * t + distX * n, y + speedY * t + distY * n, 1, 1, 1);
 
         n ++ ;
         }
