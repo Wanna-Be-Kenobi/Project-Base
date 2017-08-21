@@ -69,13 +69,13 @@ int main()
     {
     txCreateWindow (1500, 1000);
 
-    FirstScene();
+    //FirstScene();
 
     //SecondScene();
 
-    //ThirdScene();
+    ThirdScene();
 
-    //PinkRobbery();
+    PinkRobbery();
 
     return 0;
     }
@@ -480,9 +480,9 @@ void ThirdScene()
                                                                                                                       // 9  11  9  11  9  11  9  (t % 2) * 2 + 9
         DrawPinkCharacter (300, 800, 1, 1, 0.5, RGB (255, 0, 255), (TX_BLACK), 10, 15, 15, -15, -15, 1, 1);
 
-        DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), ((t + 1) % 3 * 2), (t % 3) * 2, (t % 2) * 0.5 + 2, (t % 4) * 0.6 + 3, ((t + 2) % 4) * 0.6 + 3);
+        DrawBlueCharacter (800, 800, (t % 4) * 0.2 + 0.7, 1, 1, RGB (0, 0, 255), (TX_BLACK), ((t + 1) % 3 * 2), (t % 3) * 2, (t % 2) * 0.5 + 2, (t % 4) * 0.6 + 3, ((t + 2) % 4) * 0.6 + 3);
 
-        DrawGreenCharacter (1400, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
+        DrawGreenCharacter (1400, 800, (t % 3) * 0.3 + 0.7, ((t + 1) % 3) * 0.3 + 0.7, 1, RGB (255, 0, 0), (TX_BLACK), -10, 1, 1, 1, 1, 1, 1);
 
         RoboAttack ( -50, 100,  2, 0,    0, (t % 10) * 0.89 + 146, 3, t);        // 0   1      2      3 4 5 6 7 8 9    (t % 10)
                                                                                  // 0   0.89   1.78   ...         8
@@ -511,14 +511,14 @@ void ThirdScene()
 
         DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), 1, 1, 1, 1, 1);
 
-        DrawYellowCharacter (490 + 2 * t, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, (t % 4) * 10, 1, 1, 1, 1);
+        DrawYellowCharacter (490 + 2 * t, 800, (t % 5) * 0.7 + 0.1, (t % 3) * 0.2 + 0.8, 1, RGB (255, 255, 0), (TX_BLACK), 10, (t % 4) * 5, ((t + 2) % 4) * 5, (t % 4) * 10, 1, 1, 1, 1);
 
-        DrawGreenCharacter (1400 - 5 * t, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1);
+        DrawGreenCharacter (1400 - 5 * t, 800, 1, 1, (t % 5) * 0.1 + 0.8, RGB (255, 0, 0), (TX_BLACK), -10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1);
 
         t ++;
 
-        txSleep (5);
-        }
+        txSleep (5);                                                                                                       // 0   1   2   3   (t % 4)
+        }                                                                                                                  // 0.7 0.9 1.1 1.3 (t % 4) * 0.2 + 0.7
     }
 
 //-----------------------------------------------------------------------------
@@ -539,9 +539,9 @@ void PinkRobbery()
 
         DrawGreenCharacter (150 - 5 * t, 800, 1, 1, 1, RGB (255, 0, 0), (TX_BLACK), -10, (t % 4) * 5, ((t + 2) % 4) * 5, 1, 1, 1, 1);
 
-        DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), (t % 8), (t % 15), (t % 11), 1, 1);
+        DrawBlueCharacter (800, 800, 1, 1, 1, RGB (0, 0, 255), (TX_BLACK), (t % 8), (t % 15), (t % 11), 1, (t % 4) * 0.25 + 1);
 
-        DrawYellowCharacter (990, 800, 1, 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
+        DrawYellowCharacter (990, 800, 1, (t % 3) * 0.2 + 1, 1, RGB (255, 255, 0), (TX_BLACK), 10, 1, 1, 1, 1, 1, 1, 1);
 
         t ++;
 
