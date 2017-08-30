@@ -4,6 +4,10 @@
 
 void MoveBall();
 
+void DrawBall (int x, int y, int r, double red, double green, double blue);
+
+void ColorControl (double red, double green, double blue);
+
 //-----------------------------------------------------------------------------
 
 int main()
@@ -19,57 +23,106 @@ int main()
 
 void MoveBall()
     {
-    int x = 100, y = 100;
+    int x = 100, y = 100, r = 25;
 
-    int vx = 5, vy = 5;
+    int vx = 3, vy = 2;
 
     int dt = 1;
 
-    while (true)
+    double red = 155, green = 155, blue = 155;
+
+//-----------------------------------------------------------------------------
+
+    while (! GetAsyncKeyState (VK_ESCAPE))
         {
         txSetFillColor (TX_GRAY);
 
-        txClear();
+        if (! GetAsyncKeyState (VK_CONTROL)) txClear();
 
-        txSetColor (TX_BLUE);
+        ColorControl (red, green, blue);
 
-        txSetFillColor (TX_BLUE);
+        DrawBall (x, y, r, red, green, blue);
 
-        txCircle (x, y, 25);
+        if (GetAsyncKeyState (VK_LEFT))  vx -= 1;
+
+        if (GetAsyncKeyState (VK_RIGHT)) vx += 1;
+
+        if (GetAsyncKeyState (VK_DOWN))  vy -= 1;
+
+        if (GetAsyncKeyState (VK_UP))    vy += 1;
 
         x = x + vx * dt;
 
         y = y + vy * dt;
 
-        if (x > 1895)
+        if (x > txGetExtentX() - r)
             {
             vx = -vx;
 
-            x = 1895;
+            x = txGetExtentX() - r;
             }
 
-        if (y > 1055)
+        if (y > txGetExtentY() - r)
             {
             vy = -vy;
 
-            y = 1055;
+            y = txGetExtentY() - r;
             }
 
-        if (x < 25)
+        if (x < 0 + r)
             {
             vx = -vx;
 
-            x = 25;
+            x = 0 + r;
             }
 
-        if (y < 25)
+        if (y < 0 + r)
             {
             vy = - vy;
 
-            y = 25;
+            y = 0 + r;
             }
 
-        txSleep (10);
+        txSleep();
         }
     }
+
+//-----------------------------------------------------------------------------
+
+void DrawBall (int x, int y, int r, double red, double green, double blue)
+    {
+    txSetColor     (RGB (red, green, blue));
+
+    txSetFillColor (RGB (red, green, blue));
+
+    txCircle (x, y, r);
+    }
+
+//-----------------------------------------------------------------------------
+
+void ColorControl (double red, double green, double blue)
+    {
+    if (GetAsyncKeyState ('R'))
+            {
+            if (GetAsyncKeyState (VK_SHIFT)) red += 1;
+
+            else                             red -= 1;
+            }
+
+        if (GetAsyncKeyState ('G'))
+            {
+            if (GetAsyncKeyState (VK_SHIFT)) green += 1;
+
+            else                             green -= 1;
+            }
+
+        if (GetAsyncKeyState ('B'))
+            {
+            blue += (GetAsyncKeyState (VK_SHIFT)) ? +1 : -1;
+            }
+    }
+
+//-----------------------------------------------------------------------------
+
+
 
