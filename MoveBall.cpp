@@ -8,6 +8,10 @@ void DrawBall (int x, int y, int r, double red, double green, double blue);
 
 void ColorControl (double red, double green, double blue);
 
+void BallControl (int vx, int vy);
+
+void BallSpeed (int x, int y, int r, int vx, int vy, int dt);
+
 //-----------------------------------------------------------------------------
 
 int main()
@@ -31,8 +35,6 @@ void MoveBall()
 
     double red = 155, green = 155, blue = 155;
 
-//-----------------------------------------------------------------------------
-
     while (! GetAsyncKeyState (VK_ESCAPE))
         {
         txSetFillColor (TX_GRAY);
@@ -43,47 +45,9 @@ void MoveBall()
 
         DrawBall (x, y, r, red, green, blue);
 
-        if (GetAsyncKeyState (VK_LEFT))  vx -= 1;
+        BallControl (vx, vy);
 
-        if (GetAsyncKeyState (VK_RIGHT)) vx += 1;
-
-        if (GetAsyncKeyState (VK_DOWN))  vy -= 1;
-
-        if (GetAsyncKeyState (VK_UP))    vy += 1;
-
-        x = x + vx * dt;
-
-        y = y + vy * dt;
-
-        if (x > txGetExtentX() - r)
-            {
-            vx = -vx;
-
-            x = txGetExtentX() - r;
-            }
-
-        if (y > txGetExtentY() - r)
-            {
-            vy = -vy;
-
-            y = txGetExtentY() - r;
-            }
-
-        if (x < 0 + r)
-            {
-            vx = -vx;
-
-            x = 0 + r;
-            }
-
-        if (y < 0 + r)
-            {
-            vy = - vy;
-
-            y = 0 + r;
-            }
-
-        txSleep();
+        BallSpeed (x, y, r, vx, vy, dt);
         }
     }
 
@@ -124,5 +88,52 @@ void ColorControl (double red, double green, double blue)
 
 //-----------------------------------------------------------------------------
 
+void BallControl (int vx, int vy)
+    {
+    if (GetAsyncKeyState (VK_LEFT))  vx -= 1;
 
+    if (GetAsyncKeyState (VK_RIGHT)) vx += 1;
 
+    if (GetAsyncKeyState (VK_DOWN))  vy -= 1;
+
+    if (GetAsyncKeyState (VK_UP))    vy += 1;
+    }
+
+//-----------------------------------------------------------------------------
+
+void BallSpeed (int x, int y, int r, int vx, int vy, int dt)
+    {
+    x = x + vx * dt;
+
+    y = y + vy * dt;
+
+    if (x > txGetExtentX() - r)
+        {
+        vx = -vx;
+
+        x = txGetExtentX() - r;
+        }
+
+    if (y > txGetExtentY() - r)
+        {
+        vy = -vy;
+
+        y = txGetExtentY() - r;
+        }
+
+    if (x < 0 + r)
+        {
+        vx = -vx;
+
+        x = 0 + r;
+        }
+
+    if (y < 0 + r)
+        {
+        vy = - vy;
+
+        y = 0 + r;
+        }
+
+        txSleep();
+    }
