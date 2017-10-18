@@ -8,21 +8,37 @@ void myRectangle (int x1, int y1, int x2, int y2, double rotate, double rotateX,
 
 void myLine (int x1, int y1, int x2, int y2, double rotate, double rotateX, double rotateY);
 
+void myCircle (int x, int y, int r, double rotate, double rotateX, double rotateY);
+
+void myArc (int x, int y, int r, double startAngle, double arcAngle, double rotate, double rotateX, double rotateY);
+
 //-----------------------------------------------------------------------------
 
 /*int main()
     {
-    txCreateWindow (800, 600)meow
+    txCreateWindow (1920, 1800)meow
 
     double rotate = 0;
 
-    while (rotate <= 20)
+    while (rotate <= 500)
         {
         printf ("rotate = %lf\n", rotate);
 
-        myRectangle (100, 100, 200, 250, rotate, 150, 175);
+        txSetFillColor (TX_BLACK);
 
-        rotate += 0.1;
+        txClear();
+
+        txSetColor (TX_YELLOW, 3);
+
+        myArc (500, 600, 50, 10, 104, rotate, 700, 800);
+
+        myArc (900, 1000, 70, 5,  204, rotate, 700, 800);
+
+        myArc (500, 600, 40, 18, 93,  rotate, 700, 800);
+
+        myArc (700, 800, 40, 18, 93,  rotate, 700, 800);
+
+        rotate += 5;
 
         txSleep (50);
         }
@@ -145,4 +161,42 @@ void myLine (int x1, int y1, int x2, int y2, double rotate, double rotateX, doub
     y2 = y2r + rotateY;
 
     txLine (x1, y1, x2, y2);
+    }
+
+//-----------------------------------------------------------------------------
+
+void myCircle (int x, int y, int r, double rotate, double rotateX, double rotateY)
+    {
+    x = x - rotateX;
+
+    y = y - rotateY;
+
+    double xr = x * cos (rotate) - y * sin (rotate);
+
+    double yr = x * sin (rotate) + y * cos (rotate);
+
+    x = xr + rotateX;
+
+    y = yr + rotateY;
+
+    txCircle (x, y, r);
+    }
+
+//-----------------------------------------------------------------------------
+
+void myArc (int x, int y, int r, double startAngle, double arcAngle, double rotate, double rotateX, double rotateY)
+    {
+    x = x - rotateX;
+
+    y = y - rotateY;
+
+    double xr = x * cos (-rotate / 57.3) - y * sin (-rotate / 57.3);
+
+    double yr = x * sin (-rotate / 57.3) + y * cos (-rotate / 57.3);
+
+    x = xr + rotateX;
+
+    y = yr + rotateY;
+
+    txArc (x - r, y - r, x + r, y + r, startAngle + rotate, arcAngle);
     }

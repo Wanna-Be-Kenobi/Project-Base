@@ -25,6 +25,8 @@ void HeroControl (struct Hero* rebel);
 
 void myRectangle (int x1, int y1, int x2, int y2);
 
+void DrawDeathStar();
+
 //-----------------------------------------------------------------------------
 
 int main()
@@ -44,7 +46,7 @@ int main()
 
 void MoveHero()
     {
-    Hero xWing = { 141, 388, 4, 0, 0, 0.3, 'D', 'A', 'W', 'S', 'E', 'Q' };
+    /*Hero xWing = { 141, 388, 4, 0, 0, 0.3, 'D', 'A', 'W', 'S', 'E', 'Q' };
 
     int dt = 1;
 
@@ -60,7 +62,9 @@ void MoveHero()
 
         HeroControl  (&xWing);
 
-        txSleep(10);
+        txSleep(10);*/
+        {
+        DrawDeathStar();
         }
     }
 
@@ -235,6 +239,71 @@ void DrawXwing (const Hero* rebel)
     myLine      (rebel->x-41,  rebel->y-65, rebel->x-33,  rebel->y-65, rebel->rotate, rebel->x, rebel->y);
 
     myLine      (rebel->x-41,  rebel->y+55, rebel->x-33,  rebel->y+55, rebel->rotate, rebel->x, rebel->y);
+
+    printf ("угол равен %lg \n", rebel->rotate);
+    }
+
+//-----------------------------------------------------------------------------
+
+void DrawDeathStar()
+    {
+    txSetColor (TX_BLACK, 3);
+
+    myArc (999, 503, 120, 82, 215, 0, 0, 0);
+
+    txCircle (957, 455, 31);
+
+    txCircle (954, 455, 7);
+
+    txLine (879, 503, 1119, 503);
+
+    txLine (879, 506, 1119, 506);
+
+    txLine (1053, 609, 1053, 599);
+
+    txLine (1026, 599, 1053, 599);
+
+    txLine (1035, 599, 1035, 581);
+
+    txLine (1002, 581, 1056, 581);
+
+    txLine (1002, 581, 1002, 560);
+
+    txLine (936, 560, 1074, 560);
+
+    txLine (1023, 560, 1023, 539);
+
+    txLine (1023, 539, 1085, 539);
+
+    txLine (1085, 539, 1085, 524);
+
+    txLine (1085, 524, 1119, 524);
+
+    txLine (1119, 524, 1119, 485);
+
+    txLine (1119, 485, 1089, 485);
+
+    txLine (1089, 485, 1089, 465);
+
+    txLine (1050, 465, 1095, 465);
+
+    txLine (1056, 465, 1056, 443);
+
+    txLine (1065, 443, 1020, 443);
+
+    txLine (1029, 443, 1029, 422);
+
+    txLine (1077, 422, 1011, 422);
+
+    txLine (1041, 422, 1041, 404);
+
+    txLine (1023, 422, 1050, 422);
+
+    txLine (1023, 404, 1050, 404);
+
+    txLine (1023, 404, 1023, 386);
+
+    txLine (1023, 385, 1015, 385);
     }
 
 //-----------------------------------------------------------------------------
