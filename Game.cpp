@@ -10,6 +10,8 @@ struct Hero
 
     double rotate;
 
+    COLORREF color;
+
     int keyRight, keyLeft, keyUp, keyDown, keyClockwise, keyCounterClockwise;
     };
 
@@ -25,7 +27,7 @@ void HeroControl (struct Hero* rebel);
 
 void myRectangle (int x1, int y1, int x2, int y2);
 
-void DrawDeathStar();
+void DrawDeathStar (const Hero* star);
 
 //-----------------------------------------------------------------------------
 
@@ -46,7 +48,11 @@ int main()
 
 void MoveHero()
     {
-    /*Hero xWing = { 141, 388, 4, 0, 0, 0.3, 'D', 'A', 'W', 'S', 'E', 'Q' };
+    Hero xWing     = { 141,  388, 4, 0, 0, 0, TX_YELLOW, 'D', 'A', 'W', 'S', 'E', 'Q' };
+
+    Hero deathStar = { 1000, 503, 0, 0, 0, 0, TX_CYAN,   'L', 'J', 'I', 'K', 'O', 'U' };
+
+    HDC fon = txLoadImage ("fon.bmp");
 
     int dt = 1;
 
@@ -56,25 +62,33 @@ void MoveHero()
 
         if (! GetAsyncKeyState (VK_CONTROL)) txClear();
 
-        DrawXwing    (&xWing);
+        txBitBlt (0, 0, fon);
 
-        VehicleSpeed (&xWing, dt);
+        DrawXwing     (&xWing);
 
-        HeroControl  (&xWing);
+        VehicleSpeed  (&xWing, dt);
 
-        txSleep(10);*/
-        {
-        DrawDeathStar();
+        HeroControl   (&xWing);
+
+        DrawDeathStar (&deathStar);
+
+        VehicleSpeed  (&deathStar, dt);
+
+        HeroControl   (&deathStar);
+
+        txSleep(10);
         }
+
+    txDeleteDC (fon);
     }
 
 //-----------------------------------------------------------------------------
 
 void DrawXwing (const Hero* rebel)
     {
-    txSetColor (TX_BLACK, 3);
+    txSetColor (rebel->color, 3);
 
-    txSetFillColor (TX_WHITE);
+    txSetFillColor (TX_NULL);
 
     myRectangle (rebel->x-50,  rebel->y-82, rebel->x-44,  rebel->y-72, rebel->rotate, rebel->x, rebel->y);
 
@@ -88,7 +102,7 @@ void DrawXwing (const Hero* rebel)
 
     myRectangle (rebel->x-25,  rebel->y-66, rebel->x-11,  rebel->y-57, rebel->rotate, rebel->x, rebel->y);
 
-    txSetFillColor (TX_BLACK);
+    txSetFillColor (rebel->color);
 
     myRectangle (rebel->x-8,   rebel->y-79, rebel->x+16,  rebel->y-76, rebel->rotate, rebel->x, rebel->y);
 
@@ -104,7 +118,7 @@ void DrawXwing (const Hero* rebel)
 
     myLine      (rebel->x-67,  rebel->y-39, rebel->x-67,  rebel->y-33, rebel->rotate, rebel->x, rebel->y);
 
-    txSetFillColor (TX_WHITE);
+    txSetFillColor (rebel->color);
 
     myRectangle (rebel->x-53,  rebel->y-40, rebel->x-37,  rebel->y-31, rebel->rotate, rebel->x, rebel->y);
 
@@ -192,7 +206,7 @@ void DrawXwing (const Hero* rebel)
 
     myRectangle (rebel->x-35,  rebel->y+81, rebel->x-11,  rebel->y+87, rebel->rotate, rebel->x, rebel->y);
 
-    txSetFillColor (TX_BLACK);
+    txSetFillColor (rebel->color);
 
     myRectangle (rebel->x-8,   rebel->y+77, rebel->x+16,  rebel->y+80, rebel->rotate, rebel->x, rebel->y);
 
@@ -228,13 +242,13 @@ void DrawXwing (const Hero* rebel)
 
     myLine      (rebel->x+68,  rebel->y-7,  rebel->x+69,  rebel->y+8,  rebel->rotate, rebel->x, rebel->y);
 
-    txSetColor (TX_BLACK, 2);
+    txSetColor (rebel->color, 2);
 
     myLine      (rebel->x-41,  rebel->y-54, rebel->x-36,  rebel->y-54, rebel->rotate, rebel->x, rebel->y);
 
     myLine      (rebel->x-41,  rebel->y+65, rebel->x-36,  rebel->y+65, rebel->rotate, rebel->x, rebel->y);
 
-    txSetColor (TX_BLACK, 1);
+    txSetColor (rebel->color, 1);
 
     myLine      (rebel->x-41,  rebel->y-65, rebel->x-33,  rebel->y-65, rebel->rotate, rebel->x, rebel->y);
 
@@ -245,65 +259,67 @@ void DrawXwing (const Hero* rebel)
 
 //-----------------------------------------------------------------------------
 
-void DrawDeathStar()
+void DrawDeathStar (const Hero* star)
     {
-    txSetColor (TX_BLACK, 3);
+    txSetColor (star->color, 3);
 
-    myArc (999, 503, 120, 82, 215, 0, 0, 0);
+    txSetFillColor (TX_NULL);
 
-    txCircle (957, 455, 31);
+    myCircle (star->x-43,  star->y-42, 31,  star->rotate, star->x, star->y);
 
-    txCircle (954, 455, 7);
+    myCircle (star->x-43,  star->y-42, 7,   star->rotate, star->x, star->y);
 
-    txLine (879, 503, 1119, 503);
+    myArc    (star->x,     star->y,    120, 82, 215,              star->rotate, star->x, star->y);
 
-    txLine (879, 506, 1119, 506);
+    myLine   (star->x-121, star->y,     star->x+119, star->y,     star->rotate, star->x, star->y);
 
-    txLine (1053, 609, 1053, 599);
+    myLine   (star->x-121, star->y+3,   star->x+119, star->y+3,   star->rotate, star->x, star->y);
 
-    txLine (1026, 599, 1053, 599);
+    myLine   (star->x+53,  star->y+106, star->x+53,  star->y+96,  star->rotate, star->x, star->y);
 
-    txLine (1035, 599, 1035, 581);
+    myLine   (star->x+26,  star->y+96,  star->x+53,  star->y+96,  star->rotate, star->x, star->y);
 
-    txLine (1002, 581, 1056, 581);
+    myLine   (star->x+35,  star->y+96,  star->x+35,  star->y+78,  star->rotate, star->x, star->y);
 
-    txLine (1002, 581, 1002, 560);
+    myLine   (star->x+2,   star->y+78,  star->x+56,  star->y+78,  star->rotate, star->x, star->y);
 
-    txLine (936, 560, 1074, 560);
+    myLine   (star->x+2,   star->y+78,  star->x+2,   star->y+57,  star->rotate, star->x, star->y);
 
-    txLine (1023, 560, 1023, 539);
+    myLine   (star->x-64,  star->y+57,  star->x+74,  star->y+57,  star->rotate, star->x, star->y);
 
-    txLine (1023, 539, 1085, 539);
+    myLine   (star->x+23,  star->y+57,  star->x+23,  star->y+36,  star->rotate, star->x, star->y);
 
-    txLine (1085, 539, 1085, 524);
+    myLine   (star->x+23,  star->y+36,  star->x+85,  star->y+36,  star->rotate, star->x, star->y);
 
-    txLine (1085, 524, 1119, 524);
+    myLine   (star->x+85,  star->y+36,  star->x+85,  star->y+21,  star->rotate, star->x, star->y);
 
-    txLine (1119, 524, 1119, 485);
+    myLine   (star->x+85,  star->y+21,  star->x+119, star->y+21,  star->rotate, star->x, star->y);
 
-    txLine (1119, 485, 1089, 485);
+    myLine   (star->x+119, star->y+21,  star->x+119, star->y-18,  star->rotate, star->x, star->y);
 
-    txLine (1089, 485, 1089, 465);
+    myLine   (star->x+119, star->y-18,  star->x+89,  star->y-18,  star->rotate, star->x, star->y);
 
-    txLine (1050, 465, 1095, 465);
+    myLine   (star->x+89,  star->y-18,  star->x+89,  star->y-38,  star->rotate, star->x, star->y);
 
-    txLine (1056, 465, 1056, 443);
+    myLine   (star->x+50,  star->y-38,  star->x+95,  star->y-38,  star->rotate, star->x, star->y);
 
-    txLine (1065, 443, 1020, 443);
+    myLine   (star->x+56,  star->y-38,  star->x+56,  star->y-60,  star->rotate, star->x, star->y);
 
-    txLine (1029, 443, 1029, 422);
+    myLine   (star->x+65,  star->y-60,  star->x+20,  star->y-60,  star->rotate, star->x, star->y);
 
-    txLine (1077, 422, 1011, 422);
+    myLine   (star->x+29,  star->y-60,  star->x+29,  star->y-81,  star->rotate, star->x, star->y);
 
-    txLine (1041, 422, 1041, 404);
+    myLine   (star->x+77,  star->y-81,  star->x+11,  star->y-81,  star->rotate, star->x, star->y);
 
-    txLine (1023, 422, 1050, 422);
+    myLine   (star->x+41,  star->y-81,  star->x+41,  star->y-99,  star->rotate, star->x, star->y);
 
-    txLine (1023, 404, 1050, 404);
+    myLine   (star->x+23,  star->y-81,  star->x+50,  star->y-81,  star->rotate, star->x, star->y);
 
-    txLine (1023, 404, 1023, 386);
+    myLine   (star->x+23,  star->y-99,  star->x+50,  star->y-99,  star->rotate, star->x, star->y);
 
-    txLine (1023, 385, 1015, 385);
+    myLine   (star->x+23,  star->y-99,  star->x+23,  star->y-117, star->rotate, star->x, star->y);
+
+    myLine   (star->x+23,  star->y-118, star->x+15,  star->y-118, star->rotate, star->x, star->y);
     }
 
 //-----------------------------------------------------------------------------
@@ -355,7 +371,7 @@ void HeroControl (struct Hero* rebel)
 
     if (GetAsyncKeyState (rebel->keyDown))  rebel->vy += 1;
 
-    if (GetAsyncKeyState (rebel->keyClockwise))        rebel->rotate += 0.05;
+    if (GetAsyncKeyState (rebel->keyClockwise))        rebel->rotate += 3;
 
-    if (GetAsyncKeyState (rebel->keyCounterClockwise)) rebel->rotate -= 0.05;
+    if (GetAsyncKeyState (rebel->keyCounterClockwise)) rebel->rotate -= 3;
     }
