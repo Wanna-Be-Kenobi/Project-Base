@@ -52,17 +52,21 @@ void MoveHero()
 
     Hero deathStar = { 1000, 503, 0, 0, 0, 0, TX_CYAN,   'L', 'J', 'I', 'K', 'O', 'U' };
 
-    HDC fon = txLoadImage ("fon.bmp");
+    HDC fon = txLoadImage ("Background.bmp");
 
     int dt = 1;
 
+    int t  = 0;
+
     while (! GetAsyncKeyState (VK_ESCAPE))
         {
-        txSetFillColor (TX_WHITE);
+        txSetFillColor (TX_BLACK);
 
-        if (! GetAsyncKeyState (VK_CONTROL)) txClear();
+        txClear();
 
-        txBitBlt (0, 0, fon);
+        txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 0,    0       );
+
+        txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 1920, 0, (sin (t / 25.0) + 1) / 2);
 
         DrawXwing     (&xWing);
 
@@ -76,7 +80,9 @@ void MoveHero()
 
         HeroControl   (&deathStar);
 
-        txSleep(10);
+        txSleep (10);
+
+        t++;
         }
 
     txDeleteDC (fon);

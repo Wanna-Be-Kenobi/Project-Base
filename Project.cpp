@@ -63,21 +63,95 @@ void UpAttack (int x, int y, int t);
 
 void PinkRobbery();
 
+void StartTitles();
+
+void WriteTitle (int scale, const char titlesText[], COLORREF color, double ySpeed, int y);
+
+void EndTitles();
+
 //-----------------------------------------------------------------------------
 
 int main()
     {
     txCreateWindow (1500, 1000);
 
-    //FirstScene();
+    StartTitles();
 
-    //SecondScene();
+    FirstScene();
+
+    SecondScene();
 
     ThirdScene();
 
     PinkRobbery();
 
+    EndTitles();
+
     return 0;
+    }
+
+//-----------------------------------------------------------------------------
+
+void StartTitles()
+    {
+    WriteTitle (150, "Multfilm", TX_WHITE, 0, 0);
+
+    WriteTitle (100, "Rezhiser - postanovshik: CactusSad", TX_WHITE, 0, 0);
+
+    WriteTitle (100, "Director of THIS is as well CactusSad", TX_GREEN, 0, 0);
+
+    WriteTitle (100, "Thanks to help of \"The Discovery Bank\"\n"
+                      "There is always a place for a discovery in your life", RGB (218, 165, 32), 0, 0);
+    }
+
+//-----------------------------------------------------------------------------
+
+void EndTitles()
+    {
+    WriteTitle (100, "The actors:\n"
+                    "Dr. OrangePants as Yellow one\n"
+                    "Ms. Cheesecake as Pink Lady\n"
+                    "Sr. Rodrogezzz as Blue Man In Black\n"
+                    "The guy from the backyard as GreenEvil\n"
+                    "Smith Brothers as Evil Robots", TX_YELLOW, 5, 500);
+
+    WriteTitle (100, "The actors:\n"
+                    "Dr. OrangePants as Yellow one\n"
+                    "Ms. Cheesecake as Pink Lady\n"
+                    "Sr. Rodrogezzz as Blue Man In Black\n"
+                    "The guy from the backyard as GreenEvil\n"
+                    "Smith Brothers as Evil Robots", TX_YELLOW, 0, 0);
+
+    WriteTitle (70, "During the surveys none of the drawn\n"
+                    "characters was affected", TX_ORANGE, 5, 500);
+
+    WriteTitle (70, "During the surveys none of the drawn\n"
+                    "characters was affected", TX_ORANGE, 0, 0);
+
+    }
+
+//-----------------------------------------------------------------------------
+
+void WriteTitle (int scale, const char titlesText[], COLORREF color, double ySpeed, int y)
+    {
+    txSetFillColor (TX_BLACK);
+
+    txClear();
+
+    txSelectFont ("Times", scale);
+
+    int t = 0;
+
+    while (t < 100)
+        {
+        txSetColor (RGB (t * txExtractColor (color, TX_RED) * 0.01, t * txExtractColor (color, TX_GREEN) * 0.01, t * txExtractColor (color, TX_BLUE) * 0.01));
+
+        txDrawText (0, y - t * ySpeed, txGetExtentX(), txGetExtentY(), titlesText);
+
+        t ++;
+
+        txSleep (30);
+        }
     }
 
 //-----------------------------------------------------------------------------

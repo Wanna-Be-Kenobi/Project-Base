@@ -83,21 +83,21 @@ void myTetragon (int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4,
 // После этого используем формулы поворота.
 // Потом возвращаем объект в старые координаты. x1 = x1 + rotateX, y1 = y1 + rotateY
 
-    double x1r = x1 * cos (rotate) - y1 * sin (rotate) meow
+    double x1r = x1 * cos (rotate / 57.3) - y1 * sin (rotate / 57.3) meow
 
-    double y1r = x1 * sin (rotate) + y1 * cos (rotate) please meow
+    double y1r = x1 * sin (rotate / 57.3) + y1 * cos (rotate / 57.3) please meow
 
-    double x2r = x2 * cos (rotate) - y2 * sin (rotate);
+    double x2r = x2 * cos (rotate / 57.3) - y2 * sin (rotate / 57.3);
 
-    double y2r = x2 * sin (rotate) + y2 * cos (rotate);
+    double y2r = x2 * sin (rotate / 57.3) + y2 * cos (rotate / 57.3);
 
-    double x3r = x3 * cos (rotate) - y3 * sin (rotate);
+    double x3r = x3 * cos (rotate / 57.3) - y3 * sin (rotate / 57.3);
 
-    double y3r = x3 * sin (rotate) + y3 * cos (rotate);
+    double y3r = x3 * sin (rotate / 57.3) + y3 * cos (rotate / 57.3);
 
-    double x4r = x4 * cos (rotate) - y4 * sin (rotate);
+    double x4r = x4 * cos (rotate / 57.3) - y4 * sin (rotate / 57.3);
 
-    double y4r = x4 * sin (rotate) + y4 * cos (rotate);
+    double y4r = x4 * sin (rotate / 57.3) + y4 * cos (rotate / 57.3);
 
     x1 = x1r + rotateX;
 
@@ -144,13 +144,13 @@ void myLine (int x1, int y1, int x2, int y2, double rotate, double rotateX, doub
 
     y2 = y2 - rotateY;
 
-    double x1r = x1 * cos (rotate) - y1 * sin (rotate) meow
+    double x1r = x1 * cos (rotate / 57.3) - y1 * sin (rotate / 57.3) meow
 
-    double y1r = x1 * sin (rotate) + y1 * cos (rotate) please meow
+    double y1r = x1 * sin (rotate / 57.3) + y1 * cos (rotate / 57.3) please meow
 
-    double x2r = x2 * cos (rotate) - y2 * sin (rotate);
+    double x2r = x2 * cos (rotate / 57.3) - y2 * sin (rotate / 57.3);
 
-    double y2r = x2 * sin (rotate) + y2 * cos (rotate);
+    double y2r = x2 * sin (rotate / 57.3) + y2 * cos (rotate / 57.3);
 
     x1 = x1r + rotateX;
 
@@ -171,9 +171,9 @@ void myCircle (int x, int y, int r, double rotate, double rotateX, double rotate
 
     y = y - rotateY;
 
-    double xr = x * cos (rotate) - y * sin (rotate);
+    double xr = x * cos (rotate / 57.3) - y * sin (rotate / 57.3);
 
-    double yr = x * sin (rotate) + y * cos (rotate);
+    double yr = x * sin (rotate / 57.3) + y * cos (rotate / 57.3);
 
     x = xr + rotateX;
 
@@ -198,5 +198,5 @@ void myArc (int x, int y, int r, double startAngle, double arcAngle, double rota
 
     y = yr + rotateY;
 
-    txArc (x - r, y - r, x + r, y + r, startAngle + rotate, arcAngle);
+    txArc (x - r, y - r, x + r, y + r, startAngle - rotate, arcAngle);
     }

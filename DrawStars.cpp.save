@@ -1,0 +1,31 @@
+
+#include "TXLib.h"
+
+void DrawStars();
+
+int main()
+    {
+    txCreateWindow (1920, 1800);
+
+    int t = 0;
+    
+    
+
+    while (t < 100)
+        {
+
+        
+        txCircle (rand() % 1920, rand() % 1800, rand() % 10);
+
+
+
+
+        t++;
+        }
+
+
+
+
+
+    return 0;
+    }

@@ -1,0 +1,124 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\DrawStars.exe, файл: C:\Users\Николай\Desktop\TX\TXLib.h, строка: 11086, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1D04 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041F91D in C:\Users\Николай\Documents\GitHub\Project-Base\DrawStars.exe: txBitBlt() at C:/Users/Николай/Desktop/TX/TXLib.h (11086)
+# 1 0x0041FDFC in C:\Users\Николай\Documents\GitHub\Project-Base\DrawStars.exe: txBitBlt() at C:/Users/Николай/Desktop/TX/TXLib.h (11102)
+
+# 2 0x00426DF0 in C:\Users\Николай\Documents\GitHub\Project-Base\DrawStars.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/DrawStars.cpp (14):
+
+     12:     HDC fon = txLoadImage ("new fon.bmp");
+     13: 
+=>   14:     txBitBlt (0, 0, fon);
+     15: 
+     16:     while (t < 100)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double) at C:\Users\Николай\Desktop\TX\TXLib.h (11086):
+
+  11084:     {
+  11085: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>11086: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  11087: 
+  11088: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in bool {anonymous}::TX::txBitBlt(double, double, HDC, double, double) at C:\Users\Николай\Desktop\TX\TXLib.h (11102):
+
+  11100: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  11101: 
+=>11102: $   return txBitBlt (txDC(), xDest, yDest, 0, 0, sourceImage, xSource, ySource);
+  11103:     }
+  11104: 
+
+# 2 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\DrawStars.cpp (14):
+
+     12:     HDC fon = txLoadImage ("new fon.bmp");
+     13: 
+=>   14:     txBitBlt (0, 0, fon);
+     15: 
+     16:     while (t < 100)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\TX\TXLib.h
+Compiled:	Nov  4 2017 10:48:43, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 04 2017 10:48:52
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\DrawStars.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\DrawStars.exe, файл: C:\Users\Николай\Desktop\TX\TXLib.h, строка: 11289, функция: bool {anonymous}::TX::txSaveImage(const char*, HDC),
+
+Сообщение: Обнаружен нулевой или ложный результат.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1FC8 (Main). 
+From: C:\Users\Николай\Desktop\TX\TXLib.h (11288) bool {anonymous}::TX::txSaveImage(const char*, HDC).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004223A4 in C:\Users\Николай\Documents\GitHub\Project-Base\DrawStars.exe: txSaveImage() at C:/Users/Николай/Desktop/TX/TXLib.h (11289)
+
+# 1 0x00426F1E in C:\Users\Николай\Documents\GitHub\Project-Base\DrawStars.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/DrawStars.cpp (25):
+
+     23:     txDeleteDC (fon);
+     24: 
+=>   25:     txSaveImage ("Background.bmp");
+     26: 
+     27:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txSaveImage(const char*, HDC) at C:\Users\Николай\Desktop\TX\TXLib.h (11288):
+
+  11286: $   ok &= (buf != NULL);
+  11287: 
+=>11288: $   if (ok) Win32::GetDIBits (dc, (HBITMAP) Win32::GetCurrentObject (dc, OBJ_BITMAP), 0, size.y,
+  11289:                               buf, (BITMAPINFO*) &info, DIB_RGB_COLORS) asserted;
+  11290: $   FILE* f = NULL;
+
+# 1 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\DrawStars.cpp (25):
+
+     23:     txDeleteDC (fon);
+     24: 
+=>   25:     txSaveImage ("Background.bmp");
+     26: 
+     27:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\TX\TXLib.h
+Compiled:	Nov  4 2017 10:56:24, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 04 2017 10:56:28
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\DrawStars.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
