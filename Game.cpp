@@ -6,7 +6,7 @@
 
 struct Hero
     {
-    int x, y, r, vx, vy;
+    double x, y, r, vx, vy;
 
     double rotate;
 
@@ -21,11 +21,11 @@ void DrawXwing (const Hero* rebel);
 
 void MoveHero();
 
-void VehicleSpeed (struct Hero* rebel, int dt);
+void VehicleSpeed (struct Hero* rebel, double dt);
 
 void HeroControl (struct Hero* rebel);
 
-void myRectangle (int x1, int y1, int x2, int y2);
+void myRectangle (double x1, double y1, double x2, double y2);
 
 void DrawDeathStar (const Hero* star);
 
@@ -48,15 +48,17 @@ int main()
 
 void MoveHero()
     {
-    Hero xWing     = { 141,  388, 4, 0, 0, 0, TX_YELLOW, 'D', 'A', 'W', 'S', 'E', 'Q' };
+    Hero xWing     = { 141,  388, 4, 1, 1, 45, TX_YELLOW, 'D', 'A', 'W', 'S', 'E', 'Q' };
 
     Hero deathStar = { 1000, 503, 0, 0, 0, 0, TX_CYAN,   'L', 'J', 'I', 'K', 'O', 'U' };
 
-    HDC fon = txLoadImage ("Background.bmp");
+    HDC fon    = txLoadImage ("Background.bmp");
 
-    int dt = 1;
+    HDC planet = txLoadImage ("planet.bmp");
 
-    int t  = 0;
+    double dt = 1;
+
+    double t  = 0;
 
     while (! GetAsyncKeyState (VK_ESCAPE))
         {
@@ -64,9 +66,11 @@ void MoveHero()
 
         txClear();
 
-        txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 0,    0       );
+        txAlphaBlend (txDC(), 0,     0, 1920, 1080,    fon,    0,  0                          );
 
-        txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 1920, 0, (sin (t / 25.0) + 1) / 2);
+        txAlphaBlend (txDC(), 0,     0, 1920, 1080,    fon, 1920,  0, (sin (t / 25.0) + 1) / 2);
+
+        txAlphaBlend (txDC(), 1000, 300,    0,    0, planet,     0, 0                         );
 
         DrawXwing     (&xWing);
 
@@ -330,7 +334,7 @@ void DrawDeathStar (const Hero* star)
 
 //-----------------------------------------------------------------------------
 
-void VehicleSpeed (Hero* rebel, int dt)
+void VehicleSpeed (Hero* rebel, double dt)
     {
     rebel->x = rebel->x + rebel->vx * dt;
 
@@ -338,30 +342,22 @@ void VehicleSpeed (Hero* rebel, int dt)
 
     if (rebel->x > txGetExtentX() - rebel->r)
         {
-        rebel->vx = -rebel->vx;
-
-        rebel->x = txGetExtentX() - rebel->r;
+        rebel->x = 0 + rebel->r;
         }
 
     if (rebel->y > txGetExtentY() - rebel->r)
         {
-        rebel->vy = -rebel->vy;
-
-        rebel->y = txGetExtentY() - rebel->r;
+        rebel->y = 0 + rebel->r;
         }
 
     if (rebel->x < 0 + rebel->r)
         {
-        rebel->vx = -rebel->vx;
-
-        rebel->x = 0 + rebel->r;
+        rebel->x = txGetExtentX() - rebel->r;
         }
 
     if (rebel->y < 0 + rebel->r)
         {
-        rebel->vy = -rebel->vy;
-
-        rebel->y = 0 + rebel->r;
+        rebel->y = txGetExtentY() - rebel->r;
         }
     }
 
@@ -369,15 +365,47 @@ void VehicleSpeed (Hero* rebel, int dt)
 
 void HeroControl (struct Hero* rebel)
     {
-    if (GetAsyncKeyState (rebel->keyRight)) rebel->vx += 1;
+    /*if (GetAsyncKeyState (rebel->keyRight)) rebel->vx += 1;
 
     if (GetAsyncKeyState (rebel->keyLeft))  rebel->vx -= 1;
 
     if (GetAsyncKeyState (rebel->keyUp))    rebel->vy -= 1;
 
-    if (GetAsyncKeyState (rebel->keyDown))  rebel->vy += 1;
+    if (GetAsyncKeyState (rebel->keyDown))  rebel->vy += 1;*/
 
-    if (GetAsyncKeyState (rebel->keyClockwise))        rebel->rotate += 3;
+    if (GetAsyncKeyState (rebel->keyClockwise))
+        {
+        rebel->rotate += 0.1;
 
-    if (GetAsyncKeyState (rebel->keyCounterClockwise)) rebel->rotate -= 3;
+        double v = sqrt (rebel->vy * rebel->vy + rebel->vx * rebel->vx);
+
+        rebel->vx = cos (rebel->rotate) * v;
+
+        rebel->vy = sin (rebel->rotate) * v;
+        }
+
+    if (GetAsyncKeyState (rebel->keyCounterClockwise))
+        {
+        rebel->rotate -= 0.1;
+
+        double v = sqrt (rebel->vy * rebel->vy + rebel->vx * rebel->vx);
+
+        rebel->vx = cos (rebel->rotate) * v;
+
+        rebel->vy = sin (rebel->rotate) * v;
+        }
+
+    if (GetAsyncKeyState (VK_RSHIFT))
+        {
+        rebel->vx = rebel->vx * 1.2;
+
+        rebel->vy = rebel->vy * 1.2;
+        }
+
+    if (GetAsyncKeyState (VK_LSHIFT))
+        {
+        rebel->vx = rebel->vx * 0.8;
+
+        rebel->vy = rebel->vy * 0.8;
+        }
     }
