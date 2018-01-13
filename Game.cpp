@@ -12,7 +12,7 @@ struct Hero
 
     COLORREF color;
 
-    int keyRight, keyLeft, keyUp, keyDown, keyClockwise, keyCounterClockwise;
+    int keyForward, keyBackwards, keyBrake, keyClockwise, keyCounterClockwise;
     };
 
 //-----------------------------------------------------------------------------
@@ -48,9 +48,9 @@ int main()
 
 void MoveHero()
     {
-    Hero xWing     = { 141,  388, 4, 1, 1, 45, TX_YELLOW, 'D', 'A', 'W', 'S', 'E', 'Q' };
+    Hero xWing     = { 141,  388, 4, 1, 1, 45, TX_YELLOW, 'W', 'S', VK_RSHIFT, 'E', 'Q' };
 
-    Hero deathStar = { 1000, 503, 0, 0, 0, 0, TX_CYAN,   'L', 'J', 'I', 'K', 'O', 'U' };
+    Hero deathStar = { 1000, 503, 0, 0, 0, 0,  TX_CYAN,   'K', 'M', VK_LSHIFT, 'O', 'U' };
 
     HDC fon    = txLoadImage ("Background.bmp");
 
@@ -330,6 +330,8 @@ void DrawDeathStar (const Hero* star)
     myLine   (star->x+23,  star->y-99,  star->x+23,  star->y-117, star->rotate, star->x, star->y);
 
     myLine   (star->x+23,  star->y-118, star->x+15,  star->y-118, star->rotate, star->x, star->y);
+
+    printf ("vx равен %lg, vy равен %lg \n", star->vx, star->vy);
     }
 
 //-----------------------------------------------------------------------------
@@ -367,11 +369,11 @@ void HeroControl (struct Hero* rebel)
     {
     /*if (GetAsyncKeyState (rebel->keyRight)) rebel->vx += 1;
 
-    if (GetAsyncKeyState (rebel->keyLeft))  rebel->vx -= 1;
+    if (GetAsyncKeyState (rebel->keyLeft))   rebel->vx -= 1;
 
-    if (GetAsyncKeyState (rebel->keyUp))    rebel->vy -= 1;
+    if (GetAsyncKeyState (rebel->keyUp))     rebel->vy -= 1;
 
-    if (GetAsyncKeyState (rebel->keyDown))  rebel->vy += 1;*/
+    if (GetAsyncKeyState (rebel->keyDown))   rebel->vy += 1;*/
 
     if (GetAsyncKeyState (rebel->keyClockwise))
         {
@@ -395,17 +397,41 @@ void HeroControl (struct Hero* rebel)
         rebel->vy = sin (rebel->rotate) * v;
         }
 
-    if (GetAsyncKeyState (VK_RSHIFT))
+    if (GetAsyncKeyState (rebel->keyForward))
         {
         rebel->vx = rebel->vx * 1.2;
 
         rebel->vy = rebel->vy * 1.2;
         }
 
-    if (GetAsyncKeyState (VK_LSHIFT))
+    //Если при нажатии клавиши Правый Шифт, v = 0, то нужно увеличить v на 1 и пересчитать проекции.
+
+    if (GetAsyncKeyState (rebel->keyForward) && rebel->vx == 0 && rebel->vy == 0)
+        {
+        /*double v = sqrt (rebel->vy * rebel->vy + rebel->vx * rebel->vx);
+
+        double v = 0;
+
+        v = v + 1;
+
+        rebel->vx = cos (rebel->rotate) * v;
+
+        rebel->vy = sin (rebel->rotate) * v;*/
+
+        rebel->vx = cos (rebel->rotate);
+
+        rebel->vy = sin (rebel->rotate);
+        }
+
+    if (GetAsyncKeyState (rebel->keyBackwards))
         {
         rebel->vx = rebel->vx * 0.8;
 
         rebel->vy = rebel->vy * 0.8;
+        }
+
+    if (GetAsyncKeyState (rebel->keyBrake))
+        {
+        rebel->vx = rebel->vy = 0;
         }
     }
