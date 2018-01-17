@@ -6,7 +6,9 @@
 
 struct Hero
     {
-    double x, y, r, vx, vy;
+    double x, y, vx, vy;
+
+    double r;
 
     double rotate;
 
@@ -48,9 +50,9 @@ int main()
 
 void MoveHero()
     {
-    Hero xWing     = { 141,  388, 4, 1, 1, 45, TX_YELLOW, 'W', 'S', VK_RSHIFT, 'E', 'Q' };
+    Hero xWing     = { 141,  388, 1, 1, 4, 0.785, TX_YELLOW, 'W', 'S', VK_RSHIFT, 'E', 'Q' };
 
-    Hero deathStar = { 1000, 503, 0, 0, 0, 0,  TX_CYAN,   'K', 'M', VK_LSHIFT, 'O', 'U' };
+    Hero deathStar = { 1000, 503, 0, 0, 0, 3.14,  TX_CYAN,   'I', 'K', VK_LSHIFT, 'O', 'U' };
 
     HDC fon    = txLoadImage ("Background.bmp");
 
@@ -264,7 +266,7 @@ void DrawXwing (const Hero* rebel)
 
     myLine      (rebel->x-41,  rebel->y+55, rebel->x-33,  rebel->y+55, rebel->rotate, rebel->x, rebel->y);
 
-    printf ("угол равен %lg \n", rebel->rotate);
+   //printf ("угол равен %lg \n", rebel->rotate);
     }
 
 //-----------------------------------------------------------------------------
@@ -275,63 +277,61 @@ void DrawDeathStar (const Hero* star)
 
     txSetFillColor (TX_NULL);
 
-    myCircle (star->x-43,  star->y-42, 31,  star->rotate, star->x, star->y);
+    myCircle (star->x+43,  star->y+42, 31,  star->rotate, star->x, star->y);
 
-    myCircle (star->x-43,  star->y-42, 7,   star->rotate, star->x, star->y);
+    myCircle (star->x+43,  star->y+42, 7,   star->rotate, star->x, star->y);
 
     myArc    (star->x,     star->y,    120, 82, 215,              star->rotate, star->x, star->y);
 
-    myLine   (star->x-121, star->y,     star->x+119, star->y,     star->rotate, star->x, star->y);
+    myLine   (star->x+121, star->y,     star->x-119, star->y,     star->rotate, star->x, star->y);
 
-    myLine   (star->x-121, star->y+3,   star->x+119, star->y+3,   star->rotate, star->x, star->y);
+    myLine   (star->x+121, star->y-3,   star->x-119, star->y-3,   star->rotate, star->x, star->y);
 
-    myLine   (star->x+53,  star->y+106, star->x+53,  star->y+96,  star->rotate, star->x, star->y);
+    myLine   (star->x-53,  star->y-106, star->x-53,  star->y-96,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+26,  star->y+96,  star->x+53,  star->y+96,  star->rotate, star->x, star->y);
+    myLine   (star->x-26,  star->y-96,  star->x-53,  star->y-96,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+35,  star->y+96,  star->x+35,  star->y+78,  star->rotate, star->x, star->y);
+    myLine   (star->x-35,  star->y-96,  star->x-35,  star->y-78,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+2,   star->y+78,  star->x+56,  star->y+78,  star->rotate, star->x, star->y);
+    myLine   (star->x-2,   star->y-78,  star->x-56,  star->y-78,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+2,   star->y+78,  star->x+2,   star->y+57,  star->rotate, star->x, star->y);
+    myLine   (star->x-2,   star->y-78,  star->x-2,   star->y-57,  star->rotate, star->x, star->y);
 
-    myLine   (star->x-64,  star->y+57,  star->x+74,  star->y+57,  star->rotate, star->x, star->y);
+    myLine   (star->x+64,  star->y-57,  star->x-74,  star->y-57,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+23,  star->y+57,  star->x+23,  star->y+36,  star->rotate, star->x, star->y);
+    myLine   (star->x-23,  star->y-57,  star->x-23,  star->y-36,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+23,  star->y+36,  star->x+85,  star->y+36,  star->rotate, star->x, star->y);
+    myLine   (star->x-23,  star->y-36,  star->x-85,  star->y-36,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+85,  star->y+36,  star->x+85,  star->y+21,  star->rotate, star->x, star->y);
+    myLine   (star->x-85,  star->y-36,  star->x-85,  star->y-21,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+85,  star->y+21,  star->x+119, star->y+21,  star->rotate, star->x, star->y);
+    myLine   (star->x-85,  star->y-21,  star->x-119, star->y-21,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+119, star->y+21,  star->x+119, star->y-18,  star->rotate, star->x, star->y);
+    myLine   (star->x-119, star->y-21,  star->x-119, star->y+18,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+119, star->y-18,  star->x+89,  star->y-18,  star->rotate, star->x, star->y);
+    myLine   (star->x-119, star->y+18,  star->x-89,  star->y+18,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+89,  star->y-18,  star->x+89,  star->y-38,  star->rotate, star->x, star->y);
+    myLine   (star->x-89,  star->y+18,  star->x-89,  star->y+38,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+50,  star->y-38,  star->x+95,  star->y-38,  star->rotate, star->x, star->y);
+    myLine   (star->x-50,  star->y+38,  star->x-95,  star->y+38,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+56,  star->y-38,  star->x+56,  star->y-60,  star->rotate, star->x, star->y);
+    myLine   (star->x-56,  star->y+38,  star->x-56,  star->y+60,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+65,  star->y-60,  star->x+20,  star->y-60,  star->rotate, star->x, star->y);
+    myLine   (star->x-65,  star->y+60,  star->x-20,  star->y+60,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+29,  star->y-60,  star->x+29,  star->y-81,  star->rotate, star->x, star->y);
+    myLine   (star->x-29,  star->y+60,  star->x-29,  star->y+81,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+77,  star->y-81,  star->x+11,  star->y-81,  star->rotate, star->x, star->y);
+    myLine   (star->x-77,  star->y+81,  star->x-11,  star->y+81,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+41,  star->y-81,  star->x+41,  star->y-99,  star->rotate, star->x, star->y);
+    myLine   (star->x-41,  star->y+81,  star->x-41,  star->y+99,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+23,  star->y-81,  star->x+50,  star->y-81,  star->rotate, star->x, star->y);
+    myLine   (star->x-23,  star->y+81,  star->x-50,  star->y+81,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+23,  star->y-99,  star->x+50,  star->y-99,  star->rotate, star->x, star->y);
+    myLine   (star->x-23,  star->y+99,  star->x-50,  star->y+99,  star->rotate, star->x, star->y);
 
-    myLine   (star->x+23,  star->y-99,  star->x+23,  star->y-117, star->rotate, star->x, star->y);
+    myLine   (star->x-23,  star->y+99,  star->x-23,  star->y+117, star->rotate, star->x, star->y);
 
-    myLine   (star->x+23,  star->y-118, star->x+15,  star->y-118, star->rotate, star->x, star->y);
-
-    printf ("vx равен %lg, vy равен %lg \n", star->vx, star->vy);
+    myLine   (star->x-23,  star->y+118, star->x-15,  star->y+118, star->rotate, star->x, star->y);
     }
 
 //-----------------------------------------------------------------------------
@@ -406,7 +406,7 @@ void HeroControl (struct Hero* rebel)
 
     //Если при нажатии клавиши Правый Шифт, v = 0, то нужно увеличить v на 1 и пересчитать проекции.
 
-    if (GetAsyncKeyState (rebel->keyForward) && rebel->vx == 0 && rebel->vy == 0)
+    if (GetAsyncKeyState (rebel->keyForward) && fabs (rebel->vx) <= 0.01 && fabs (rebel->vy) <= 0.01)
         {
         /*double v = sqrt (rebel->vy * rebel->vy + rebel->vx * rebel->vx);
 
@@ -425,13 +425,8 @@ void HeroControl (struct Hero* rebel)
 
     if (GetAsyncKeyState (rebel->keyBackwards))
         {
-        rebel->vx = rebel->vx * 0.8;
+        rebel->vx = rebel->vx * 0.6;
 
-        rebel->vy = rebel->vy * 0.8;
-        }
-
-    if (GetAsyncKeyState (rebel->keyBrake))
-        {
-        rebel->vx = rebel->vy = 0;
+        rebel->vy = rebel->vy * 0.6;
         }
     }

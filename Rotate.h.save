@@ -2,29 +2,43 @@
 
 //-----------------------------------------------------------------------------
 
-void myTetragon (int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, double rotate, double rotateX, double rotateY);
+void myTetragon (double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, double rotate, double rotateX, double rotateY);
 
-void myRectangle (int x1, int y1, int x2, int y2, double rotate, double rotateX, double rotateY);
+void myRectangle (double x1, double y1, double x2, double y2, double rotate, double rotateX, double rotateY);
 
-void myLine (int x1, int y1, int x2, int y2, double rotate, double rotateX, double rotateY);
+void myLine (double x1, double y1, double x2, double y2, double rotate, double rotateX, double rotateY);
 
-void myCircle (int x, int y, int r, double rotate, double rotateX, double rotateY);
+void myCircle (double x, double y, double r, double rotate, double rotateX, double rotateY);
+
+void myArc (double x, double y, double r, double startAngle, double arcAngle, double rotate, double rotateX, double rotateY);
 
 //-----------------------------------------------------------------------------
 
-/*int main()
+/*double main()
     {
-    txCreateWindow (800, 600)meow
+    txCreateWindow (1920, 1800)meow
 
     double rotate = 0;
 
-    while (rotate <= 20)
+    while (rotate <= 500)
         {
-        printf ("rotate = %lf\n", rotate);
+        prdoublef ("rotate = %lf\n", rotate);
 
-        myRectangle (100, 100, 200, 250, rotate, 150, 175);
+        txSetFillColor (TX_BLACK);
 
-        rotate += 0.1;
+        txClear();
+
+        txSetColor (TX_YELLOW, 3);
+
+        myArc (500, 600, 50, 10, 104, rotate, 700, 800);
+
+        myArc (900, 1000, 70, 5,  204, rotate, 700, 800);
+
+        myArc (500, 600, 40, 18, 93,  rotate, 700, 800);
+
+        myArc (700, 800, 40, 18, 93,  rotate, 700, 800);
+
+        rotate += 5;
 
         txSleep (50);
         }
@@ -34,7 +48,7 @@ void myCircle (int x, int y, int r, double rotate, double rotateX, double rotate
 
 //-----------------------------------------------------------------------------
 
-void myTetragon (int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, double rotate, double rotateX, double rotateY)
+void myTetragon (double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, double rotate, double rotateX, double rotateY)
     {
     //txLine (400, 0, 400, 600);
 
@@ -112,7 +126,7 @@ void myTetragon (int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4,
 
 //-----------------------------------------------------------------------------
 
-void myRectangle (int x1, int y1, int x2, int y2, double rotate, double rotateX, double rotateY)
+void myRectangle (double x1, double y1, double x2, double y2, double rotate, double rotateX, double rotateY)
     {
     myTetragon (x1, y1, x2, y2,
                 x1, y2, x2, y1, rotate, rotateX, rotateY);
@@ -120,7 +134,7 @@ void myRectangle (int x1, int y1, int x2, int y2, double rotate, double rotateX,
 
 //-----------------------------------------------------------------------------
 
-void myLine (int x1, int y1, int x2, int y2, double rotate, double rotateX, double rotateY)
+void myLine (double x1, double y1, double x2, double y2, double rotate, double rotateX, double rotateY)
     {
     x1 = x1 - rotateX;
 
@@ -151,7 +165,7 @@ void myLine (int x1, int y1, int x2, int y2, double rotate, double rotateX, doub
 
 //-----------------------------------------------------------------------------
 
-void myCircle (int x, int y, int r, double rotate, double rotateX, double rotateY)
+void myCircle (double x, double y, double r, double rotate, double rotateX, double rotateY)
     {
     x = x - rotateX;
 
@@ -170,31 +184,19 @@ void myCircle (int x, int y, int r, double rotate, double rotateX, double rotate
 
 //-----------------------------------------------------------------------------
 
-void myArc (int x1, int y1, int x2, int y2, double startAngle, double arcAngle, double rotate, double rotateX, double rotateY)
+void myArc (double x, double y, double r, double startAngle, double arcAngle, double rotate, double rotateX, double rotateY)
     {
-    x1 = x1 - rotateX;
-    
-    y1 = y1 - rotateY;
-    
-    x2 = x2 - rotateX;
-    
-    y2 = y2 - rotateY;
-    
-    double x1r = x1 * cos (rotate) - y1 * sin (rotate);
+    x = x - rotateX;
 
-    double y1r = x1 * sin (rotate) + y1 * cos (rotate);
+    y = y - rotateY;
 
-    double x2r = x2 * cos (rotate) - y2 * sin (rotate);
+    double xr = x * cos (-rotate) - y * sin (-rotate);
 
-    double y2r = x2 * sin (rotate) + y2 * cos (rotate);
-    
-    x1 = x1r + rotateX;
-    
-    y1 = y1r + rotateY;
-    
-    x2 = x2r + rotateX;
-    
-    y2 = y2r + rotateY;
-    
-    txArc (x1, y1, x2, y2, startAngle + rotate, arcAngle);
+    double yr = x * sin (-rotate) + y * cos (-rotate);
+
+    x = xr + rotateX;
+
+    y = yr + rotateY;
+
+    txArc (x - r, y - r, x + r, y + r, startAngle - rotate, arcAngle);
     }
