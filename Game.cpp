@@ -10,6 +10,8 @@ struct Hero
 
     double r;
 
+    HDC image;
+
     double rotate;
 
     COLORREF color;
@@ -31,6 +33,8 @@ void myRectangle (double x1, double y1, double x2, double y2);
 
 void DrawDeathStar (const Hero* star);
 
+void DrawPlanet (const Hero* planet);
+
 //-----------------------------------------------------------------------------
 
 int main()
@@ -50,13 +54,13 @@ int main()
 
 void MoveHero()
     {
-    Hero xWing     = { 141,  388, 1, 1, 4, 0.785, TX_YELLOW, 'W', 'S', VK_RSHIFT, 'E', 'Q' };
+    Hero xWing     = { 141,  388,  1, 1, 100, NULL,  0.785, TX_YELLOW, 'W', 'S', VK_RSHIFT, 'E', 'Q' };
 
-    Hero deathStar = { 1000, 503, 0, 0, 0, 3.14,  TX_CYAN,   'I', 'K', VK_LSHIFT, 'O', 'U' };
+    Hero deathStar = { 1000, 503,  0, 0, 120, NULL,  3.14,  TX_CYAN,   'I', 'K', VK_LSHIFT, 'O', 'U' };
 
-    HDC fon    = txLoadImage ("Background.bmp");
+    Hero planet    = { 1500, 750,  0, 0, 136, txLoadImage ("planet.bmp")                             };
 
-    HDC planet = txLoadImage ("planet.bmp");
+    HDC fon        = txLoadImage ("Background.bmp");
 
     double dt = 1;
 
@@ -68,21 +72,27 @@ void MoveHero()
 
         txClear();
 
-        txAlphaBlend (txDC(), 0,     0, 1920, 1080,    fon,    0,  0                          );
+        txAlphaBlend (txDC(), 0,     0, 1920, 1080,      fon,    0,  0                          );
 
-        txAlphaBlend (txDC(), 0,     0, 1920, 1080,    fon, 1920,  0, (sin (t / 25.0) + 1) / 2);
-
-        txAlphaBlend (txDC(), 1000, 300,    0,    0, planet,     0, 0                         );
+        txAlphaBlend (txDC(), 0,     0, 1920, 1080,      fon, 1920,  0, (sin (t / 25.0) + 1) / 2);
 
         DrawXwing     (&xWing);
 
-        VehicleSpeed  (&xWing, dt);
-
-        HeroControl   (&xWing);
-
         DrawDeathStar (&deathStar);
 
+        DrawPlanet    (&planet);
+
+        double distance = sqrt ( (xWing.x - deathStar.x) * (xWing.x - deathStar.x) + (xWing.y - deathStar.y) * (xWing.y - deathStar.y) );
+
+        printf ("distance = %lg \n", distance);
+
+        if (distance <= xWing.r + deathStar.r) break;
+
+        VehicleSpeed  (&xWing, dt);
+
         VehicleSpeed  (&deathStar, dt);
+
+        HeroControl   (&xWing);
 
         HeroControl   (&deathStar);
 
@@ -232,7 +242,7 @@ void DrawXwing (const Hero* rebel)
 
     myLine      (rebel->x-19,  rebel->y-16, rebel->x-19,  rebel->y+17, rebel->rotate, rebel->x, rebel->y);
 
-    txCircle    (rebel->x,     rebel->y,    rebel->r);
+    txCircle    (rebel->x,     rebel->y,    4);
 
     myLine      (rebel->x+11,  rebel->y-6,  rebel->x+11,  rebel->y+6,  rebel->rotate, rebel->x, rebel->y);
 
@@ -266,7 +276,11 @@ void DrawXwing (const Hero* rebel)
 
     myLine      (rebel->x-41,  rebel->y+55, rebel->x-33,  rebel->y+55, rebel->rotate, rebel->x, rebel->y);
 
-   //printf ("угол равен %lg \n", rebel->rotate);
+    //txSetFillColor (TX_NULL);
+
+    //txCircle    (rebel->x,     rebel->y,    rebel->r);
+
+    //printf ("угол равен %lg \n", rebel->rotate);
     }
 
 //-----------------------------------------------------------------------------
@@ -281,7 +295,7 @@ void DrawDeathStar (const Hero* star)
 
     myCircle (star->x+43,  star->y+42, 7,   star->rotate, star->x, star->y);
 
-    myArc    (star->x,     star->y,    120, 82, 215,              star->rotate, star->x, star->y);
+    myArc    (star->x,     star->y,     star->r, 82, 215,        star->rotate, star->x, star->y);
 
     myLine   (star->x+121, star->y,     star->x-119, star->y,     star->rotate, star->x, star->y);
 
@@ -332,6 +346,17 @@ void DrawDeathStar (const Hero* star)
     myLine   (star->x-23,  star->y+99,  star->x-23,  star->y+117, star->rotate, star->x, star->y);
 
     myLine   (star->x-23,  star->y+118, star->x-15,  star->y+118, star->rotate, star->x, star->y);
+
+    //txCircle (star->x,     star->y,     star->r);
+    }
+
+//-----------------------------------------------------------------------------
+
+void DrawPlanet (const Hero* planet)
+    {
+    txAlphaBlend (txDC(), planet->x - planet->r, planet->y - planet->r, 0, 0, planet->image, 0, 0);
+
+    //txCircle     (planet->x, planet->y, planet->r);
     }
 
 //-----------------------------------------------------------------------------
