@@ -84,9 +84,11 @@ void MoveHero()
 
         double distance = sqrt ( (xWing.x - deathStar.x) * (xWing.x - deathStar.x) + (xWing.y - deathStar.y) * (xWing.y - deathStar.y) );
 
-        printf ("distance = %lg \n", distance);
+        double route    = sqrt ( (xWing.x - planet.x) * (xWing.x - planet.x) + (xWing.y - planet.y) * (xWing.y - planet.y) );
 
         if (distance <= xWing.r + deathStar.r) break;
+
+        if (route    <= xWing.r + planet.r)    break;
 
         VehicleSpeed  (&xWing, dt);
 
