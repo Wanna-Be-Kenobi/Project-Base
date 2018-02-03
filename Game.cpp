@@ -1,3 +1,5 @@
+//#define _TX_ALLOW_TRACE 9
+
 #include "TXLib.h"
 
 #include "Rotate.h"
@@ -8,7 +10,7 @@ struct Hero
     {
     double x, y, vx, vy;
 
-    double r;
+    double r, scale;
 
     HDC image;
 
@@ -16,7 +18,7 @@ struct Hero
 
     COLORREF color;
 
-    int keyForward, keyBackwards, keyBrake, keyClockwise, keyCounterClockwise;
+    int keyForward, keyBackwards, keyBrake, keyClockwise, keyCounterClockwise, keyCloser, keyFarther;
     };
 
 //-----------------------------------------------------------------------------
@@ -54,11 +56,11 @@ int main()
 
 void MoveHero()
     {
-    Hero xWing     = { 141,  388,  1, 1, 100, NULL,  0.785, TX_YELLOW, 'W', 'S', VK_RSHIFT, 'E', 'Q' };
+    Hero xWing     = { 141,  388,  1, 1, 100, 0.5, NULL,  0.785, TX_YELLOW, 'W', 'S', VK_RSHIFT, 'E', 'Q', VK_F1, VK_F2 };
 
-    Hero deathStar = { 1000, 503,  0, 0, 120, NULL,  3.14,  TX_CYAN,   'I', 'K', VK_LSHIFT, 'O', 'U' };
+    Hero deathStar = { 1000, 503,  0, 0, 120, 1,   NULL,  3.14,  TX_CYAN,   'I', 'K', VK_LSHIFT, 'O', 'U'               };
 
-    Hero planet    = { 1500, 750,  0, 0, 136, txLoadImage ("planet.bmp")                             };
+    Hero planet    = { 1500, 750,  0, 0, 136, 1,   txLoadImage ("planet.bmp")                                           };
 
     HDC fon        = txLoadImage ("Background.bmp");
 
@@ -86,9 +88,19 @@ void MoveHero()
 
         double route    = sqrt ( (xWing.x - planet.x) * (xWing.x - planet.x) + (xWing.y - planet.y) * (xWing.y - planet.y) );
 
-        if (distance <= xWing.r + deathStar.r) break;
+        if (distance <= xWing.r * xWing.scale + deathStar.r * deathStar.scale)
+            {
+            txMessageBox ("Game over");
 
-        if (route    <= xWing.r + planet.r)    break;
+            break;
+            }
+
+        if (route    <= xWing.r * xWing.scale + planet.r * planet.scale)
+            {
+            txMessageBox ("Congratulations! You won!");
+
+            break;
+            }
 
         VehicleSpeed  (&xWing, dt);
 
@@ -114,169 +126,98 @@ void DrawXwing (const Hero* rebel)
 
     txSetFillColor (TX_NULL);
 
-    myRectangle (rebel->x-50,  rebel->y-82, rebel->x-44,  rebel->y-72, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-44,  rebel->y-81, rebel->x-14,  rebel->y-75, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-35,  rebel->y-87, rebel->x-11,  rebel->y-81, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-14,  rebel->y-82, rebel->x-8,   rebel->y-72, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-28,  rebel->y-60, rebel->x-23,  rebel->y-51, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-25,  rebel->y-66, rebel->x-11,  rebel->y-57, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-50 * rebel->scale,  rebel->y-82 * rebel->scale, rebel->x-44 * rebel->scale,  rebel->y-72 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-44 * rebel->scale,  rebel->y-81 * rebel->scale, rebel->x-14 * rebel->scale,  rebel->y-75 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-35 * rebel->scale,  rebel->y-87 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y-81 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-14 * rebel->scale,  rebel->y-82 * rebel->scale, rebel->x-8  * rebel->scale,  rebel->y-72 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-28 * rebel->scale,  rebel->y-60 * rebel->scale, rebel->x-23 * rebel->scale,  rebel->y-51 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-25 * rebel->scale,  rebel->y-66 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y-57 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
 
     txSetFillColor (rebel->color);
 
-    myRectangle (rebel->x-8,   rebel->y-79, rebel->x+16,  rebel->y-76, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+17,  rebel->y-78, rebel->x+64,  rebel->y-78, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+38,  rebel->y-84, rebel->x+38,  rebel->y-72, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-38,  rebel->y-75, rebel->x-46,  rebel->y-40, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-11,  rebel->y-72, rebel->x-11,  rebel->y-40, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-41,  rebel->y-60, rebel->x-35,  rebel->y-60, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-67,  rebel->y-39, rebel->x-67,  rebel->y-33, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-8  * rebel->scale,  rebel->y-79 * rebel->scale, rebel->x+16 * rebel->scale,  rebel->y-76 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+17 * rebel->scale,  rebel->y-78 * rebel->scale, rebel->x+64 * rebel->scale,  rebel->y-78 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+38 * rebel->scale,  rebel->y-84 * rebel->scale, rebel->x+38 * rebel->scale,  rebel->y-72 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-38 * rebel->scale,  rebel->y-75 * rebel->scale, rebel->x-46 * rebel->scale,  rebel->y-40 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale,  rebel->y-72 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y-40 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale,  rebel->y-60 * rebel->scale, rebel->x-35 * rebel->scale,  rebel->y-60 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-67 * rebel->scale,  rebel->y-39 * rebel->scale, rebel->x-67 * rebel->scale,  rebel->y-33 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
 
     txSetFillColor (rebel->color);
 
-    myRectangle (rebel->x-53,  rebel->y-40, rebel->x-37,  rebel->y-31, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-59,  rebel->y-31, rebel->x-53,  rebel->y-40, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-64,  rebel->y-40, rebel->x-59,  rebel->y-31, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-37,  rebel->y-45, rebel->x-25,  rebel->y-27, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-25,  rebel->y-36, rebel->x-13,  rebel->y-27, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-25,  rebel->y-36, rebel->x-13,  rebel->y-45, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-13,  rebel->y-45, rebel->x-2,   rebel->y-27, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-2,   rebel->y-42, rebel->x+3,   rebel->y-30, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-11,  rebel->y-27, rebel->x-11,  rebel->y-16, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-11,  rebel->y-16, rebel->x-53,  rebel->y-16, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-50,  rebel->y-31, rebel->x-55,  rebel->y-12, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-55,  rebel->y-12, rebel->x-55,  rebel->y+11, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-11,  rebel->y-16, rebel->x+91,  rebel->y-6,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+91,  rebel->y-7,  rebel->x+91,  rebel->y+8,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+91,  rebel->y-7,  rebel->x+119, rebel->y-4,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+119, rebel->y-4,  rebel->x+121, rebel->y-3,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+121, rebel->y-3,  rebel->x+122, rebel->y-1,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+122, rebel->y-1,  rebel->x+122, rebel->y+1,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+122, rebel->y+1,  rebel->x+121, rebel->y+3,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+121, rebel->y+3,  rebel->x+119, rebel->y+5,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+119, rebel->y+5,  rebel->x+91,  rebel->y+8,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+91,  rebel->y+7,  rebel->x-11,  rebel->y+17, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-11,  rebel->y+17, rebel->x-11,  rebel->y+27, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-11,  rebel->y+17, rebel-> x-53, rebel->y+17, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-55,  rebel->y+11, rebel->x-50,  rebel->y+32, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-53,  rebel->y+32, rebel->x-37,  rebel->y+41, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-53,  rebel->y+32, rebel->x-59,  rebel->y+41, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-59,  rebel->y+41, rebel->x-64,  rebel->y+32, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-67,  rebel->y+33, rebel->x-67,  rebel->y+39, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-37,  rebel->y+45, rebel->x-25,  rebel->y+27, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-25,  rebel->y+27, rebel->x-13,  rebel->y+36, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-25,  rebel->y+45, rebel->x-13,  rebel->y+36, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-13,  rebel->y+27, rebel->x-2,   rebel->y+45, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-2,   rebel->y+42, rebel->x+3,   rebel->y+30, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-46,  rebel->y+42, rebel->x-38,  rebel->y+75, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-11,  rebel->y+45, rebel->x-11,  rebel->y+74, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-28,  rebel->y+51, rebel->x-23,  rebel->y+60, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-11,  rebel->y+66, rebel->x-25,  rebel->y+56, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-41,  rebel->y+60, rebel->x-35,  rebel->y+60, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-50,  rebel->y+74, rebel->x-44,  rebel->y+83, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-44,  rebel->y+75, rebel->x-14,  rebel->y+81, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-14,  rebel->y+74, rebel->x-8,   rebel->y+83, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x-35,  rebel->y+81, rebel->x-11,  rebel->y+87, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-53 * rebel->scale,  rebel->y-40 * rebel->scale, rebel->x-37 * rebel->scale,  rebel->y-31 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-59 * rebel->scale,  rebel->y-31 * rebel->scale, rebel->x-53 * rebel->scale,  rebel->y-40 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-64 * rebel->scale,  rebel->y-40 * rebel->scale, rebel->x-59 * rebel->scale,  rebel->y-31 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-37 * rebel->scale,  rebel->y-45 * rebel->scale, rebel->x-25 * rebel->scale,  rebel->y-27 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-25 * rebel->scale,  rebel->y-36 * rebel->scale, rebel->x-13 * rebel->scale,  rebel->y-27 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-25 * rebel->scale,  rebel->y-36 * rebel->scale, rebel->x-13 * rebel->scale,  rebel->y-45 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-13 * rebel->scale,  rebel->y-45 * rebel->scale, rebel->x-2  * rebel->scale,  rebel->y-27 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-2  * rebel->scale,  rebel->y-42 * rebel->scale, rebel->x+3  * rebel->scale,  rebel->y-30 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale,  rebel->y-27 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->x-53 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-50 * rebel->scale,  rebel->y-31 * rebel->scale, rebel->x-55 * rebel->scale,  rebel->y-12 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-55 * rebel->scale,  rebel->y-12 * rebel->scale, rebel->x-55 * rebel->scale,  rebel->y+11 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->x+91 * rebel->scale,  rebel->y-6  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+91 * rebel->scale,  rebel->y-7  * rebel->scale, rebel->x+91 * rebel->scale,  rebel->y+8  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+91 * rebel->scale,  rebel->y-7  * rebel->scale, rebel->x+119* rebel->scale,  rebel->y-4  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+119* rebel->scale,  rebel->y-4  * rebel->scale, rebel->x+121* rebel->scale,  rebel->y-3  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+121* rebel->scale,  rebel->y-3  * rebel->scale, rebel->x+122* rebel->scale,  rebel->y-1  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+122* rebel->scale,  rebel->y-1  * rebel->scale, rebel->x+122* rebel->scale,  rebel->y+1  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+122* rebel->scale,  rebel->y+1  * rebel->scale, rebel->x+121* rebel->scale,  rebel->y+3  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+121* rebel->scale,  rebel->y+3  * rebel->scale, rebel->x+119* rebel->scale,  rebel->y+5  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+119* rebel->scale,  rebel->y+5  * rebel->scale, rebel->x+91 * rebel->scale,  rebel->y+8  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+91 * rebel->scale,  rebel->y+7  * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y+27 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->x-53 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-55 * rebel->scale,  rebel->y+11 * rebel->scale, rebel->x-50 * rebel->scale,  rebel->y+32 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-53 * rebel->scale,  rebel->y+32 * rebel->scale, rebel->x-37 * rebel->scale,  rebel->y+41 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-53 * rebel->scale,  rebel->y+32 * rebel->scale, rebel->x-59 * rebel->scale,  rebel->y+41 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-59 * rebel->scale,  rebel->y+41 * rebel->scale, rebel->x-64 * rebel->scale,  rebel->y+32 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-67 * rebel->scale,  rebel->y+33 * rebel->scale, rebel->x-67 * rebel->scale,  rebel->y+39 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-37 * rebel->scale,  rebel->y+45 * rebel->scale, rebel->x-25 * rebel->scale,  rebel->y+27 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-25 * rebel->scale,  rebel->y+27 * rebel->scale, rebel->x-13 * rebel->scale,  rebel->y+36 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-25 * rebel->scale,  rebel->y+45 * rebel->scale, rebel->x-13 * rebel->scale,  rebel->y+36 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-13 * rebel->scale,  rebel->y+27 * rebel->scale, rebel->x-2  * rebel->scale,  rebel->y+45 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-2  * rebel->scale,  rebel->y+42 * rebel->scale, rebel->x+3  * rebel->scale,  rebel->y+30 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-46 * rebel->scale,  rebel->y+42 * rebel->scale, rebel->x-38 * rebel->scale,  rebel->y+75 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale,  rebel->y+45 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y+74 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-28 * rebel->scale,  rebel->y+51 * rebel->scale, rebel->x-23 * rebel->scale,  rebel->y+60 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-11 * rebel->scale,  rebel->y+66 * rebel->scale, rebel->x-25 * rebel->scale,  rebel->y+56 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale,  rebel->y+60 * rebel->scale, rebel->x-35 * rebel->scale,  rebel->y+60 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-50 * rebel->scale,  rebel->y+74 * rebel->scale, rebel->x-44 * rebel->scale,  rebel->y+83 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-44 * rebel->scale,  rebel->y+75 * rebel->scale, rebel->x-14 * rebel->scale,  rebel->y+81 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-14 * rebel->scale,  rebel->y+74 * rebel->scale, rebel->x-8  * rebel->scale,  rebel->y+83 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-35 * rebel->scale,  rebel->y+81 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y+87 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
 
     txSetFillColor (rebel->color);
 
-    myRectangle (rebel->x-8,   rebel->y+77, rebel->x+16,  rebel->y+80, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-8  * rebel->scale,  rebel->y+77 * rebel->scale, rebel->x+16 * rebel->scale,  rebel->y+80 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+17 * rebel->scale,  rebel->y+78 * rebel->scale, rebel->x+64 * rebel->scale,  rebel->y+78 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+38 * rebel->scale,  rebel->y+72 * rebel->scale, rebel->x+38 * rebel->scale,  rebel->y+84 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-55 * rebel->scale,  rebel->y+3  * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y-3  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-43 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->x-43 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-19 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->x-19 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    txCircle    (rebel->x,             rebel->y,                      4 * rebel->scale                                                         );
+    myLine      (rebel->x+11 * rebel->scale,  rebel->y-6  * rebel->scale, rebel->x+11 * rebel->scale,  rebel->y+6  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+11 * rebel->scale,  rebel->y-6  * rebel->scale, rebel->x+17 * rebel->scale,  rebel->y-12 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+11 * rebel->scale,  rebel->y+6  * rebel->scale, rebel->x+17 * rebel->scale,  rebel->y+12 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x+17 * rebel->scale,  rebel->y-3  * rebel->scale, rebel->x+37 * rebel->scale,  rebel->y+4  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+37 * rebel->scale,  rebel->y,            rebel->x+85 * rebel->scale,  rebel->y,            rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+37 * rebel->scale,  rebel->y+1  * rebel->scale, rebel->x+85 * rebel->scale,  rebel->y+1  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+98 * rebel->scale,  rebel->y,            rebel->x+113* rebel->scale,  rebel->y,            rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+98 * rebel->scale,  rebel->y+1  * rebel->scale, rebel->x+98 * rebel->scale,  rebel->y+1  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+49 * rebel->scale,  rebel->y-9  * rebel->scale, rebel->x+49 * rebel->scale,  rebel->y+10 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+68 * rebel->scale,  rebel->y-7  * rebel->scale, rebel->x+69 * rebel->scale,  rebel->y+8  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
 
-    myLine      (rebel->x+17,  rebel->y+78, rebel->x+64,  rebel->y+78, rebel->rotate, rebel->x, rebel->y);
+    txSetColor  (rebel->color, 2);
 
-    myLine      (rebel->x+38,  rebel->y+72, rebel->x+38,  rebel->y+84, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale,  rebel->y-54 * rebel->scale, rebel->x-36 * rebel->scale,  rebel->y-54 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale,  rebel->y+65 * rebel->scale, rebel->x-36 * rebel->scale,  rebel->y+65 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
 
-    myRectangle (rebel->x-55,  rebel->y+3,  rebel->x-11,  rebel->y-3,  rebel->rotate, rebel->x, rebel->y);
+    txSetColor  (rebel->color, 1);
 
-    myLine      (rebel->x-43,  rebel->y-16, rebel->x-43,  rebel->y+17, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-19,  rebel->y-16, rebel->x-19,  rebel->y+17, rebel->rotate, rebel->x, rebel->y);
-
-    txCircle    (rebel->x,     rebel->y,    4);
-
-    myLine      (rebel->x+11,  rebel->y-6,  rebel->x+11,  rebel->y+6,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+11,  rebel->y-6,  rebel->x+17,  rebel->y-12, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+11,  rebel->y+6,  rebel->x+17,  rebel->y+12, rebel->rotate, rebel->x, rebel->y);
-
-    myRectangle (rebel->x+17,  rebel->y-3,  rebel->x+37,  rebel->y+4,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+37,  rebel->y,    rebel->x+85,  rebel->y,    rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+37,  rebel->y+1,  rebel->x+85,  rebel->y+1,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+98,  rebel->y,    rebel->x+113, rebel->y,    rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+98,  rebel->y+1,  rebel->x+98,  rebel->y+1,  rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+49,  rebel->y-9,  rebel->x+49,  rebel->y+10, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x+68,  rebel->y-7,  rebel->x+69,  rebel->y+8,  rebel->rotate, rebel->x, rebel->y);
-
-    txSetColor (rebel->color, 2);
-
-    myLine      (rebel->x-41,  rebel->y-54, rebel->x-36,  rebel->y-54, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-41,  rebel->y+65, rebel->x-36,  rebel->y+65, rebel->rotate, rebel->x, rebel->y);
-
-    txSetColor (rebel->color, 1);
-
-    myLine      (rebel->x-41,  rebel->y-65, rebel->x-33,  rebel->y-65, rebel->rotate, rebel->x, rebel->y);
-
-    myLine      (rebel->x-41,  rebel->y+55, rebel->x-33,  rebel->y+55, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale,  rebel->y-65 * rebel->scale, rebel->x-33 * rebel->scale,  rebel->y-65 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale,  rebel->y+55 * rebel->scale, rebel->x-33 * rebel->scale,  rebel->y+55 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
 
     //txSetFillColor (TX_NULL);
 
@@ -455,5 +396,24 @@ void HeroControl (struct Hero* rebel)
         rebel->vx = rebel->vx * 0.6;
 
         rebel->vy = rebel->vy * 0.6;
+        }
+
+    if (GetAsyncKeyState (rebel->keyCloser))
+        {
+        rebel->scale += 0.1;
+        }
+
+    if (GetAsyncKeyState (rebel->keyFarther))
+        {
+        rebel->scale -= 0.1;
+        }
+
+    if (rebel->scale <= 0.1)
+        {
+        rebel->scale = 0.1;
+        }
+    if (rebel->scale >= 5)
+        {
+        rebel->scale = 5;
         }
     }
