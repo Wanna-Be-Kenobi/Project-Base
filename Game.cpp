@@ -58,7 +58,7 @@ void MoveHero()
     {
     Hero xWing     = { 141,  388,  1, 1, 100, 0.5, NULL,  0.785, TX_YELLOW, 'W', 'S', VK_RSHIFT, 'E', 'Q', VK_F1, VK_F2 };
 
-    Hero deathStar = { 1000, 503,  0, 0, 120, 1,   NULL,  3.14,  TX_CYAN,   'I', 'K', VK_LSHIFT, 'O', 'U'               };
+    Hero deathStar = { 1000, 503,  0, 0, 120, 1.5,   NULL,  3.14,  TX_CYAN,   'I', 'K', VK_LSHIFT, 'O', 'U'               };
 
     Hero planet    = { 1500, 750,  0, 0, 136, 1,   txLoadImage ("planet.bmp")                                           };
 
@@ -234,61 +234,34 @@ void DrawDeathStar (const Hero* star)
 
     txSetFillColor (TX_NULL);
 
-    myCircle (star->x+43,  star->y+42, 31,  star->rotate, star->x, star->y);
-
-    myCircle (star->x+43,  star->y+42, 7,   star->rotate, star->x, star->y);
-
-    myArc    (star->x,     star->y,     star->r, 82, 215,        star->rotate, star->x, star->y);
-
-    myLine   (star->x+121, star->y,     star->x-119, star->y,     star->rotate, star->x, star->y);
-
-    myLine   (star->x+121, star->y-3,   star->x-119, star->y-3,   star->rotate, star->x, star->y);
-
-    myLine   (star->x-53,  star->y-106, star->x-53,  star->y-96,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-26,  star->y-96,  star->x-53,  star->y-96,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-35,  star->y-96,  star->x-35,  star->y-78,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-2,   star->y-78,  star->x-56,  star->y-78,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-2,   star->y-78,  star->x-2,   star->y-57,  star->rotate, star->x, star->y);
-
-    myLine   (star->x+64,  star->y-57,  star->x-74,  star->y-57,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-23,  star->y-57,  star->x-23,  star->y-36,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-23,  star->y-36,  star->x-85,  star->y-36,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-85,  star->y-36,  star->x-85,  star->y-21,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-85,  star->y-21,  star->x-119, star->y-21,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-119, star->y-21,  star->x-119, star->y+18,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-119, star->y+18,  star->x-89,  star->y+18,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-89,  star->y+18,  star->x-89,  star->y+38,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-50,  star->y+38,  star->x-95,  star->y+38,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-56,  star->y+38,  star->x-56,  star->y+60,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-65,  star->y+60,  star->x-20,  star->y+60,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-29,  star->y+60,  star->x-29,  star->y+81,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-77,  star->y+81,  star->x-11,  star->y+81,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-41,  star->y+81,  star->x-41,  star->y+99,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-23,  star->y+81,  star->x-50,  star->y+81,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-23,  star->y+99,  star->x-50,  star->y+99,  star->rotate, star->x, star->y);
-
-    myLine   (star->x-23,  star->y+99,  star->x-23,  star->y+117, star->rotate, star->x, star->y);
-
-    myLine   (star->x-23,  star->y+118, star->x-15,  star->y+118, star->rotate, star->x, star->y);
+    myCircle (star->x+43 * star->scale,  star->y+42 * star->scale,          31 * star->scale,                             star->rotate, star->x, star->y);
+    myCircle (star->x+43 * star->scale,  star->y+42 * star->scale,           7 * star->scale,                             star->rotate, star->x, star->y);
+    myArc    (star->x,                   star->y,                   star->r    * star->scale,  82,          215,          star->rotate, star->x, star->y);
+    myLine   (star->x+121* star->scale,  star->y,                   star->x-119* star->scale,  star->y,                   star->rotate, star->x, star->y);
+    myLine   (star->x+121* star->scale,  star->y-3  * star->scale,  star->x-119* star->scale,  star->y-3  * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-53 * star->scale,  star->y-106* star->scale,  star->x-53 * star->scale,  star->y-96 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-26 * star->scale,  star->y-96 * star->scale,  star->x-53 * star->scale,  star->y-96 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-35 * star->scale,  star->y-96 * star->scale,  star->x-35 * star->scale,  star->y-78 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-2  * star->scale,  star->y-78 * star->scale,  star->x-56 * star->scale,  star->y-78 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-2  * star->scale,  star->y-78 * star->scale,  star->x-2  * star->scale,  star->y-57 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x+64 * star->scale,  star->y-57 * star->scale,  star->x-74 * star->scale,  star->y-57 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale,  star->y-57 * star->scale,  star->x-23 * star->scale,  star->y-36 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale,  star->y-36 * star->scale,  star->x-85 * star->scale,  star->y-36 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-85 * star->scale,  star->y-36 * star->scale,  star->x-85 * star->scale,  star->y-21 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-85 * star->scale,  star->y-21 * star->scale,  star->x-119* star->scale,  star->y-21 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-119* star->scale,  star->y-21 * star->scale,  star->x-119* star->scale,  star->y+18 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-119* star->scale,  star->y+18 * star->scale,  star->x-89 * star->scale,  star->y+18 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-89 * star->scale,  star->y+18 * star->scale,  star->x-89 * star->scale,  star->y+38 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-50 * star->scale,  star->y+38 * star->scale,  star->x-95 * star->scale,  star->y+38 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-56 * star->scale,  star->y+38 * star->scale,  star->x-56 * star->scale,  star->y+60 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-65 * star->scale,  star->y+60 * star->scale,  star->x-20 * star->scale,  star->y+60 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-29 * star->scale,  star->y+60 * star->scale,  star->x-29 * star->scale,  star->y+81 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-77 * star->scale,  star->y+81 * star->scale,  star->x-11 * star->scale,  star->y+81 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-41 * star->scale,  star->y+81 * star->scale,  star->x-41 * star->scale,  star->y+99 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale,  star->y+81 * star->scale,  star->x-50 * star->scale,  star->y+81 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale,  star->y+99 * star->scale,  star->x-50 * star->scale,  star->y+99 * star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale,  star->y+99 * star->scale,  star->x-23 * star->scale,  star->y+117* star->scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale,  star->y+118* star->scale,  star->x-15 * star->scale,  star->y+118* star->scale,  star->rotate, star->x, star->y);
 
     //txCircle (star->x,     star->y,     star->r);
     }
