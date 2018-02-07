@@ -37,6 +37,9 @@ void DrawDeathStar (const Hero* star);
 
 void DrawPlanet (const Hero* planet);
 
+void YourAlphaBlend (HDC destImage,   double xDest,   double yDest,   double width, double height,
+                     HDC sourceImage, double xSource, double ySource, double alpha, double scale);
+
 //-----------------------------------------------------------------------------
 
 int main()
@@ -58,9 +61,9 @@ void MoveHero()
     {
     Hero xWing     = { 141,  388,  1, 1, 100, 0.5, NULL,  0.785, TX_YELLOW, 'W', 'S', VK_RSHIFT, 'E', 'Q', VK_F1, VK_F2 };
 
-    Hero deathStar = { 1000, 503,  0, 0, 120, 1.5,   NULL,  3.14,  TX_CYAN,   'I', 'K', VK_LSHIFT, 'O', 'U'               };
+    Hero deathStar = { 1000, 503,  0, 0, 120, 1.5,   NULL,  3.14,  TX_CYAN,   'I', 'K', VK_LSHIFT, 'O', 'U'             };
 
-    Hero planet    = { 1500, 750,  0, 0, 136, 1,   txLoadImage ("planet.bmp")                                           };
+    Hero planet    = { 1500, 750,  0, 0, 136, 0.5,   txLoadImage ("planet.bmp")                                           };
 
     HDC fon        = txLoadImage ("Background.bmp");
 
@@ -109,6 +112,16 @@ void MoveHero()
         HeroControl   (&xWing);
 
         HeroControl   (&deathStar);
+
+        if (GetAsyncKeyState (VK_F5))
+            {
+            planet.scale += 0.1;
+            }
+
+        if (GetAsyncKeyState (VK_F6))
+            {
+            planet.scale -= 0.1;
+            }
 
         txSleep (10);
 
@@ -270,9 +283,17 @@ void DrawDeathStar (const Hero* star)
 
 void DrawPlanet (const Hero* planet)
     {
-    txAlphaBlend (txDC(), planet->x - planet->r, planet->y - planet->r, 0, 0, planet->image, 0, 0);
+    BLENDFUNCTION blend = { AC_SRC_OVER, 0, 255, AC_SRC_ALPHA };
 
-    //txCircle     (planet->x, planet->y, planet->r);
+    Win32::AlphaBlend (txDC(), planet->x - planet->r * planet->scale, planet->y - planet->r * planet ->scale,
+                       txGetExtentX (planet->image) * planet->scale, txGetExtentY (planet->image) * planet->scale, planet->image, 0, 0,
+                       txGetExtentX (planet->image),                 txGetExtentY (planet->image), blend);
+
+    txSetColor (TX_PINK, 3);
+
+    txSetFillColor (TX_NULL);
+
+    txCircle     (planet->x, planet->y, planet->r * planet->scale);
     }
 
 //-----------------------------------------------------------------------------
