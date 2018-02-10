@@ -40,6 +40,8 @@ void DrawPlanet (const Hero* planet);
 void YourAlphaBlend (HDC destImage,   double xDest,   double yDest,   double width, double height,
                      HDC sourceImage, double xSource, double ySource, double alpha, double scale);
 
+double Dist ( const Hero first, const Hero second);
+
 //-----------------------------------------------------------------------------
 
 int main()
@@ -59,17 +61,19 @@ int main()
 
 void MoveHero()
     {
-    Hero xWing     = { 141,  388,  1, 1, 100, 0.5, NULL,  0.785, TX_YELLOW, 'W', 'S', VK_RSHIFT, 'E', 'Q', VK_F1, VK_F2 };
+    Hero xWing     = { rand() % (int) (1921 - 100 * 0.5 * 2) + 100 * 0.5, rand() % (int) (1081 - 100 * 0.5 * 2) + 100 * 0.5, 1, 1, 100, 0.5, NULL,  0.785, TX_YELLOW, 'W', 'S', VK_RSHIFT, 'E', 'Q', VK_F1, VK_F2 };
 
-    Hero deathStar = { 1000, 503,  0, 0, 120, 1.5,   NULL,  3.14,  TX_CYAN,   'I', 'K', VK_LSHIFT, 'O', 'U'             };
+    Hero deathStar = { rand() % (int) (1921 - 120 * 1.5 * 2) + 120 * 1.5, rand() % (int) (1081 - 120 * 1.5 * 2) + 120 * 1.5, 0, 0, 120, 1.5, NULL,  3.14,  TX_CYAN,   'I', 'K', VK_LSHIFT, 'O', 'U'             };
 
-    Hero planet    = { 1500, 750,  0, 0, 136, 0.5,   txLoadImage ("planet.bmp")                                           };
+    Hero planet    = { rand() % (int) (1921 - 136 * 0.5 * 2) + 68  * 0.5, rand() % (int) (1081 - 136 * 0.5 * 2) + 136 * 0.5, 0, 0, 136, 0.5, txLoadImage ("planet.bmp")                                         };
 
     HDC fon        = txLoadImage ("Background.bmp");
 
     double dt = 1;
 
     double t  = 0;
+
+    SetStartLocation (xWing, deathStar, planet);
 
     while (! GetAsyncKeyState (VK_ESCAPE))
         {
@@ -87,9 +91,9 @@ void MoveHero()
 
         DrawPlanet    (&planet);
 
-        double distance = sqrt ( (xWing.x - deathStar.x) * (xWing.x - deathStar.x) + (xWing.y - deathStar.y) * (xWing.y - deathStar.y) );
+        double distance = Dist (xWing, deathStar);
 
-        double route    = sqrt ( (xWing.x - planet.x) * (xWing.x - planet.x) + (xWing.y - planet.y) * (xWing.y - planet.y) );
+        double route    = Dist (xWing, planet);
 
         if (distance <= xWing.r * xWing.scale + deathStar.r * deathStar.scale)
             {
@@ -331,11 +335,11 @@ void HeroControl (struct Hero* rebel)
     {
     /*if (GetAsyncKeyState (rebel->keyRight)) rebel->vx += 1;
 
-    if (GetAsyncKeyState (rebel->keyLeft))   rebel->vx -= 1;
+    if (GetAsyncKeyState (rebel->keyLeft))    rebel->vx -= 1;
 
-    if (GetAsyncKeyState (rebel->keyUp))     rebel->vy -= 1;
+    if (GetAsyncKeyState (rebel->keyUp))      rebel->vy -= 1;
 
-    if (GetAsyncKeyState (rebel->keyDown))   rebel->vy += 1;*/
+    if (GetAsyncKeyState (rebel->keyDown))    rebel->vy += 1;*/
 
     if (GetAsyncKeyState (rebel->keyClockwise))
         {
@@ -411,3 +415,31 @@ void HeroControl (struct Hero* rebel)
         rebel->scale = 5;
         }
     }
+
+//-----------------------------------------------------------------------------
+
+double Dist (const Hero first, const Hero second)
+    {
+    return sqrt ( (first.x - second.x) * (first.x - second.x) + (first.y - second.y) * (first.y - second.y) );
+    }
+
+//-----------------------------------------------------------------------------
+
+void SetStartLocation (const Hero xWing, const Hero deathStar, const Hero planet)
+    {
+    xwing.x = 0, xWing.y = 0;
+
+    deathStar.x = 0, deathStar.y = 0;
+
+    planet.x = 0, planet.y = 0;
+    }
+
+
+
+
+
+
+
+
+
+
