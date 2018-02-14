@@ -98,8 +98,6 @@ void StartTitles()
 
     WriteTitle (100, "Rezhiser - postanovshik: CactusSad", TX_WHITE, 0, 0);
 
-    WriteTitle (100, "Director of THIS is as well CactusSad", TX_GREEN, 0, 0);
-
     WriteTitle (100, "Thanks to help of \"The Discovery Bank\"\n"
                       "There is always a place for a discovery in your life", RGB (218, 165, 32), 0, 0);
     }
@@ -127,6 +125,7 @@ void EndTitles()
 
     WriteTitle (70, "During the surveys none of the drawn\n"
                     "characters was affected", TX_ORANGE, 0, 0);
+
 
     }
 

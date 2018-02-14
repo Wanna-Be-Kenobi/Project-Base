@@ -42,6 +42,12 @@ void YourAlphaBlend (HDC destImage,   double xDest,   double yDest,   double wid
 
 double Dist ( const Hero first, const Hero second);
 
+void ScaleControl();
+
+//-----------------------------------------------------------------------------
+
+double Scale = 1;
+
 //-----------------------------------------------------------------------------
 
 int main()
@@ -73,7 +79,7 @@ void MoveHero()
 
     double t  = 0;
 
-    SetStartLocation (xWing, deathStar, planet);
+    //SetStartLocation (xWing, deathStar, planet);
 
     while (! GetAsyncKeyState (VK_ESCAPE))
         {
@@ -95,14 +101,14 @@ void MoveHero()
 
         double route    = Dist (xWing, planet);
 
-        if (distance <= xWing.r * xWing.scale + deathStar.r * deathStar.scale)
+        if (distance <= xWing.r * xWing.scale * Scale + deathStar.r * deathStar.scale * Scale)
             {
             txMessageBox ("Game over");
 
             break;
             }
 
-        if (route    <= xWing.r * xWing.scale + planet.r * planet.scale)
+        if (route    <= xWing.r * xWing.scale * Scale + planet.r * planet.scale * Scale)
             {
             txMessageBox ("Congratulations! You won!");
 
@@ -116,6 +122,8 @@ void MoveHero()
         HeroControl   (&xWing);
 
         HeroControl   (&deathStar);
+
+        ScaleControl();
 
         if (GetAsyncKeyState (VK_F5))
             {
@@ -143,98 +151,98 @@ void DrawXwing (const Hero* rebel)
 
     txSetFillColor (TX_NULL);
 
-    myRectangle (rebel->x-50 * rebel->scale,  rebel->y-82 * rebel->scale, rebel->x-44 * rebel->scale,  rebel->y-72 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-44 * rebel->scale,  rebel->y-81 * rebel->scale, rebel->x-14 * rebel->scale,  rebel->y-75 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-35 * rebel->scale,  rebel->y-87 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y-81 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-14 * rebel->scale,  rebel->y-82 * rebel->scale, rebel->x-8  * rebel->scale,  rebel->y-72 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-28 * rebel->scale,  rebel->y-60 * rebel->scale, rebel->x-23 * rebel->scale,  rebel->y-51 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-25 * rebel->scale,  rebel->y-66 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y-57 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-50 * rebel->scale * Scale,  rebel->y-82 * rebel->scale * Scale, rebel->x-44 * rebel->scale * Scale,  rebel->y-72 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-44 * rebel->scale * Scale,  rebel->y-81 * rebel->scale * Scale, rebel->x-14 * rebel->scale * Scale,  rebel->y-75 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-35 * rebel->scale * Scale,  rebel->y-87 * rebel->scale * Scale, rebel->x-11 * rebel->scale * Scale,  rebel->y-81 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-14 * rebel->scale * Scale,  rebel->y-82 * rebel->scale * Scale, rebel->x-8  * rebel->scale * Scale,  rebel->y-72 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-28 * rebel->scale * Scale,  rebel->y-60 * rebel->scale * Scale, rebel->x-23 * rebel->scale * Scale,  rebel->y-51 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-25 * rebel->scale * Scale,  rebel->y-66 * rebel->scale * Scale, rebel->x-11 * rebel->scale * Scale,  rebel->y-57 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
 
     txSetFillColor (rebel->color);
 
-    myRectangle (rebel->x-8  * rebel->scale,  rebel->y-79 * rebel->scale, rebel->x+16 * rebel->scale,  rebel->y-76 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+17 * rebel->scale,  rebel->y-78 * rebel->scale, rebel->x+64 * rebel->scale,  rebel->y-78 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+38 * rebel->scale,  rebel->y-84 * rebel->scale, rebel->x+38 * rebel->scale,  rebel->y-72 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-38 * rebel->scale,  rebel->y-75 * rebel->scale, rebel->x-46 * rebel->scale,  rebel->y-40 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-11 * rebel->scale,  rebel->y-72 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y-40 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-41 * rebel->scale,  rebel->y-60 * rebel->scale, rebel->x-35 * rebel->scale,  rebel->y-60 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-67 * rebel->scale,  rebel->y-39 * rebel->scale, rebel->x-67 * rebel->scale,  rebel->y-33 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-8  * rebel->scale * Scale,  rebel->y-79 * rebel->scale * Scale, rebel->x+16 * rebel->scale * Scale,  rebel->y-76 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+17 * rebel->scale * Scale,  rebel->y-78 * rebel->scale * Scale, rebel->x+64 * rebel->scale * Scale,  rebel->y-78 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+38 * rebel->scale * Scale,  rebel->y-84 * rebel->scale * Scale, rebel->x+38 * rebel->scale * Scale,  rebel->y-72 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-38 * rebel->scale * Scale,  rebel->y-75 * rebel->scale * Scale, rebel->x-46 * rebel->scale * Scale,  rebel->y-40 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale * Scale,  rebel->y-72 * rebel->scale * Scale, rebel->x-11 * rebel->scale * Scale,  rebel->y-40 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale * Scale,  rebel->y-60 * rebel->scale * Scale, rebel->x-35 * rebel->scale * Scale,  rebel->y-60 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-67 * rebel->scale * Scale,  rebel->y-39 * rebel->scale * Scale, rebel->x-67 * rebel->scale * Scale,  rebel->y-33 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
 
     txSetFillColor (rebel->color);
 
-    myRectangle (rebel->x-53 * rebel->scale,  rebel->y-40 * rebel->scale, rebel->x-37 * rebel->scale,  rebel->y-31 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-59 * rebel->scale,  rebel->y-31 * rebel->scale, rebel->x-53 * rebel->scale,  rebel->y-40 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-64 * rebel->scale,  rebel->y-40 * rebel->scale, rebel->x-59 * rebel->scale,  rebel->y-31 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-37 * rebel->scale,  rebel->y-45 * rebel->scale, rebel->x-25 * rebel->scale,  rebel->y-27 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-25 * rebel->scale,  rebel->y-36 * rebel->scale, rebel->x-13 * rebel->scale,  rebel->y-27 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-25 * rebel->scale,  rebel->y-36 * rebel->scale, rebel->x-13 * rebel->scale,  rebel->y-45 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-13 * rebel->scale,  rebel->y-45 * rebel->scale, rebel->x-2  * rebel->scale,  rebel->y-27 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-2  * rebel->scale,  rebel->y-42 * rebel->scale, rebel->x+3  * rebel->scale,  rebel->y-30 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-11 * rebel->scale,  rebel->y-27 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-11 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->x-53 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-50 * rebel->scale,  rebel->y-31 * rebel->scale, rebel->x-55 * rebel->scale,  rebel->y-12 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-55 * rebel->scale,  rebel->y-12 * rebel->scale, rebel->x-55 * rebel->scale,  rebel->y+11 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-11 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->x+91 * rebel->scale,  rebel->y-6  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+91 * rebel->scale,  rebel->y-7  * rebel->scale, rebel->x+91 * rebel->scale,  rebel->y+8  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+91 * rebel->scale,  rebel->y-7  * rebel->scale, rebel->x+119* rebel->scale,  rebel->y-4  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+119* rebel->scale,  rebel->y-4  * rebel->scale, rebel->x+121* rebel->scale,  rebel->y-3  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+121* rebel->scale,  rebel->y-3  * rebel->scale, rebel->x+122* rebel->scale,  rebel->y-1  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+122* rebel->scale,  rebel->y-1  * rebel->scale, rebel->x+122* rebel->scale,  rebel->y+1  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+122* rebel->scale,  rebel->y+1  * rebel->scale, rebel->x+121* rebel->scale,  rebel->y+3  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+121* rebel->scale,  rebel->y+3  * rebel->scale, rebel->x+119* rebel->scale,  rebel->y+5  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+119* rebel->scale,  rebel->y+5  * rebel->scale, rebel->x+91 * rebel->scale,  rebel->y+8  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+91 * rebel->scale,  rebel->y+7  * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-11 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y+27 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-11 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->x-53 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-55 * rebel->scale,  rebel->y+11 * rebel->scale, rebel->x-50 * rebel->scale,  rebel->y+32 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-53 * rebel->scale,  rebel->y+32 * rebel->scale, rebel->x-37 * rebel->scale,  rebel->y+41 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-53 * rebel->scale,  rebel->y+32 * rebel->scale, rebel->x-59 * rebel->scale,  rebel->y+41 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-59 * rebel->scale,  rebel->y+41 * rebel->scale, rebel->x-64 * rebel->scale,  rebel->y+32 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-67 * rebel->scale,  rebel->y+33 * rebel->scale, rebel->x-67 * rebel->scale,  rebel->y+39 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-37 * rebel->scale,  rebel->y+45 * rebel->scale, rebel->x-25 * rebel->scale,  rebel->y+27 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-25 * rebel->scale,  rebel->y+27 * rebel->scale, rebel->x-13 * rebel->scale,  rebel->y+36 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-25 * rebel->scale,  rebel->y+45 * rebel->scale, rebel->x-13 * rebel->scale,  rebel->y+36 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-13 * rebel->scale,  rebel->y+27 * rebel->scale, rebel->x-2  * rebel->scale,  rebel->y+45 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-2  * rebel->scale,  rebel->y+42 * rebel->scale, rebel->x+3  * rebel->scale,  rebel->y+30 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-46 * rebel->scale,  rebel->y+42 * rebel->scale, rebel->x-38 * rebel->scale,  rebel->y+75 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-11 * rebel->scale,  rebel->y+45 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y+74 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-28 * rebel->scale,  rebel->y+51 * rebel->scale, rebel->x-23 * rebel->scale,  rebel->y+60 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-11 * rebel->scale,  rebel->y+66 * rebel->scale, rebel->x-25 * rebel->scale,  rebel->y+56 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-41 * rebel->scale,  rebel->y+60 * rebel->scale, rebel->x-35 * rebel->scale,  rebel->y+60 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-50 * rebel->scale,  rebel->y+74 * rebel->scale, rebel->x-44 * rebel->scale,  rebel->y+83 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-44 * rebel->scale,  rebel->y+75 * rebel->scale, rebel->x-14 * rebel->scale,  rebel->y+81 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-14 * rebel->scale,  rebel->y+74 * rebel->scale, rebel->x-8  * rebel->scale,  rebel->y+83 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-35 * rebel->scale,  rebel->y+81 * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y+87 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-53 * rebel->scale * Scale,  rebel->y-40 * rebel->scale * Scale, rebel->x-37 * rebel->scale * Scale,  rebel->y-31 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-59 * rebel->scale * Scale,  rebel->y-31 * rebel->scale * Scale, rebel->x-53 * rebel->scale * Scale,  rebel->y-40 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-64 * rebel->scale * Scale,  rebel->y-40 * rebel->scale * Scale, rebel->x-59 * rebel->scale * Scale,  rebel->y-31 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-37 * rebel->scale * Scale,  rebel->y-45 * rebel->scale * Scale, rebel->x-25 * rebel->scale * Scale,  rebel->y-27 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-25 * rebel->scale * Scale,  rebel->y-36 * rebel->scale * Scale, rebel->x-13 * rebel->scale * Scale,  rebel->y-27 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-25 * rebel->scale * Scale,  rebel->y-36 * rebel->scale * Scale, rebel->x-13 * rebel->scale * Scale,  rebel->y-45 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-13 * rebel->scale * Scale,  rebel->y-45 * rebel->scale * Scale, rebel->x-2  * rebel->scale * Scale,  rebel->y-27 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-2  * rebel->scale * Scale,  rebel->y-42 * rebel->scale * Scale, rebel->x+3  * rebel->scale * Scale,  rebel->y-30 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale * Scale,  rebel->y-27 * rebel->scale * Scale, rebel->x-11 * rebel->scale * Scale,  rebel->y-16 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale * Scale,  rebel->y-16 * rebel->scale * Scale, rebel->x-53 * rebel->scale * Scale,  rebel->y-16 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-50 * rebel->scale * Scale,  rebel->y-31 * rebel->scale * Scale, rebel->x-55 * rebel->scale * Scale,  rebel->y-12 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-55 * rebel->scale * Scale,  rebel->y-12 * rebel->scale * Scale, rebel->x-55 * rebel->scale * Scale,  rebel->y+11 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale * Scale,  rebel->y-16 * rebel->scale * Scale, rebel->x+91 * rebel->scale * Scale,  rebel->y-6  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+91 * rebel->scale * Scale,  rebel->y-7  * rebel->scale * Scale, rebel->x+91 * rebel->scale * Scale,  rebel->y+8  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+91 * rebel->scale * Scale,  rebel->y-7  * rebel->scale * Scale, rebel->x+119* rebel->scale * Scale,  rebel->y-4  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+119* rebel->scale * Scale,  rebel->y-4  * rebel->scale * Scale, rebel->x+121* rebel->scale * Scale,  rebel->y-3  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+121* rebel->scale * Scale,  rebel->y-3  * rebel->scale * Scale, rebel->x+122* rebel->scale * Scale,  rebel->y-1  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+122* rebel->scale * Scale,  rebel->y-1  * rebel->scale * Scale, rebel->x+122* rebel->scale * Scale,  rebel->y+1  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+122* rebel->scale * Scale,  rebel->y+1  * rebel->scale * Scale, rebel->x+121* rebel->scale * Scale,  rebel->y+3  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+121* rebel->scale * Scale,  rebel->y+3  * rebel->scale * Scale, rebel->x+119* rebel->scale * Scale,  rebel->y+5  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+119* rebel->scale * Scale,  rebel->y+5  * rebel->scale * Scale, rebel->x+91 * rebel->scale * Scale,  rebel->y+8  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+91 * rebel->scale * Scale,  rebel->y+7  * rebel->scale * Scale, rebel->x-11 * rebel->scale * Scale,  rebel->y+17 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale * Scale,  rebel->y+17 * rebel->scale * Scale, rebel->x-11 * rebel->scale * Scale,  rebel->y+27 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale * Scale,  rebel->y+17 * rebel->scale * Scale, rebel->x-53 * rebel->scale * Scale,  rebel->y+17 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-55 * rebel->scale * Scale,  rebel->y+11 * rebel->scale * Scale, rebel->x-50 * rebel->scale * Scale,  rebel->y+32 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-53 * rebel->scale * Scale,  rebel->y+32 * rebel->scale * Scale, rebel->x-37 * rebel->scale * Scale,  rebel->y+41 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-53 * rebel->scale * Scale,  rebel->y+32 * rebel->scale * Scale, rebel->x-59 * rebel->scale * Scale,  rebel->y+41 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-59 * rebel->scale * Scale,  rebel->y+41 * rebel->scale * Scale, rebel->x-64 * rebel->scale * Scale,  rebel->y+32 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-67 * rebel->scale * Scale,  rebel->y+33 * rebel->scale * Scale, rebel->x-67 * rebel->scale * Scale,  rebel->y+39 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-37 * rebel->scale * Scale,  rebel->y+45 * rebel->scale * Scale, rebel->x-25 * rebel->scale * Scale,  rebel->y+27 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-25 * rebel->scale * Scale,  rebel->y+27 * rebel->scale * Scale, rebel->x-13 * rebel->scale * Scale,  rebel->y+36 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-25 * rebel->scale * Scale,  rebel->y+45 * rebel->scale * Scale, rebel->x-13 * rebel->scale * Scale,  rebel->y+36 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-13 * rebel->scale * Scale,  rebel->y+27 * rebel->scale * Scale, rebel->x-2  * rebel->scale * Scale,  rebel->y+45 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-2  * rebel->scale * Scale,  rebel->y+42 * rebel->scale * Scale, rebel->x+3  * rebel->scale * Scale,  rebel->y+30 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-46 * rebel->scale * Scale,  rebel->y+42 * rebel->scale * Scale, rebel->x-38 * rebel->scale * Scale,  rebel->y+75 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-11 * rebel->scale * Scale,  rebel->y+45 * rebel->scale * Scale, rebel->x-11 * rebel->scale * Scale,  rebel->y+74 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-28 * rebel->scale * Scale,  rebel->y+51 * rebel->scale * Scale, rebel->x-23 * rebel->scale * Scale,  rebel->y+60 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-11 * rebel->scale * Scale,  rebel->y+66 * rebel->scale * Scale, rebel->x-25 * rebel->scale * Scale,  rebel->y+56 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale * Scale,  rebel->y+60 * rebel->scale * Scale, rebel->x-35 * rebel->scale * Scale,  rebel->y+60 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-50 * rebel->scale * Scale,  rebel->y+74 * rebel->scale * Scale, rebel->x-44 * rebel->scale * Scale,  rebel->y+83 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-44 * rebel->scale * Scale,  rebel->y+75 * rebel->scale * Scale, rebel->x-14 * rebel->scale * Scale,  rebel->y+81 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-14 * rebel->scale * Scale,  rebel->y+74 * rebel->scale * Scale, rebel->x-8  * rebel->scale * Scale,  rebel->y+83 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-35 * rebel->scale * Scale,  rebel->y+81 * rebel->scale * Scale, rebel->x-11 * rebel->scale * Scale,  rebel->y+87 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
 
     txSetFillColor (rebel->color);
 
-    myRectangle (rebel->x-8  * rebel->scale,  rebel->y+77 * rebel->scale, rebel->x+16 * rebel->scale,  rebel->y+80 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+17 * rebel->scale,  rebel->y+78 * rebel->scale, rebel->x+64 * rebel->scale,  rebel->y+78 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+38 * rebel->scale,  rebel->y+72 * rebel->scale, rebel->x+38 * rebel->scale,  rebel->y+84 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x-55 * rebel->scale,  rebel->y+3  * rebel->scale, rebel->x-11 * rebel->scale,  rebel->y-3  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-43 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->x-43 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-19 * rebel->scale,  rebel->y-16 * rebel->scale, rebel->x-19 * rebel->scale,  rebel->y+17 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    txCircle    (rebel->x,             rebel->y,                      4 * rebel->scale                                                         );
-    myLine      (rebel->x+11 * rebel->scale,  rebel->y-6  * rebel->scale, rebel->x+11 * rebel->scale,  rebel->y+6  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+11 * rebel->scale,  rebel->y-6  * rebel->scale, rebel->x+17 * rebel->scale,  rebel->y-12 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+11 * rebel->scale,  rebel->y+6  * rebel->scale, rebel->x+17 * rebel->scale,  rebel->y+12 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myRectangle (rebel->x+17 * rebel->scale,  rebel->y-3  * rebel->scale, rebel->x+37 * rebel->scale,  rebel->y+4  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+37 * rebel->scale,  rebel->y,            rebel->x+85 * rebel->scale,  rebel->y,            rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+37 * rebel->scale,  rebel->y+1  * rebel->scale, rebel->x+85 * rebel->scale,  rebel->y+1  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+98 * rebel->scale,  rebel->y,            rebel->x+113* rebel->scale,  rebel->y,            rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+98 * rebel->scale,  rebel->y+1  * rebel->scale, rebel->x+98 * rebel->scale,  rebel->y+1  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+49 * rebel->scale,  rebel->y-9  * rebel->scale, rebel->x+49 * rebel->scale,  rebel->y+10 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x+68 * rebel->scale,  rebel->y-7  * rebel->scale, rebel->x+69 * rebel->scale,  rebel->y+8  * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-8  * rebel->scale * Scale,  rebel->y+77 * rebel->scale * Scale, rebel->x+16 * rebel->scale * Scale,  rebel->y+80 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+17 * rebel->scale * Scale,  rebel->y+78 * rebel->scale * Scale, rebel->x+64 * rebel->scale * Scale,  rebel->y+78 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+38 * rebel->scale * Scale,  rebel->y+72 * rebel->scale * Scale, rebel->x+38 * rebel->scale * Scale,  rebel->y+84 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x-55 * rebel->scale * Scale,  rebel->y+3  * rebel->scale * Scale, rebel->x-11 * rebel->scale * Scale,  rebel->y-3  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-43 * rebel->scale * Scale,  rebel->y-16 * rebel->scale * Scale, rebel->x-43 * rebel->scale * Scale,  rebel->y+17 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-19 * rebel->scale * Scale,  rebel->y-16 * rebel->scale * Scale, rebel->x-19 * rebel->scale * Scale,  rebel->y+17 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    txCircle    (rebel->x,             rebel->y,                      4 * rebel->scale * Scale                                                         );
+    myLine      (rebel->x+11 * rebel->scale * Scale,  rebel->y-6  * rebel->scale * Scale, rebel->x+11 * rebel->scale * Scale,  rebel->y+6  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+11 * rebel->scale * Scale,  rebel->y-6  * rebel->scale * Scale, rebel->x+17 * rebel->scale * Scale,  rebel->y-12 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+11 * rebel->scale * Scale,  rebel->y+6  * rebel->scale * Scale, rebel->x+17 * rebel->scale * Scale,  rebel->y+12 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myRectangle (rebel->x+17 * rebel->scale * Scale,  rebel->y-3  * rebel->scale * Scale, rebel->x+37 * rebel->scale * Scale,  rebel->y+4  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+37 * rebel->scale * Scale,  rebel->y,            rebel->x+85 * rebel->scale * Scale,  rebel->y,            rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+37 * rebel->scale * Scale,  rebel->y+1  * rebel->scale * Scale, rebel->x+85 * rebel->scale * Scale,  rebel->y+1  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+98 * rebel->scale * Scale,  rebel->y,            rebel->x+113* rebel->scale * Scale,  rebel->y,            rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+98 * rebel->scale * Scale,  rebel->y+1  * rebel->scale * Scale, rebel->x+98 * rebel->scale * Scale,  rebel->y+1  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+49 * rebel->scale * Scale,  rebel->y-9  * rebel->scale * Scale, rebel->x+49 * rebel->scale * Scale,  rebel->y+10 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x+68 * rebel->scale * Scale,  rebel->y-7  * rebel->scale * Scale, rebel->x+69 * rebel->scale * Scale,  rebel->y+8  * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
 
     txSetColor  (rebel->color, 2);
 
-    myLine      (rebel->x-41 * rebel->scale,  rebel->y-54 * rebel->scale, rebel->x-36 * rebel->scale,  rebel->y-54 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-41 * rebel->scale,  rebel->y+65 * rebel->scale, rebel->x-36 * rebel->scale,  rebel->y+65 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale * Scale,  rebel->y-54 * rebel->scale * Scale, rebel->x-36 * rebel->scale * Scale,  rebel->y-54 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale * Scale,  rebel->y+65 * rebel->scale * Scale, rebel->x-36 * rebel->scale * Scale,  rebel->y+65 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
 
     txSetColor  (rebel->color, 1);
 
-    myLine      (rebel->x-41 * rebel->scale,  rebel->y-65 * rebel->scale, rebel->x-33 * rebel->scale,  rebel->y-65 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
-    myLine      (rebel->x-41 * rebel->scale,  rebel->y+55 * rebel->scale, rebel->x-33 * rebel->scale,  rebel->y+55 * rebel->scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale * Scale,  rebel->y-65 * rebel->scale * Scale, rebel->x-33 * rebel->scale * Scale,  rebel->y-65 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+    myLine      (rebel->x-41 * rebel->scale * Scale,  rebel->y+55 * rebel->scale * Scale, rebel->x-33 * rebel->scale * Scale,  rebel->y+55 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
 
     //txSetFillColor (TX_NULL);
 
@@ -251,34 +259,34 @@ void DrawDeathStar (const Hero* star)
 
     txSetFillColor (TX_NULL);
 
-    myCircle (star->x+43 * star->scale,  star->y+42 * star->scale,          31 * star->scale,                             star->rotate, star->x, star->y);
-    myCircle (star->x+43 * star->scale,  star->y+42 * star->scale,           7 * star->scale,                             star->rotate, star->x, star->y);
-    myArc    (star->x,                   star->y,                   star->r    * star->scale,  82,          215,          star->rotate, star->x, star->y);
-    myLine   (star->x+121* star->scale,  star->y,                   star->x-119* star->scale,  star->y,                   star->rotate, star->x, star->y);
-    myLine   (star->x+121* star->scale,  star->y-3  * star->scale,  star->x-119* star->scale,  star->y-3  * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-53 * star->scale,  star->y-106* star->scale,  star->x-53 * star->scale,  star->y-96 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-26 * star->scale,  star->y-96 * star->scale,  star->x-53 * star->scale,  star->y-96 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-35 * star->scale,  star->y-96 * star->scale,  star->x-35 * star->scale,  star->y-78 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-2  * star->scale,  star->y-78 * star->scale,  star->x-56 * star->scale,  star->y-78 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-2  * star->scale,  star->y-78 * star->scale,  star->x-2  * star->scale,  star->y-57 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x+64 * star->scale,  star->y-57 * star->scale,  star->x-74 * star->scale,  star->y-57 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-23 * star->scale,  star->y-57 * star->scale,  star->x-23 * star->scale,  star->y-36 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-23 * star->scale,  star->y-36 * star->scale,  star->x-85 * star->scale,  star->y-36 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-85 * star->scale,  star->y-36 * star->scale,  star->x-85 * star->scale,  star->y-21 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-85 * star->scale,  star->y-21 * star->scale,  star->x-119* star->scale,  star->y-21 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-119* star->scale,  star->y-21 * star->scale,  star->x-119* star->scale,  star->y+18 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-119* star->scale,  star->y+18 * star->scale,  star->x-89 * star->scale,  star->y+18 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-89 * star->scale,  star->y+18 * star->scale,  star->x-89 * star->scale,  star->y+38 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-50 * star->scale,  star->y+38 * star->scale,  star->x-95 * star->scale,  star->y+38 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-56 * star->scale,  star->y+38 * star->scale,  star->x-56 * star->scale,  star->y+60 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-65 * star->scale,  star->y+60 * star->scale,  star->x-20 * star->scale,  star->y+60 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-29 * star->scale,  star->y+60 * star->scale,  star->x-29 * star->scale,  star->y+81 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-77 * star->scale,  star->y+81 * star->scale,  star->x-11 * star->scale,  star->y+81 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-41 * star->scale,  star->y+81 * star->scale,  star->x-41 * star->scale,  star->y+99 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-23 * star->scale,  star->y+81 * star->scale,  star->x-50 * star->scale,  star->y+81 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-23 * star->scale,  star->y+99 * star->scale,  star->x-50 * star->scale,  star->y+99 * star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-23 * star->scale,  star->y+99 * star->scale,  star->x-23 * star->scale,  star->y+117* star->scale,  star->rotate, star->x, star->y);
-    myLine   (star->x-23 * star->scale,  star->y+118* star->scale,  star->x-15 * star->scale,  star->y+118* star->scale,  star->rotate, star->x, star->y);
+    myCircle (star->x+43 * star->scale * Scale,  star->y+42 * star->scale * Scale,          31 * star->scale * Scale,                             star->rotate, star->x, star->y);
+    myCircle (star->x+43 * star->scale * Scale,  star->y+42 * star->scale * Scale,           7 * star->scale * Scale,                             star->rotate, star->x, star->y);
+    myArc    (star->x,                   star->y,                   star->r    * star->scale * Scale,  82,          215,          star->rotate, star->x, star->y);
+    myLine   (star->x+121* star->scale * Scale,  star->y,                   star->x-119* star->scale * Scale,  star->y,                   star->rotate, star->x, star->y);
+    myLine   (star->x+121* star->scale * Scale,  star->y-3  * star->scale * Scale,  star->x-119* star->scale * Scale,  star->y-3  * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-53 * star->scale * Scale,  star->y-106* star->scale * Scale,  star->x-53 * star->scale * Scale,  star->y-96 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-26 * star->scale * Scale,  star->y-96 * star->scale * Scale,  star->x-53 * star->scale * Scale,  star->y-96 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-35 * star->scale * Scale,  star->y-96 * star->scale * Scale,  star->x-35 * star->scale * Scale,  star->y-78 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-2  * star->scale * Scale,  star->y-78 * star->scale * Scale,  star->x-56 * star->scale * Scale,  star->y-78 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-2  * star->scale * Scale,  star->y-78 * star->scale * Scale,  star->x-2  * star->scale * Scale,  star->y-57 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x+64 * star->scale * Scale,  star->y-57 * star->scale * Scale,  star->x-74 * star->scale * Scale,  star->y-57 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale * Scale,  star->y-57 * star->scale * Scale,  star->x-23 * star->scale * Scale,  star->y-36 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale * Scale,  star->y-36 * star->scale * Scale,  star->x-85 * star->scale * Scale,  star->y-36 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-85 * star->scale * Scale,  star->y-36 * star->scale * Scale,  star->x-85 * star->scale * Scale,  star->y-21 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-85 * star->scale * Scale,  star->y-21 * star->scale * Scale,  star->x-119* star->scale * Scale,  star->y-21 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-119* star->scale * Scale,  star->y-21 * star->scale * Scale,  star->x-119* star->scale * Scale,  star->y+18 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-119* star->scale * Scale,  star->y+18 * star->scale * Scale,  star->x-89 * star->scale * Scale,  star->y+18 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-89 * star->scale * Scale,  star->y+18 * star->scale * Scale,  star->x-89 * star->scale * Scale,  star->y+38 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-50 * star->scale * Scale,  star->y+38 * star->scale * Scale,  star->x-95 * star->scale * Scale,  star->y+38 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-56 * star->scale * Scale,  star->y+38 * star->scale * Scale,  star->x-56 * star->scale * Scale,  star->y+60 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-65 * star->scale * Scale,  star->y+60 * star->scale * Scale,  star->x-20 * star->scale * Scale,  star->y+60 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-29 * star->scale * Scale,  star->y+60 * star->scale * Scale,  star->x-29 * star->scale * Scale,  star->y+81 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-77 * star->scale * Scale,  star->y+81 * star->scale * Scale,  star->x-11 * star->scale * Scale,  star->y+81 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-41 * star->scale * Scale,  star->y+81 * star->scale * Scale,  star->x-41 * star->scale * Scale,  star->y+99 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale * Scale,  star->y+81 * star->scale * Scale,  star->x-50 * star->scale * Scale,  star->y+81 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale * Scale,  star->y+99 * star->scale * Scale,  star->x-50 * star->scale * Scale,  star->y+99 * star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale * Scale,  star->y+99 * star->scale * Scale,  star->x-23 * star->scale * Scale,  star->y+117* star->scale * Scale,  star->rotate, star->x, star->y);
+    myLine   (star->x-23 * star->scale * Scale,  star->y+118* star->scale * Scale,  star->x-15 * star->scale * Scale,  star->y+118* star->scale * Scale,  star->rotate, star->x, star->y);
 
     //txCircle (star->x,     star->y,     star->r);
     }
@@ -289,15 +297,21 @@ void DrawPlanet (const Hero* planet)
     {
     BLENDFUNCTION blend = { AC_SRC_OVER, 0, 255, AC_SRC_ALPHA };
 
-    Win32::AlphaBlend (txDC(), planet->x - planet->r * planet->scale, planet->y - planet->r * planet ->scale,
-                       txGetExtentX (planet->image) * planet->scale, txGetExtentY (planet->image) * planet->scale, planet->image, 0, 0,
-                       txGetExtentX (planet->image),                 txGetExtentY (planet->image), blend);
+    Win32::AlphaBlend (txDC(),
+                       planet->x - planet->r        * planet->scale * Scale,
+                       planet->y - planet->r        * planet->scale * Scale,
+                       txGetExtentX (planet->image) * planet->scale * Scale,
+                       txGetExtentY (planet->image) * planet->scale * Scale,
+                       planet->image, 0, 0,
+                       txGetExtentX (planet->image),
+                       txGetExtentY (planet->image),
+                       blend);
 
     txSetColor (TX_PINK, 3);
 
     txSetFillColor (TX_NULL);
 
-    txCircle     (planet->x, planet->y, planet->r * planet->scale);
+    txCircle     (planet->x, planet->y, planet->r * planet->scale * Scale);
     }
 
 //-----------------------------------------------------------------------------
@@ -408,11 +422,41 @@ void HeroControl (struct Hero* rebel)
 
     if (rebel->scale <= 0.1)
         {
-        rebel->scale = 0.1;
+        rebel->scale  = 0.1;
         }
     if (rebel->scale >= 5)
         {
-        rebel->scale = 5;
+        rebel->scale  = 5;
+        }
+    }
+
+//-----------------------------------------------------------------------------
+
+void ScaleControl()
+    {
+    if (GetAsyncKeyState (VK_F10))
+        {
+        Scale += 0.1;
+
+        //printf ("Scale = %lg \n", Scale);
+        }
+
+    if (GetAsyncKeyState (VK_F11))
+        {
+        Scale -= 0.1;
+
+        //printf ("Scale = %lg \n", Scale);
+        }
+
+
+    if (Scale <= 0.1)
+        {
+        Scale  = 0.1;
+        }
+
+    if (Scale >= 2)
+        {
+        Scale  = 2;
         }
     }
 
@@ -425,14 +469,14 @@ double Dist (const Hero first, const Hero second)
 
 //-----------------------------------------------------------------------------
 
-void SetStartLocation (const Hero xWing, const Hero deathStar, const Hero planet)
+/*void SetStartLocation (const Hero xWing, const Hero deathStar, const Hero planet)
     {
     xwing.x = 0, xWing.y = 0;
 
     deathStar.x = 0, deathStar.y = 0;
 
     planet.x = 0, planet.y = 0;
-    }
+    }   */
 
 
 
