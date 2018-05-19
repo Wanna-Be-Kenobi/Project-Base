@@ -4,11 +4,17 @@
 
 #include "Rotate.h"
 
+
+
 //-----------------------------------------------------------------------------
 
 double Scale = 1;
 
 const int NxWings = 5;
+
+COLORREF dStarColor = TX_CYAN;
+
+#include "Beam.h"
 
 //-----------------------------------------------------------------------------
 
@@ -29,7 +35,7 @@ struct Hero
 
 //-----------------------------------------------------------------------------
 
-void DrawXwing (const Hero* rebel, double beam);
+int DrawXwing (const Hero* rebel, double beam);
 
 void MoveHero (double lvls);
 
@@ -71,11 +77,7 @@ void DrawShadowText (double x1, double y1, double x2, double  y2, char str [20],
 
 int main()
     {
-    txCreateWindow (1920, 1080);
-
-    txSetFillColor (TX_WHITE);
-
-    txClear();
+    txCreateWindow (1920 - 20, 1080 - 120);
 
     double lvls = 1;
 
@@ -99,19 +101,17 @@ void MoveHero (double lvls)
 
     Hero xWing        = { rand() % (int) (1921 - 100 * 0.5 * 2) + 100 * 0.5, rand() % (int) (1081 - 100 * 0.5 * 2) + 100 * 0.5, 1, 1, 100, 0.5, NULL,  0.785, TX_YELLOW, 'W', 'S', 'E', 'Q', VK_F1, VK_F2 };
 
-    Hero deathStar    = { rand() % (int) (1921 - 120 * 1.5 * 2) + 120 * 1.5, rand() % (int) (1081 - 120 * 1.5 * 2) + 120 * 1.5, 0, 0, 120, 1.5, NULL,  3.14,  TX_CYAN,   'I', 'K', 'O', 'U'               };
+    Hero deathStar    = { rand() % (int) (1921 - 120 * 1.5 * 2) + 120 * 1.5, rand() % (int) (1081 - 120 * 1.5 * 2) + 120 * 1.5, 0, 0, 120, 1.5, NULL,  3.14,  dStarColor,   'I', 'K', 'O', 'U'               };
 
     Hero planet       = { rand() % (int) (1921 - 136 * 0.5 * 2) + 68  * 0.5, rand() % (int) (1081 - 136 * 0.5 * 2) + 136 * 0.5, 0, 0, 136, 0.5, txLoadImage ("planet.bmp")                                };
 
     Hero miniWing [NxWings] = { } ;
 
-    HDC fon = txLoadImage ("Background.bmp");
+    HDC fon = txLoadImage ("BackgroundNew.bmp");
 
     double dt = 1;
 
     double t  = 0;
-
-    //SetStartLocation (xWing, deathStar, planet);
 
     CreateXWings (miniWing);
 
@@ -121,15 +121,23 @@ void MoveHero (double lvls)
 
     while (! GetAsyncKeyState (VK_ESCAPE))
         {
-        txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon,    0,  0                          );
+        txBitBlt (txDC(), 0, 0, 1920, 1080, fon,    0,  0                          );
 
-        txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 1920,  0, (sin (t / 25.0) + 1) / 2);
+        //txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 1920,  0, (sin (t / 25.0) + 1) / 2);
 
         ScoreBoard (lvls, 5, 5, 240, 100, cooldown, shots);
 
-        if (GetAsyncKeyState ('R') && cooldown == 100 && shots > 1)
+        DrawDeathStar (&deathStar);
+
+        DrawPlanet    (&planet);
+
+        DrawXWings (miniWing);
+
+        int message = 0;
+
+        if (GetAsyncKeyState ('R') && cooldown == 100 && shots > 0)
             {
-            DrawXwing     (&xWing, 3);
+            message = DrawXwing     (&xWing, 3);
 
             cooldown = 0;
 
@@ -138,10 +146,21 @@ void MoveHero (double lvls)
 
         else
             {
-            DrawXwing     (&xWing, -1);
+            message = DrawXwing     (&xWing, -1);
 
             cooldown += 4;
             }
+
+        if (message == 1)
+            {
+            txMessageBox ("Death Star is defeated.\nCongratulations!");
+            }
+
+        if (message == 2)
+            {
+            txMessageBox ("You've defeated your ally");
+            }
+
 
         if (cooldown >= 100)
             {
@@ -151,12 +170,6 @@ void MoveHero (double lvls)
         //printf ("shots = %lg", shots);
 
         //dotLine (100, 100, 900, 800);
-
-        DrawDeathStar (&deathStar);
-
-        DrawPlanet    (&planet);
-
-        DrawXWings (miniWing);
 
         double distance = Dist (xWing, deathStar);
 
@@ -218,18 +231,9 @@ void MoveHero (double lvls)
 
 //-----------------------------------------------------------------------------
 
-void DrawXwing (const Hero* rebel, double beam)
+int DrawXwing (const Hero* rebel, double beam)
     {
-    if (beam >= 0)
-        {
-        txSetColor  (RGB (0, 90, 0), 5 * beam * rebel->scale * Scale);
-        myLine      (rebel->x+125 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale, rebel->x+10000 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale,  rebel->rotate, rebel->x, rebel->y);
-
-        txSetColor  (RGB (150, 255, 150), 1 * beam * rebel->scale * Scale);
-        myLine      (rebel->x+125 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale, rebel->x+10000 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale,  rebel->rotate, rebel->x, rebel->y);
-        }
-
-    txSetColor (rebel->color, 3);
+    txSetColor (rebel->color, 1.5 + rebel->scale * 2);
 
     txSetFillColor (TX_NULL);
 
@@ -326,6 +330,19 @@ void DrawXwing (const Hero* rebel, double beam)
 
     myLine      (rebel->x-41 * rebel->scale * Scale,  rebel->y-65 * rebel->scale * Scale, rebel->x-33 * rebel->scale * Scale,  rebel->y-65 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
     myLine      (rebel->x-41 * rebel->scale * Scale,  rebel->y+55 * rebel->scale * Scale, rebel->x-33 * rebel->scale * Scale,  rebel->y+55 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
+
+    int message = 0;
+
+    if (beam >= 0)
+        {
+        txSetColor  (RGB (0, 90, 0), 5 * beam * rebel->scale * Scale);
+        message = laserLine   (rebel->x+130 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale, rebel->x+10000 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale,  rebel->rotate, rebel->x, rebel->y, 5, 1);
+
+        //txSetColor  (RGB (150, 255, 150), 1 * beam * rebel->scale * Scale);
+        //laserLine      (rebel->x+125 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale, rebel->x+10000 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale,  rebel->rotate, rebel->x, rebel->y, 1);
+        }
+
+    return message;
 
     //txSetFillColor (TX_NULL);
 
@@ -535,6 +552,10 @@ void ScaleControl()
         {
         Scale  = 2;
         }
+
+
+
+
     }
 
 //-----------------------------------------------------------------------------
@@ -618,7 +639,7 @@ void CreateXWings (struct Hero miniWing [NxWings])
 
             miniWing [i].rotate = rand() % 7;
 
-            miniWing [i].color  = RGB (rand() % 250 + 50, rand() % 250 + 50, rand() % 250 + 50);
+            miniWing [i].color  = RGB ((rand() % 250 + 50) * 2 + 1, rand() % 250 + 50, rand() % 250 + 50);
 
             i++;
             }
