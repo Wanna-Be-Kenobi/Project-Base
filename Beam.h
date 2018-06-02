@@ -2,7 +2,10 @@
 
 //-----------------------------------------------------------------------------
 
-int laserLine (double x1, double y1, double x2, double y2, double rotate, double centerX, double centerY, double width1, double width2);
+int intersectionCheck (const Hero* xWing, double *x1, double *y1, double *x2, double *y2);
+
+//-----------------------------------------------------------------------------
+
 
 //-----------------------------------------------------------------------------
 
@@ -28,32 +31,49 @@ int laserLine (double x1, double y1, double x2, double y2, double rotate, double
     }*/
 
 //-----------------------------------------------------------------------------
+/*
+                                                   MoveHero()
 
-int laserLine (double x1, double y1, double x2, double y2, double rotate, double centerX, double centerY, double width1, double width2)
+                                [ beamX1 ]  [ beamY1 ]  [ beamX2 ]  [ beamY2 ]
+                                   ^            ^            ^           ^
+                               ____|____________|____________|___________|_____
+                                   |            |            |           |
+                                   V            V            V           V
+                                [ *x1 ]      [ *y1 ]      [ *x2 ]     [ *y2 ]
+
+                                               intersectionCheck
+*/
+
+int intersectionCheck (const Hero* xWing, double *x1, double *y1, double *x2, double *y2)
     {
-    x1 = x1 - centerX;
+    *x1 = xWing->x +   130 * xWing->scale * Scale;
+    *y1 = xWing->y +     0 * xWing->scale * Scale;
+    *x2 = xWing->x + 10000 * xWing->scale * Scale;
+    *y2 = xWing->y +     0 * xWing->scale * Scale;
 
-    y1 = y1 - centerY;
+    *x1 = *x1 - xWing->x;
 
-    x2 = x2 - centerX;
+    *y1 = *y1 - xWing->y;
 
-    y2 = y2 - centerY;
+    *x2 = *x2 - xWing->x;
 
-    double x1r = x1 * cos (rotate) - y1 * sin (rotate);
+    *y2 = *y2 - xWing->y;
 
-    double y1r = x1 * sin (rotate) + y1 * cos (rotate);
+    double x1r = *x1 * cos (xWing->rotate) - *y1 * sin (xWing->rotate);
 
-    double x2r = x2 * cos (rotate) - y2 * sin (rotate);
+    double y1r = *x1 * sin (xWing->rotate) + *y1 * cos (xWing->rotate);
 
-    double y2r = x2 * sin (rotate) + y2 * cos (rotate);
+    double x2r = *x2 * cos (xWing->rotate) - *y2 * sin (xWing->rotate);
 
-    x1 = x1r + centerX;
+    double y2r = *x2 * sin (xWing->rotate) + *y2 * cos (xWing->rotate);
 
-    y1 = y1r + centerY;
+    *x1 = x1r + xWing->x;
 
-    x2 = x2r + centerX;
+    *y1 = y1r + xWing->y;
 
-    y2 = y2r + centerY;
+    *x2 = x2r + xWing->x;
+
+    *y2 = y2r + xWing->y;
 
     double t = 0;
 
@@ -65,9 +85,9 @@ int laserLine (double x1, double y1, double x2, double y2, double rotate, double
 
     while (t <= 1)
         {
-        x = x1 + t * (x2 - x1);
+        x = *x1 + t * (*x2 - *x1);
 
-        y = y1 + t * (y2 - y1);
+        y = *y1 + t * (*y2 - *y1);
 
         COLORREF pColor = txGetPixel (x, y);
 
@@ -109,13 +129,9 @@ int laserLine (double x1, double y1, double x2, double y2, double rotate, double
         t += 0.001;
         }
 
-    txSetColor (TX_GREEN, width1);
+    *x2 = x;
 
-    txLine (x, y, x1, y1);
-
-    txSetColor (TX_LIGHTGREEN, width2);
-
-    txLine (x, y, x1, y1);
+    *y2 = y;
 
     return message;
 
@@ -145,7 +161,7 @@ int laserLine (double x1, double y1, double x2, double y2, double rotate, double
 
     При message = 2 в MoveHero() вызывается другой MessageBox.
 
-    При message = 0 в MoveHero()  не вызывается ничего.
+    При message = 0 в MoveHero()  не вызывается ничего.*/
     }
 
 //-----------------------------------------------------------------------------

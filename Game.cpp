@@ -4,8 +4,6 @@
 
 #include "Rotate.h"
 
-
-
 //-----------------------------------------------------------------------------
 
 double Scale = 1;
@@ -13,8 +11,6 @@ double Scale = 1;
 const int NxWings = 5;
 
 COLORREF dStarColor = TX_CYAN;
-
-#include "Beam.h"
 
 //-----------------------------------------------------------------------------
 
@@ -35,7 +31,11 @@ struct Hero
 
 //-----------------------------------------------------------------------------
 
-int DrawXwing (const Hero* rebel, double beam);
+#include "Beam.h"
+
+//-----------------------------------------------------------------------------
+
+void DrawXwing (const Hero* rebel, double beam, double beamX1, double beamY1, double beamX2, double beamY2);
 
 void MoveHero (double lvls);
 
@@ -129,15 +129,19 @@ void MoveHero (double lvls)
 
         DrawDeathStar (&deathStar);
 
-        DrawPlanet    (&planet);
+        DrawPlanet       (&planet);
 
-        DrawXWings (miniWing);
+        DrawXWings      (miniWing);
 
         int message = 0;
 
+        double beamX1 = 0, beamY1 = 0, beamX2 = 0, beamY2 = 0;
+
         if (GetAsyncKeyState ('R') && cooldown == 100 && shots > 0)
             {
-            message = DrawXwing     (&xWing, 3);
+            message = intersectionCheck (&xWing, &beamX1, &beamY1, &beamX2, &beamY2);
+
+            DrawXwing (&xWing, 3, beamX1, beamY1, beamX2, beamY2);
 
             cooldown = 0;
 
@@ -146,7 +150,7 @@ void MoveHero (double lvls)
 
         else
             {
-            message = DrawXwing     (&xWing, -1);
+            DrawXwing (&xWing, -1, 0, 0, 0, 0);
 
             cooldown += 4;
             }
@@ -156,11 +160,18 @@ void MoveHero (double lvls)
             txMessageBox ("Death Star is defeated.\nCongratulations!");
             }
 
-        if (message == 2)
-            {
-            txMessageBox ("You've defeated your ally");
-            }
+        //txMessageBox ("You've defeated your ally");
 
+        int i = 0;
+
+        while (i < NxWings)
+            {
+            if (sqrt ((beamX2 - miniWing [i].x) * (beamX2 - miniWing [i].x) + (beamY2 - miniWing [i].y) * (beamY2 - miniWing [i].y)) <= 100)
+                {
+                miniWing [i].color  = (TX_PINK);
+                }
+            i++;
+            }
 
         if (cooldown >= 100)
             {
@@ -231,7 +242,7 @@ void MoveHero (double lvls)
 
 //-----------------------------------------------------------------------------
 
-int DrawXwing (const Hero* rebel, double beam)
+void DrawXwing (const Hero* rebel, double beam, double beamX1, double beamY1, double beamX2, double beamY2)
     {
     txSetColor (rebel->color, 1.5 + rebel->scale * 2);
 
@@ -331,18 +342,18 @@ int DrawXwing (const Hero* rebel, double beam)
     myLine      (rebel->x-41 * rebel->scale * Scale,  rebel->y-65 * rebel->scale * Scale, rebel->x-33 * rebel->scale * Scale,  rebel->y-65 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
     myLine      (rebel->x-41 * rebel->scale * Scale,  rebel->y+55 * rebel->scale * Scale, rebel->x-33 * rebel->scale * Scale,  rebel->y+55 * rebel->scale * Scale, rebel->rotate, rebel->x, rebel->y);
 
-    int message = 0;
-
     if (beam >= 0)
         {
         txSetColor  (RGB (0, 90, 0), 5 * beam * rebel->scale * Scale);
-        message = laserLine   (rebel->x+130 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale, rebel->x+10000 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale,  rebel->rotate, rebel->x, rebel->y, 5, 1);
+
+        txSetColor (TX_GREEN,      5);
+        txLine (beamX1, beamY1, beamX2, beamY2);
+        txSetColor (TX_LIGHTGREEN, 1);
+        txLine (beamX1, beamY1, beamX2, beamY2);
 
         //txSetColor  (RGB (150, 255, 150), 1 * beam * rebel->scale * Scale);
         //laserLine      (rebel->x+125 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale, rebel->x+10000 * rebel->scale * Scale,  rebel->y+0 * rebel->scale * Scale,  rebel->rotate, rebel->x, rebel->y, 1);
         }
-
-    return message;
 
     //txSetFillColor (TX_NULL);
 
@@ -652,7 +663,7 @@ void DrawXWings (struct Hero miniWing [NxWings])
 
     while (i < NxWings)
         {
-        DrawXwing (&miniWing [i], -1);
+        DrawXwing (&miniWing [i], -1, 0, 0, 0, 0);
 
         i++;
         }
