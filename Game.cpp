@@ -10,6 +10,8 @@ double Scale = 1;
 
 const int NxWings = 5;
 
+const int Nbuttons = 4;
+
 COLORREF dStarColor = TX_CYAN;
 
 //-----------------------------------------------------------------------------
@@ -31,9 +33,32 @@ struct Hero
 
 //-----------------------------------------------------------------------------
 
+struct Button
+    {
+    //(x, y + (height + dy) * 0, width, height, 10, "PLAY", TX_GREEN, RGB (0, 64, 0));
+
+    char name [20];
+
+    double x, y, width, height;
+
+    COLORREF color, textColor;
+    };
+
+//-----------------------------------------------------------------------------
+
 #include "Beam.h"
 
 //-----------------------------------------------------------------------------
+
+void MainMenu();
+
+void DrawMenu (struct Button button [Nbuttons]);
+
+void CreateButtons (struct Button button [Nbuttons]);
+
+void DrawButton (struct Button button, double corner);
+
+int CheckMouse (struct Button button);
 
 void DrawXwing (const Hero* rebel, double beam, double beamX1, double beamY1, double beamX2, double beamY2);
 
@@ -52,7 +77,7 @@ void DrawPlanet (const Hero* planet);
 void YourAlphaBlend (HDC destImage,   double xDest,   double yDest,   double width, double height,
                      HDC sourceImage, double xSource, double ySource, double alpha, double scale);
 
-double Dist ( const Hero first, const Hero second);
+double Dist (const Hero first, const Hero second);
 
 void ScaleControl();
 
@@ -79,18 +104,125 @@ int main()
     {
     txCreateWindow (1920 - 20, 1080 - 120);
 
-    double lvls = 1;
-
-    while (lvls < 11)
-        {
-        //printf ("Уровень: %lg \n", lvls);
-
-        MoveHero (lvls);
-
-        lvls ++;
-        }
+    MainMenu();
 
     return 0;
+    }
+
+//-----------------------------------------------------------------------------
+
+void MainMenu()
+    {
+    txBegin();
+
+    Button buttons [Nbuttons] = { {"PLAY", 0, 400}, {"ENTER NAME"}, {"SCOREBOARD"}, {"EXIT"} } ;
+
+    //(850 < txMouseX() && txMouseX() < 1050 && 400 < txMouseY() && txMouseY() < 455)
+
+    CreateButtons (buttons);
+
+    while (true)
+        {
+        DrawMenu (buttons);
+
+        if (GetAsyncKeyState (VK_LBUTTON))
+            {
+            if (CheckMouse (buttons [Nbuttons]) == 1)
+                {
+                double lvls = 1;
+
+                while (lvls < 11)
+                    {
+                    //printf ("Уровень: %lg \n", lvls);
+
+                    MoveHero (lvls);
+
+                    lvls ++;
+                    }
+                }
+
+           /* if (GetAsyncKeyState (VK_BUTTON))
+                {
+                if (850 < txMouseX() && txMouseX() < 1050 &&
+
+                } */
+
+
+            }
+        txSleep (10);
+        }
+    txEnd();
+    }
+
+//-----------------------------------------------------------------------------
+
+void DrawMenu (struct Button buttons [Nbuttons])
+    {
+    int i = 0;
+
+    while (i < Nbuttons)
+        {
+        DrawButton (buttons [i], 10);
+
+        i++;
+        }
+    //DrawButton (x, y + (height + dy) * 3, width, height, 10, "EXIT",       TX_GREEN, RGB (0, 64, 0));
+    }
+
+//-----------------------------------------------------------------------------
+
+void CreateButtons (struct Button buttons [Nbuttons])
+    {
+    int i = 0;
+
+    while (i < Nbuttons)
+        {
+        buttons [i].x         = 850;
+
+        buttons [i].y         = buttons->y + (buttons ->height + 15) * i;
+
+        buttons [i].width     = 200;
+
+        buttons [i].height    = 50;
+
+        buttons [i].color     = TX_GREEN;
+
+        buttons [i].textColor = RGB (0, 64, 0);
+
+        i++;
+        }
+    }
+
+//-----------------------------------------------------------------------------
+
+void DrawButton (struct Button button, double corner)
+    {
+    DrawShadowRect (button.x, button.y, button.x + button.width, button.y + button.height, corner, button.color, button.textColor);
+
+    txSelectFont ("FixedSys", 40);
+
+    DrawShadowText (button.x, button.y, button.x + button.width, button.y + button.height, button.name, TX_LIGHTGREEN);
+    }
+
+//-----------------------------------------------------------------------------
+
+int CheckMouse (struct Button button)
+    {
+    //printf ("Check x = %lg y = %lg mouse x = %d  mouse y = %d \n", button.x, button.y, txMouseX(), txMouseY());
+
+    printf ("x = %lg y = %lg \n", button.x, button.y);
+
+    //printf ("mouse x = %d mouse y = %d \n", txMouseX(), txMouseY());
+
+
+
+    if (button.x < txMouseX() && txMouseX() < button.x + button.width &&
+        button.y < txMouseY() && txMouseY() < button.y + button.height)
+        {
+        return 1;
+        }
+    else
+        return 0;
     }
 
 //-----------------------------------------------------------------------------
@@ -105,7 +237,7 @@ void MoveHero (double lvls)
 
     Hero planet       = { rand() % (int) (1921 - 136 * 0.5 * 2) + 68  * 0.5, rand() % (int) (1081 - 136 * 0.5 * 2) + 136 * 0.5, 0, 0, 136, 0.5, txLoadImage ("planet.bmp")                                };
 
-    Hero miniWing [NxWings] = { } ;
+    Hero miniWing [NxWings]  = { } ;
 
     HDC fon = txLoadImage ("BackgroundNew.bmp");
 
