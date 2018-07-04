@@ -214,8 +214,6 @@ int CheckMouse (struct Button button)
 
     //printf ("mouse x = %d mouse y = %d \n", txMouseX(), txMouseY());
 
-
-
     if (button.x < txMouseX() && txMouseX() < button.x + button.width &&
         button.y < txMouseY() && txMouseY() < button.y + button.height)
         {
