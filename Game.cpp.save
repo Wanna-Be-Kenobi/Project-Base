@@ -37,7 +37,7 @@ struct Button
     {
     //(x, y + (height + dy) * 0, width, height, 10, "PLAY", TX_GREEN, RGB (0, 64, 0));
 
-    char name [20];
+    char name [30];
 
     double x, y, width, height;
 
@@ -115,7 +115,7 @@ void MainMenu()
     {
     txBegin();
 
-    Button buttons [Nbuttons] = { {"JUGAR", 0, 400}, {"INTRODUCIR El NOMBRE"}, {"SCOREBOARD"}, {"EXIT"} } ;
+    Button buttons [Nbuttons] = { {"JUGAR", 0, 400}, {"INTRODUCIR EL NOMBRE"}, {"TABLO DE RESULTADOS"}, {"SALIDA"} } ;
 
     //(850 < txMouseX() && txMouseX() < 1050 && 400 < txMouseY() && txMouseY() < 455)
 
@@ -127,7 +127,7 @@ void MainMenu()
 
         if (GetAsyncKeyState (VK_LBUTTON))
             {
-            if (CheckMouse (buttons [Nbuttons]) == 1)
+            if (CheckMouse (buttons [4]) == 1)
                 {
                 double lvls = 1;
 
