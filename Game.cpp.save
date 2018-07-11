@@ -54,11 +54,11 @@ void MainMenu();
 
 void DrawMenu (struct Button button [Nbuttons]);
 
-void CreateButtons (struct Button button);
+void CreateButtons (struct Button button [Nbuttons]);
 
 void DrawButton (struct Button button, double corner);
 
-int CheckMouse (struct Button button [Nbuttons]);
+int CheckMouse (struct Button button);
 
 void DrawXwing (const Hero* rebel, double beam, double beamX1, double beamY1, double beamX2, double beamY2);
 
@@ -115,7 +115,7 @@ void MainMenu()
     {
     txBegin();
 
-    Button buttons [Nbuttons] = { {"PLAY", 0, 400}, {"ENTER NAME"}, {"SCOREBOARD"}, {"EXIT"} } ;
+    Button buttons [Nbuttons] = { {"JUGAR", 0, 400}, {"INTRODUCIR El NOMBRE"}, {"SCOREBOARD"}, {"EXIT"} } ;
 
     //(850 < txMouseX() && txMouseX() < 1050 && 400 < txMouseY() && txMouseY() < 455)
 
@@ -213,6 +213,7 @@ int CheckMouse (struct Button button)
     printf ("x = %lg y = %lg \n", button.x, button.y);
 
     //printf ("mouse x = %d mouse y = %d \n", txMouseX(), txMouseY());
+
 
     if (button.x < txMouseX() && txMouseX() < button.x + button.width &&
         button.y < txMouseY() && txMouseY() < button.y + button.height)
@@ -875,3 +876,15 @@ void DrawShadowText (double x1, double y1, double x2, double  y2, char str [20],
 
 //-----------------------------------------------------------------------------
 //void DrawShot (double x1, double y1, double x2, double y2);
+
+
+
+
+
+
+
+
+
+
+
+

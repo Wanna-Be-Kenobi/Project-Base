@@ -115,7 +115,7 @@ void MainMenu()
     {
     txBegin();
 
-    Button buttons [Nbuttons] = { {"PLAY", 0, 400}, {"ENTER NAME"}, {"SCOREBOARD"}, {"EXIT"} } ;
+    Button buttons [Nbuttons] = { {"JUGAR", 0, 400}, {"INTRODUCIR EL NOMBRE"}, {"TABLO DE RESULTADOS"}, {"SALIDA"} } ;
 
     //(850 < txMouseX() && txMouseX() < 1050 && 400 < txMouseY() && txMouseY() < 455)
 
