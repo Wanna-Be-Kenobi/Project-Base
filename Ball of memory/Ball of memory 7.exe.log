@@ -1,0 +1,73 @@
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 7.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#2: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x77C4FD18 в функции RtlGetCurrentServiceSessionId(). Попытка прочесть данные по адресу 0x64756C63. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdrE0, Thread: 0x23DC (Canvas). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x77C4FD18 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetCurrentServiceSessionId()
+# 1 0x77C4FA0D in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlFreeHeap()
+# 2 0x77C3D3E6 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlDllShutdownInProgress()
+# 3 0x77C4D90E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlUnlockHeap()
+# 4 0x77C4F83E in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlFreeHeap()
+# 5 0x75537065 in C:\WINDOWS\System32\msvcrt.dll: free()
+# 6 0x66261DCD in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txSymGetFromAddr(void*, {anonymous}::TX::Win32::SYMBOL_INFO**, {anonymous}::TX::Win32::IMAGEHLP_LINE64**, const char**, const char**, int) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (9843):
+
+   9841:         {
+   9842: $       SetLastError (0);
+=> 9843: $       (_TX_CALL (MinGW::SymCleanup, (process)) && RES_(u)) || DBG_("MinGW::SymCleanup() failed");
+   9844: $       (_TX_CALL (Win32::SymCleanup, (process)) && RES_(U)) || DBG_("Win32::SymCleanup() failed");
+   9845: 
+
+# 1 in void {anonymous}::TX::_txCleanup() at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (7193):
+
+   7191:         { $ _txConsole_Detach (waitableParent && !externTerm); }
+   7192: 
+=> 7193: $   _txSymGetFromAddr (NULL);
+   7194: 
+   7195: $   _flushall();
+
+# 2 in void {anonymous}::TX::_txOnExit(int) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (7050):
+
+   7048:     if (retcode != 0) txOutputDebugPrintf ("%s - WARNING: %s (%d) called\n", _TX_VERSION, __func__, retcode);
+   7049: 
+=> 7050: $1  _txCleanup();
+   7051: 
+   7052:     Win32::exit (retcode);
+
+# 3 in unsigned int {anonymous}::TX::_txCanvas_ThreadProc(void*) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (7627):
+
+   7625: $   if (_txRunning && _txMain)         // Main window is destroyed but main() is still running.
+   7626:         {                              // No chances for good termination, so use exit().
+=> 7627: $       ::exit ((int) msg.wParam);
+   7628:         }
+   7629: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 10:57:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 10:57:37
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 7.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------

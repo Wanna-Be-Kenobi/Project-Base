@@ -1,0 +1,171 @@
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe, файл: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h, строка: 10634, функция: HBRUSH__* {anonymous}::TX::txSetFillColor(COLORREF, HDC),
+
+Сообщение: Окно рисования не создано или не в порядке.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005002C0 (32-bit), Flags: Cmdre0, Thread: 0xEAC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00419DDD in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe: txSetFillColor() at C:/Users/Николай/Desktop/Программирование/TX/TXLib.h (10634)
+
+# 1 0x00426BF5 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 1.cpp (7):
+
+      5: int main()
+      6:     {
+=>    7:     txSetFillColor (TX_GREY);
+      8: 
+      9:     txCreateWindow (1920, 1850);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in HBRUSH__* {anonymous}::TX::txSetFillColor(COLORREF, HDC) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (10634):
+
+  10632: HBRUSH txSetFillColor (COLORREF color, HDC dc /*= txDC()*/)
+  10633:     {
+=>10634: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return NULL;
+  10635: 
+  10636: $   HBRUSH brush = (color == TX_TRANSPARENT)? (HBRUSH) Win32::GetStockObject (HOLLOW_BRUSH) : Win32::CreateSolidBrush (color);
+
+# 1 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.cpp (7):
+
+      5: int main()
+      6:     {
+=>    7:     txSetFillColor (TX_GREY);
+      8: 
+      9:     txCreateWindow (1920, 1850);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 17 2018 09:38:42, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 17 2018 09:38:46
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe, файл: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h, строка: 10634, функция: HBRUSH__* {anonymous}::TX::txSetFillColor(COLORREF, HDC),
+
+Сообщение: Окно рисования не создано или не в порядке.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005002C0 (32-bit), Flags: Cmdre0, Thread: 0x1498 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00419DDD in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe: txSetFillColor() at C:/Users/Николай/Desktop/Программирование/TX/TXLib.h (10634)
+
+# 1 0x00426BF5 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 1.cpp (7):
+
+      5: int main()
+      6:     {
+=>    7:     txSetFillColor (TX_GREY);
+      8: 
+      9:     txCreateWindow (1920, 1080);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in HBRUSH__* {anonymous}::TX::txSetFillColor(COLORREF, HDC) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (10634):
+
+  10632: HBRUSH txSetFillColor (COLORREF color, HDC dc /*= txDC()*/)
+  10633:     {
+=>10634: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return NULL;
+  10635: 
+  10636: $   HBRUSH brush = (color == TX_TRANSPARENT)? (HBRUSH) Win32::GetStockObject (HOLLOW_BRUSH) : Win32::CreateSolidBrush (color);
+
+# 1 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.cpp (7):
+
+      5: int main()
+      6:     {
+=>    7:     txSetFillColor (TX_GREY);
+      8: 
+      9:     txCreateWindow (1920, 1080);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 17 2018 09:39:32, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 17 2018 09:39:36
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe, файл: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h, строка: 10582, функция: HPEN__* {anonymous}::TX::txSetColor(COLORREF, double, HDC),
+
+Сообщение: Окно рисования не создано или не в порядке.
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x005002C0 (32-bit), Flags: Cmdre0, Thread: 0x28B0 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041954C in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe: txSetColor() at C:/Users/Николай/Desktop/Программирование/TX/TXLib.h (10582)
+
+# 1 0x00426BFB in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 1.cpp (7):
+
+      5: int main()
+      6:     {
+=>    7:     txSetColor (TX_GREY);
+      8: 
+      9:     txCreateWindow (1920, 1080);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in HPEN__* {anonymous}::TX::txSetColor(COLORREF, double, HDC) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (10582):
+
+  10580: HPEN txSetColor (COLORREF color, double thickness /*= 1*/, HDC dc /*= txDC()*/)
+  10581:     {
+=>10582: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return NULL;
+  10583: 
+  10584: $   HPEN pen = Win32::CreatePen ((color == TX_TRANSPARENT? PS_NULL : PS_SOLID), ROUND (thickness), color);
+
+# 1 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.cpp (7):
+
+      5: int main()
+      6:     {
+=>    7:     txSetColor (TX_GREY);
+      8: 
+      9:     txCreateWindow (1920, 1080);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 17 2018 09:40:03, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 17 2018 09:40:07
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 1.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------

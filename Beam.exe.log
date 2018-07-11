@@ -1,0 +1,317 @@
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe, файл: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h, строка: 10807, функция: bool {anonymous}::TX::txLine(double, double, double, double, HDC),
+
+Сообщение: Окно рисования не создано или не в порядке.
+
+#1: TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300], Instance: 0x004FE2C0 (32-bit), Flags: Cmdre0, Thread: 0x1F3C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041AAA8 in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: txLine() at C:/Users/Николай/Desktop/Программирование/TX/TXLib.h (10807)
+
+# 1 0x00426D32 in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: myLine() at C:/Users/Николай/Documents/GitHub/Project-Base/Rotate.h (165):
+
+    163:     y2 = y2r + centerY;
+    164: 
+=>  165:     if (whatLine == 0) txLine  (x1, y1, x2, y2);
+    166: 
+    167:     else               dotLine (x1, y1, x2, y2);
+
+# 2 0x0042710A in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Beam.cpp (9):
+
+      7: int main()
+      8:     {
+=>    9:     myLine (100, 100, 500, 500, 0, 100, 100);
+     10: 
+     11:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txLine(double, double, double, double, HDC) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (10807):
+
+  10805: bool txLine (double x0, double y0, double x1, double y1, HDC dc /*= txDC()*/)
+  10806:     {
+=>10807: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return false;
+  10808: 
+  10809: $   bool ok  = txGDI ((Win32::MoveToEx (dc, ROUND (x0), ROUND (y0), NULL)), dc);
+
+# 1 in void myLine(double, double, double, double, double, double, double, int) at C:\Users\Николай\Documents\GitHub\Project-Base\Rotate.h (165):
+
+    163:     y2 = y2r + centerY;
+    164: 
+=>  165:     if (whatLine == 0) txLine  (x1, y1, x2, y2);
+    166: 
+    167:     else               dotLine (x1, y1, x2, y2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Apr 25 2018 11:32:03, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 25 2018 11:32:06
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe, файл: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h, строка: 10807, функция: bool {anonymous}::TX::txLine(double, double, double, double, HDC),
+
+Сообщение: Окно рисования не создано или не в порядке.
+
+#1: TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300], Instance: 0x004FE2C0 (32-bit), Flags: Cmdre0, Thread: 0x2178 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041AAA8 in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: txLine() at C:/Users/Николай/Desktop/Программирование/TX/TXLib.h (10807)
+
+# 1 0x00426D32 in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: myLine() at C:/Users/Николай/Documents/GitHub/Project-Base/Rotate.h (165):
+
+    163:     y2 = y2r + centerY;
+    164: 
+=>  165:     if (whatLine == 0) txLine  (x1, y1, x2, y2);
+    166: 
+    167:     else               dotLine (x1, y1, x2, y2);
+
+# 2 0x0042710A in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Beam.cpp (9):
+
+      7: int main()
+      8:     {
+=>    9:     myLine (100, 100, 500, 500, 0, 100, 100);
+     10: 
+     11:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txLine(double, double, double, double, HDC) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (10807):
+
+  10805: bool txLine (double x0, double y0, double x1, double y1, HDC dc /*= txDC()*/)
+  10806:     {
+=>10807: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return false;
+  10808: 
+  10809: $   bool ok  = txGDI ((Win32::MoveToEx (dc, ROUND (x0), ROUND (y0), NULL)), dc);
+
+# 1 in void myLine(double, double, double, double, double, double, double, int) at C:\Users\Николай\Documents\GitHub\Project-Base\Rotate.h (165):
+
+    163:     y2 = y2r + centerY;
+    164: 
+=>  165:     if (whatLine == 0) txLine  (x1, y1, x2, y2);
+    166: 
+    167:     else               dotLine (x1, y1, x2, y2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Apr 25 2018 11:32:30, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 25 2018 11:32:34
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe, файл: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h, строка: 11263, функция: bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 500, 500} не полностью лежит внутри изображения-источника {0, 0, 283, 276}, функция txAlphaBlend() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x71C (Main), GetLastError(): 13 (Недопустимые данные). 
+From: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (11262) bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00420AD1 in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: txAlphaBlend() at C:/Users/Николай/Desktop/Программирование/TX/TXLib.h (11263)
+
+# 1 0x00426B7A in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: laserLine() at C:/Users/Николай/Documents/GitHub/Project-Base/Beam.cpp (47):
+
+     45:     HDC planet = txLoadImage ("planet.bmp");
+     46: 
+=>   47:     txAlphaBlend (txDC(), 0, 0, 500, 500, planet,    0,  0);
+     48: 
+     49: 
+
+# 2 0x00426866 in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Beam.cpp (21):
+
+     19:     txLine (300, 0, 300, 900);
+     20: 
+=>   21:     laserLine (200, 800, 1200, 400, 0, 100, 100, 5, 1);
+     22: 
+     23:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (11262):
+
+  11260:         {
+  11261: $       SetLastError (ERROR_INVALID_DATA);
+=>11262: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  11263:                   "функция txAlphaBlend() работать не будет." _ xSource _ ySource _ xSource + width _ ySource + height _ 0 _ 0 _ size.x _ size.y);
+  11264:         }
+
+# 1 in void laserLine(double, double, double, double, double, double, double, double, double) at C:\Users\Николай\Documents\GitHub\Project-Base\Beam.cpp (47):
+
+     45:     HDC planet = txLoadImage ("planet.bmp");
+     46: 
+=>   47:     txAlphaBlend (txDC(), 0, 0, 500, 500, planet,    0,  0);
+     48: 
+     49: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Apr 27 2018 17:39:43, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 27 2018 17:39:47
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe, файл: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h, строка: 11263, функция: bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 1383, 876} не полностью лежит внутри изображения-источника {0, 0, 283, 276}, функция txAlphaBlend() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x18DC (Main), GetLastError(): 13 (Недопустимые данные). 
+From: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (11262) bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00420AD1 in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: txAlphaBlend() at C:/Users/Николай/Desktop/Программирование/TX/TXLib.h (11263)
+
+# 1 0x00426A92 in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Beam.cpp (31):
+
+     29:         txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 1920,  0, (sin (T / 25.0) + 1) / 2);
+     30: 
+=>   31:         txAlphaBlend (txDC(), 1100, 600, 1100+283, 600+276, planet,    0,  0);
+     32: 
+     33:         txSleep(10);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (11262):
+
+  11260:         {
+  11261: $       SetLastError (ERROR_INVALID_DATA);
+=>11262: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  11263:                   "функция txAlphaBlend() работать не будет." _ xSource _ ySource _ xSource + width _ ySource + height _ 0 _ 0 _ size.x _ size.y);
+  11264:         }
+
+# 1 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Beam.cpp (31):
+
+     29:         txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 1920,  0, (sin (T / 25.0) + 1) / 2);
+     30: 
+=>   31:         txAlphaBlend (txDC(), 1100, 600, 1100+283, 600+276, planet,    0,  0);
+     32: 
+     33:         txSleep(10);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Apr 27 2018 17:43:35, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 27 2018 17:43:39
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe, файл: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h, строка: 11263, функция: bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 1383, 876} не полностью лежит внутри изображения-источника {0, 0, 283, 276}, функция txAlphaBlend() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x2114 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (11262) bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00420AD1 in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: txAlphaBlend() at C:/Users/Николай/Desktop/Программирование/TX/TXLib.h (11263)
+
+# 1 0x00426A92 in C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Beam.cpp (31):
+
+     29:         txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 1920,  0, (sin (T / 25.0) + 1) / 2);
+     30: 
+=>   31:         txAlphaBlend (txDC(), 1100, 600, 1100 + 283, 600 + 276, planet,    0,  0);
+     32: 
+     33:         txSleep(10);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (11262):
+
+  11260:         {
+  11261: $       SetLastError (ERROR_INVALID_DATA);
+=>11262: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  11263:                   "функция txAlphaBlend() работать не будет." _ xSource _ ySource _ xSource + width _ ySource + height _ 0 _ 0 _ size.x _ size.y);
+  11264:         }
+
+# 1 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Beam.cpp (31):
+
+     29:         txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 1920,  0, (sin (T / 25.0) + 1) / 2);
+     30: 
+=>   31:         txAlphaBlend (txDC(), 1100, 600, 1100 + 283, 600 + 276, planet,    0,  0);
+     32: 
+     33:         txSleep(10);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Apr 27 2018 17:44:05, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 27 2018 17:44:09
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Beam.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------

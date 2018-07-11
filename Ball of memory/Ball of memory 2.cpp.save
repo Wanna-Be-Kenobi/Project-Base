@@ -1,0 +1,98 @@
+#include "TXLib.h"
+
+//-----------------------------------------------------------------------------
+
+void DrawBall (int x, int y, int r);
+
+void BallPhysics (int *x, int *y, int r, int *vx, int *vy, int dt);
+
+//-----------------------------------------------------------------------------
+
+int main()
+    {
+    txCreateWindow (1920, 1080);
+
+    int x = 200;
+
+    int y = 200;
+
+    int r = 25;
+
+    int vx = 10;
+
+    int vy = 1;
+
+    int dt = 1;
+
+    while (1 > 0)
+        {
+        txSetFillColor (TX_GREY);
+
+        txClear();
+
+        DrawBall    (x, y, r);
+
+        BallPhysics (&x, &y, r, &vx, &vy, dt);
+
+        txSleep (10);
+        }
+
+    return 0;
+    }
+
+//-----------------------------------------------------------------------------
+
+void DrawBall (int x, int y, int r)
+    {
+    txSetColor (TX_BLUE);
+
+    txSetFillColor (TX_BLUE);
+
+    txCircle (x, y, r);
+    }
+
+//-----------------------------------------------------------------------------
+
+void BallPhysics (int *x, int *y, int r, int *vx, int *vy, int dt)
+    {
+    *x = *x + *vx * dt;
+
+    *y = *y + *vy * dt;
+
+    if (*x > txGetExtentX() )
+        {
+        *x = 1920 - r;
+
+        *vx = - *vx;
+        }
+
+    if (*x < 0)
+        {
+        *x = 0 + r;
+
+        *vx = - *vx;
+        }
+
+    if (*y > txGetExtentY)
+        {
+        *y = 1920;
+        
+        *vy = - vy;
+        }
+    
+
+
+    }
+
+//-----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1608 @@
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x22C8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:17:40, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:17:44
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x22C8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:17:40, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:17:44
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x2640 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:17:58, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:18:01
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x2640 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:17:58, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:18:01
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0xCA4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:23:18, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:23:22
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0xCA4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:23:18, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:23:22
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1F8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+# 9 0x77C74A77 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+#10 0x77C74A47 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:25:10, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:25:13
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1F8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+# 9 0x77C74A77 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+#10 0x77C74A47 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:25:10, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:25:13
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1DC0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:30:44, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:30:48
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1DC0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:30:44, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:30:49
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x2034 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:31:18, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:31:22
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x2034 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:31:18, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:31:22
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1918 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     printf ("Test 1");
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:33:58, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:34:02
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1918 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     printf ("Test 1");
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:33:58, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:34:02
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x2444 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     printf ("Test 1");
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:34:15, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:34:19
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x2444 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x00426903 in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (28):
+
+     26:     txCreateWindow (1920, 1080);
+     27: 
+=>   28:     MainBall();
+     29: 
+     30:     printf ("Test 1");
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     MainBall();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:34:15, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:34:19
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x161C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x0042690F in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (30):
+
+     28:     printf ("Test 1");
+     29: 
+=>   30:     MainBall();
+     31: 
+     32:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     printf ("Test 1");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:35:09, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:35:13
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x161C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x0042690F in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (30):
+
+     28:     printf ("Test 1");
+     29: 
+=>   30:     MainBall();
+     31: 
+     32:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     printf ("Test 1");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:35:09, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:35:13
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1324 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x0042690F in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (30):
+
+     28:     printf ("Test 1");
+     29: 
+=>   30:     MainBall();
+     31: 
+     32:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     printf ("Test 1");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:35:32, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:35:35
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1324 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x0042690F in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (30):
+
+     28:     printf ("Test 1");
+     29: 
+=>   30:     MainBall();
+     31: 
+     32:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     printf ("Test 1");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:35:32, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:35:36
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1FD4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x0042690F in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (30):
+
+     28:     printf ("Test 1");
+     29: 
+=>   30:     MainBall();
+     31: 
+     32:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     printf ("Test 1");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:38:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:38:37
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x1FD4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x0042690F in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (30):
+
+     28:     printf ("Test 1");
+     29: 
+=>   30:     MainBall();
+     31: 
+     32:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     printf ("Test 1");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:38:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:38:37
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0xE98 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x0042690F in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (30):
+
+     28:     printf ("Test 1");
+     29: 
+=>   30:     MainBall();
+     31: 
+     32:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     printf ("Test 1");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:39:20, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:39:23
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0xE98 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+
+# 6 0x0042690F in C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Ball of memory 8.cpp (30):
+
+     28:     printf ("Test 1");
+     29: 
+=>   30:     MainBall();
+     31: 
+     32:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     printf ("Test 1");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:39:20, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:39:24
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x2448 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+# 9 0x77C74A77 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+#10 0x77C74A47 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     printf ("Test 1");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:46:00, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:46:04
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x753308C2 в функции RaiseException(). Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdRe0, Thread: 0x2448 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x753308C2 in C:\WINDOWS\System32\KERNELBASE.dll: RaiseException()
+# 1 0x75590E2D in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 2 0x75590BF8 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 3 0x7559341A in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 4 0x7558DAD0 in C:\WINDOWS\System32\msvcrt.dll: modf()
+# 5 0x75582CE8 in C:\WINDOWS\System32\msvcrt.dll: sqrt()
+# 9 0x77C74A77 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+#10 0x77C74A47 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlGetAppContainerNamedObjectPath()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (26):
+
+     24: int main()
+     25:     {
+=>   26:     txCreateWindow (1920, 1080);
+     27: 
+     28:     printf ("Test 1");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:46:00, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:46:04
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x6625423F в функции SymGetLineFromAddrW64(). Попытка прочесть данные по адресу 0x068E97C4. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#3: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdrE0, Thread: 0x1920 (Main), GetLastError(): 87 (Параметр задан неверно). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x6625423F in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txSymGetFromAddr(void*, {anonymous}::TX::Win32::SYMBOL_INFO**, {anonymous}::TX::Win32::IMAGEHLP_LINE64**, const char**, const char**, int) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (9843):
+
+   9790: 
+   9791: $       SetLastError (0);
+=> 9792: $       (_TX_CALL (MinGW::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(y)) ||
+   9793:         (_TX_CALL (Win32::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(Y)) ||
+   9794:             DBG_("SymFromAddr (0x%p) failed", addr);
+
+# 1 in const char* {anonymous}::TX::_txCaptureStackBackTrace(int, bool, CONT   7191:         { $ _txConsole_Detach (waitableParent && !externTerm); }
+   71   9554: $       bool                    inTX   = false;
+   9555: 
+=> 9556:         if (addr)                { $ inTX = _txSymGetFromAddr ((char*) addr - 1, &sym, &line, &module);          }   7048:     if (retcode != 0) txOutputDebugPrintf ("%s - WARNING: %s (%d) called\n", _TX_VERSION, __func__, retcode);
+   7049: 
+=> 7050: $1  _txCleanup();
+   7051: 
+   7052:     Win32::exit (retcode);
+
+# 3 in unsigned int {anonymous}::TX::_txCanvas_ThreadProc(void*  10687: HBRUSH txSetFillColor (COLORREF color, HDC dc /*= txDC()*/)
+  10688:     {
+=>10689: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return NULL;
+  10690: 
+  10691: $   HBRUSH brush = (color == TX_TRANSPARENT)? (HBRUSH) Win32::GetStockObject (HOLLOW_BRUSH) : Win32::CreateSolidBrush (color);
+
+# 3 in void MainBall() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.cpp (47):
+
+     45:     while (!GetAsyncKeyState (VK_ESCAPE))
+     46:         {
+=>   47:         txSetFillColor (TX_GREY);
+     48: 
+     49:         txClear();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:48:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:48:54
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x6625423F в функции SymGetLineFromAddrW64(). Попытка прочесть данные по адресу 0x068E97C4. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#3: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdrE0, Thread: 0x1EB8 (Canvas), GetLastError(): 87 (Параметр задан неверно). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x6625423F in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txSymGetFromAddr(void*, {anonymous}::TX::Win32::SYMBOL_INFO**, {anonymous}::TX::Win32::IMAGEHLP_LINE64**, const char**, const char**, int) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (9843):
+
+   9790: 
+   9791: $       SetLastError (0);
+=> 9792: $       (_TX_CALL (MinGW::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(y)) ||
+   9793:         (_TX_CALL (Win32::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(Y)) ||
+   9794:             DBG_("SymFromAddr (0x%p) failed", addr);
+
+# 1 in const char* {anonymous}::TX::_txCaptureStackBackTrace(int, bool, CONT   7191:         { $ _txConsole_Detach (waitableParent && !externTerm); }
+   71   9554: $       bool                    inTX   = false;
+   9555: 
+=> 9556:         if (addr)                { $ inTX = _txSymGetFromAddr ((char*) addr - 1, &sym, &line, &module);          }   7048:     if (retcode != 0) txOutputDebugPrintf ("%s - WARNING: %s (%d) called\n", _TX_VERSION, __func__, retcode);
+   7049: 
+=> 7050: $1  _txCleanup();
+   7051: 
+   7052:     Win32::exit (retcode);
+
+# 3 in unsigned int {anonymous}::TX::_txCanvas_ThreadProc(void*  10687: HBRUSH txSetFillColor (COLORREF color, HDC dc /*= txDC()*/   7625: $   if (_txRunning && _txMain)         // Main window is destroyed but main() is still running.
+   7626:         {                              // No chances for good termination, so use exit().
+=> 7627: $       ::exit ((int) msg.wParam);
+   7628:         }
+   7629: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 11:48:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 11:48:54
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 8.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------

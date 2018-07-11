@@ -69,7 +69,23 @@ void laserLine (double x1, double y1, double x2, double y2, double rotate, doubl
 
         COLORREF pColor = txGetPixel (x, y);
 
-        //if (pColor != RGB (0, 0, 0)) break;
+        int red = txExtractColor (pColor, TX_RED);
+
+        if (red % 2 != 0) break;
+
+        if (pColor == dStarColor)
+            {
+            txMessageBox ("Death Star is defeated.\nCongratulations!");
+            }
+
+        else
+            {
+            txMessageBox ("You've defeated your ally");
+
+            break;
+            }
+
+        printf ("*");
 
         t += 0.001;
         }

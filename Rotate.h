@@ -6,7 +6,7 @@ void myTetragon (double x1, double y1, double x2, double y2, double x3, double y
 
 void myRectangle (double x1, double y1, double x2, double y2, double rotate, double centerX, double centerY);
 
-void myLine (double x1, double y1, double x2, double y2, double rotate, double centerX, double centerY);
+void myLine (double x1, double y1, double x2, double y2, double rotate, double centerX, double centerY, int whatLine = 0);
 
 void myCircle (double x, double y, double r, double rotate, double centerX, double centerY);
 
@@ -117,13 +117,13 @@ void myTetragon (double x1, double y1, double x2, double y2, double x3, double y
 
     y4 = y4r + centerY;
 
-    dotLine (x1, y1, x3, y3);
+    txLine (x1, y1, x3, y3);
 
-    dotLine (x4, y4, x2, y2);
+    txLine (x4, y4, x2, y2);
 
-    dotLine (x1, y1, x4, y4);
+    txLine (x1, y1, x4, y4);
 
-    dotLine (x3, y3, x2, y2);
+    txLine (x3, y3, x2, y2);
     }
 
 //-----------------------------------------------------------------------------
@@ -136,7 +136,7 @@ void myRectangle (double x1, double y1, double x2, double y2, double rotate, dou
 
 //-----------------------------------------------------------------------------
 
-void myLine (double x1, double y1, double x2, double y2, double rotate, double centerX, double centerY)
+void myLine (double x1, double y1, double x2, double y2, double rotate, double centerX, double centerY, int whatLine)
     {
     x1 = x1 - centerX;
 
@@ -162,7 +162,9 @@ void myLine (double x1, double y1, double x2, double y2, double rotate, double c
 
     y2 = y2r + centerY;
 
-    dotLine (x1, y1, x2, y2);
+    if (whatLine == 0) txLine  (x1, y1, x2, y2);
+
+    else               dotLine (x1, y1, x2, y2);
     }
 
 //-----------------------------------------------------------------------------
@@ -209,11 +211,14 @@ void dotLine (double x1, double y1, double x2, double y2)
     {
     COLORREF color = txGetColor();
 
-    txSetColor (TX_PINK);
+    txSetColor (TX_PINK, 3);
 
     txLine (x1, y1, x2, y2);
 
     txSetColor (color);
+
+    //printf ("Проверка");
     }
 
 //-----------------------------------------------------------------------------
+

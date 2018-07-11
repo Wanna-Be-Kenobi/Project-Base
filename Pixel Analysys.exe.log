@@ -1,0 +1,58 @@
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Pixel Analysys.exe, файл: C:\Users\Николай\Desktop\Программирование\TX\TXLib.h, строка: 11363, функция: bool {anonymous}::TX::txSaveImage(const char*, HDC),
+
+Сообщение: Окно рисования не создано или не в порядке.
+
+#1: TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300], Instance: 0x004FE2C0 (32-bit), Flags: Cmdre0, Thread: 0x2178 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00422165 in C:\Users\Николай\Documents\GitHub\Project-Base\Pixel Analysys.exe: txSaveImage() at C:/Users/Николай/Desktop/Программирование/TX/TXLib.h (11363)
+
+# 1 0x00426C0C in C:\Users\Николай\Documents\GitHub\Project-Base\Pixel Analysys.exe: main() at C:/Users/Николай/Documents/GitHub/Project-Base/Pixel Analysys.cpp (45):
+
+     43:         }
+     44: 
+=>   45:     txSaveImage ("BackgroundNew.bmp");
+     46: 
+     47:     return 0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txSaveImage(const char*, HDC) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (11363):
+
+  11361:     {
+  11362: $1  if (_TX_ARGUMENT_FAILED    (filename)) return false;
+=>11363: $   if (_TX_DEFAULT_HDC_FAILED (dc))       return false;
+  11364: 
+  11365: $   POINT size = txGetExtent (dc);
+
+# 1 in int main() at C:\Users\Николай\Documents\GitHub\Project-Base\Pixel Analysys.cpp (45):
+
+     43:         }
+     44: 
+=>   45:     txSaveImage ("BackgroundNew.bmp");
+     46: 
+     47:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 105, Date: 2018-03-19 00:00:00 +0300]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	May 12 2018 10:33:32, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	May 12 2018 10:33:35
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Pixel Analysys.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------

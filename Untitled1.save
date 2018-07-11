@@ -1,55 +1,11 @@
 #include "TXLib.h"
 
-
 //-----------------------------------------------------------------------------
-
-
-
-int main()
+ int main()
     {
-    txCreateWindow (1920, 1080);
-
-    txSetFillColor (TX_WHITE);
-
-    txClear();
-
-    MoveBall (100, 100);
-
+    txCreateWindow (1900, 960);
+    
     return 0;
     }
 
 //-----------------------------------------------------------------------------
-
-void MoveBall (int x, int y)
-    {
-    DrawBall(x, y);
-    
-    
-    };
-
-//-----------------------------------------------------------------------------
-
-void DrawBall (int x, int, y)
-    {
-    txSetFillColor (TX_PINK);
-    
-    txCircle (x, y, 25);
-    };
-
-//-----------------------------------------------------------------------------
-
-void BallControl (int x, int y)
-    {
-    if (GetAsyncKeyState (VK_UP))
-        {
-        y -= y - 1;
-        }
-    
-    if (GetAsyncKeyState (VK_DOWN))
-        {
-        y += y + 1;
-        }
-    
-    };
-
-

@@ -1,0 +1,339 @@
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#2: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x662547A0 в функции SymGetLineFromAddrW64(). Попытка прочесть данные по адресу 0x0512D520. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#3: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdrE0, Thread: 0x261C (Main), GetLastError(): 87 (Параметр задан неверно). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x662547A0 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+# 1 0x66257FB8 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+# 2 0x66262053 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+# 3 0x66259939 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txSymGetFromAddr(void*, {anonymous}::TX::Win32::SYMBOL_INFO**, {anonymous}::TX::Win32::IMAGEHLP_LINE64**, const char**, const char**, int) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (9792):
+
+   9790: 
+   9791: $       SetLastError (0);
+=> 9792: $       (_TX_CALL (MinGW::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(y)) ||
+   9793:         (_TX_CALL (Win32::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(Y)) ||
+   9794:             DBG_("SymFromAddr (0x%p) failed", addr);
+
+# 1 in const char* {anonymous}::TX::_txCaptureStackBackTrace(int, bool, CONT   7191:         { $ _txConsole_Detach (waitableParent && !externTerm); }
+   71   9554: $       bool                    inTX   = false;
+   9555: 
+=> 9556:         if (addr)                { $ inTX = _txSymGetFromAddr ((char*) addr - 1, &sym, &line, &module);          }   7048:     if (retcode != 0) txOutputDebugPrintf ("%s - WARNING: %s (%d) called\n", _TX_VERSION, __func__, retcode);
+   7049: 
+=> 7050: $1  _txCleanup();
+   7051: 
+   7052:     Win32::exit (retcode);
+
+# 3 in unsigned int {anonymous}::TX::_txCanvas_ThreadProc(void*  10687: HBRUSH txSetFillColor (COLORREF color, HDC dc /*= txDC()*/)
+  10688:     {
+=>10689: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return NULL;
+  10690: 
+  10691: $   HBRUSH brush = (color == TX_TRANSPARENT)? (HBRUSH) Win32::GetStockObject (HOLLOW_BRUSH) : Win32::CreateSolidBrush (color);
+
+# 3 in void DrawBall(const Ball*) at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.cpp (70):
+
+     68:     txSetColor (TX_BLUE);
+     69: 
+=>   70:     txSetFillColor (TX_BLUE);
+     71: 
+     72:     txCircle (ball->x, ball->y, ball->r);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 10:45:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 10:45:33
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#2: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x662547A0 в функции SymGetLineFromAddrW64(). Попытка прочесть данные по адресу 0x0512D520. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#3: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdrE0, Thread: 0x1F58 (Canvas), GetLastError(): 87 (Параметр задан неверно). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x662547A0 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+# 1 0x66257FB8 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+# 2 0x66262053 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+# 3 0x66259939 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txSymGetFromAddr(void*, {anonymous}::TX::Win32::SYMBOL_INFO**, {anonymous}::TX::Win32::IMAGEHLP_LINE64**, const char**, const char**, int) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (9792):
+
+   9790: 
+   9791: $       SetLastError (0);
+=> 9792: $       (_TX_CALL (MinGW::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(y)) ||
+   9793:         (_TX_CALL (Win32::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(Y)) ||
+   9794:             DBG_("SymFromAddr (0x%p) failed", addr);
+
+# 1 in const char* {anonymous}::TX::_txCaptureStackBackTrace(int, bool, CONT   7191:         { $ _txConsole_Detach (waitableParent && !externTerm); }
+   71   9554: $       bool                    inTX   = false;
+   9555: 
+=> 9556:         if (addr)                { $ inTX = _txSymGetFromAddr ((char*) addr - 1, &sym, &line, &module);          }   7048:     if (retcode != 0) txOutputDebugPrintf ("%s - WARNING: %s (%d) called\n", _TX_VERSION, __func__, retcode);
+   7049: 
+=> 7050: $1  _txCleanup();
+   7051: 
+   7052:     Win32::exit (retcode);
+
+# 3 in unsigned int {anonymous}::TX::_txCanvas_ThreadProc(void*  10687: HBRUSH txSetFillColor (COLORREF color, HDC dc /*= txDC()*/   7625: $   if (_txRunning && _txMain)         // Main window is destroyed but main() is still running.
+   7626:         {                              // No chances for good termination, so use exit().
+=> 7627: $       ::exit ((int) msg.wParam);
+   7628:         }
+   7629: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 10:45:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 10:45:33
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#3: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x66253906 в функции SymGetLineFromAddrW64(). Попытка прочесть данные по адресу 0x00000014. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#3: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdrE0, Thread: 0x2110 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x66253906 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+# 1 0x753192D2 in C:\WINDOWS\System32\KERNELBASE.dll: GetNamedLocaleHashNode()
+# 2 0x66244DA5 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txSymGetFromAddr(void*, {anonymous}::TX::Win32::SYMBOL_INFO**, {anonymous}::TX::Win32::IMAGEHLP_LINE64**, const char**, const char**, int) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (9792):
+
+   9790: 
+   9791: $       SetLastError (0);
+=> 9792: $       (_TX_CALL (MinGW::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(y)) ||
+   9793:         (_TX_CALL (Win32::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(Y)) ||
+   9794:             DBG_("SymFromAddr (0x%p) failed", addr);
+
+# 1 in const char* {anonymous}::TX::_txCaptureStackBackTrace(int, bool, CONTEXT*, HANDLE) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (9556):
+
+   9554: $       bool                    inTX   = false;
+   9555: 
+=> 9556:         if (addr)                { $ inTX = _txSymGetFromAddr ((char*) addr - 1, &sym, &line, &module);          }
+   9557:         if (readSource && !inTX) { $        _txSymGetFromAddr ((void*) 1,        NULL, NULL,  NULL, &source, 2); }
+   9558: 
+
+# 2 in long int {anonymous}::TX::_txOnExceptionSEH(EXCEPTION_POINTERS*, const char*) at C:\Users\Николай\Des  10726: bool txClear (HDC dc /*= txDC()*/)
+  10727:     {
+=>10728: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return false;
+  10729: 
+  10730: $   POINT size = txGetExtent (dc);
+
+# 3 in void MainBall() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.cpp (46):
+
+     44:         txSetFillColor (TX_GREY);
+     45: 
+=>   46:         txClear();
+     47: 
+     48:         DrawBall (&First);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 10:45:55, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 10:45:59
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#3: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x66253906 в функции SymGetLineFromAddrW64(). Попытка прочесть данные по адресу 0x00000014. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#4: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdrE0, Thread: 0x2110 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x66253906 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+# 1 0x753192D2 in C:\WINDOWS\System32\KERNELBASE.dll: GetNamedLocaleHashNode()
+# 2 0x66244DA5 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txSymGetFromAddr(void*, {anonymous}::TX::Win32::SYMBOL_INFO**, {anonymous}::TX::Win32::IMAGEHLP_LINE64**, const char**, const char**, int) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (9792):
+
+   9790: 
+   9791: $       SetLastError (0);
+=> 9792: $       (_TX_CALL (MinGW::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(y)) ||
+   9793:         (_TX_CALL (Win32::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(Y)) ||
+   9794:             DBG_("SymFromAddr (0x%p) failed", addr);
+
+# 1 in const char* {anonymous}::TX::_txCaptureStackBackTrace(int, bool, CONTEXT*, HANDLE) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (9556):
+
+   9554: $       bool                    inTX   = false;
+   9555: 
+=> 9556:         if (addr)                { $ inTX = _txSymGetFromAddr ((char*) addr - 1, &sym, &line, &module);          }
+   9557:         if (readSource && !inTX) { $        _txSymGetFromAddr ((void*) 1,        NULL, NULL,  NULL, &source, 2); }
+   9558: 
+
+# 2 in bool {anonymous}::TX::txClear(HDC) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (10728):
+
+  10726: bool txClear (HDC dc /*= txDC()*/)
+  10727:     {
+=>10728: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return false;
+  10729: 
+  10730: $   POINT size = txGetExtent (dc);
+
+# 3 in void MainBall() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.cpp (46):
+
+     44:         txSetFillColor (TX_GREY);
+     45: 
+=>   46:         txClear();
+     47: 
+     48:         DrawBall (&First);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 10:45:55, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 10:46:00
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#3: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x66253906 в функции SymGetLineFromAddrW64(). Попытка прочесть данные по адресу 0x00000014. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#4: TXLib [Ver: 00173a, Rev: 105], Instance: 0x004FE2C0 (32-bit), Flags: CMdrE0, Thread: 0x1E70 (Canvas), errno: 22 (Invalid argument). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x66253906 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+# 1 0x753192D2 in C:\WINDOWS\System32\KERNELBASE.dll: GetNamedLocaleHashNode()
+# 2 0x66244DA5 in C:\Users\Николай\Desktop\Программирование\TX\Windows\MgwHelp32.dll: SymGetLineFromAddrW64()
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txSymGetFromAddr(void*, {anonymous}::TX::Win32::SYMBOL_INFO**, {anonymous}::TX::Win32::IMAGEHLP_LINE64**, const char**, const char**, int) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (9792):
+
+   9790: 
+   9791: $       SetLastError (0);
+=> 9792: $       (_TX_CALL (MinGW::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(y)) ||
+   9793:         (_TX_CALL (Win32::SymFromAddr, (process, (uintptr_t) addr, &ofs, sym)) && RES_(Y)) ||
+   9794:             DBG_("SymFromAddr (0x%p) failed", addr);
+
+# 1 in const char* {anonymous}::TX::_txCaptureStackBackTrace(int, bool, CONTEXT*, HANDLE) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (9556):
+
+   9554: $       bool                    inTX   = false;
+   9555: 
+=> 9556:         if (addr)                { $ inTX = _txSymGetFromAddr ((char*) addr - 1, &sym, &line, &module);          }
+   9557:         if (readSource && !inTX) { $        _txSymGetFromAddr ((void*) 1,        NULL, NULL,  NULL, &source, 2); }
+   9558: 
+
+# 2 in bool {anonymous}::TX::txClear(HDC) at C:\Users\Николай\Desktop\Программирование\TX\TXLib.h (10728):
+
+  10726: bool txClear (HDC dc /*= txDC()*/)
+  10727:     {
+=>10728: $1  if (_TX_DEFAULT_HDC_FAILED (dc)) return false;
+  10729: 
+  10730: $   POINT size = txGetExtent (dc);
+
+# 3 in void MainBall() at C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.cpp (46):
+
+     44:         txSetFillColor (TX_GREY);
+     45: 
+=>   46:         txClear();
+     47: 
+     48:         DrawBall (&First);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library) - TXLib [Ver: 00173a, Rev: 105]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Николай\Desktop\Программирование\TX\TXLib.h
+Compiled:	Feb 21 2018 10:45:55, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 21 2018 10:46:00
+
+Run file:	C:\Users\Николай\Documents\GitHub\Project-Base\Ball of memory 6.exe
+Directory:	C:\Users\Николай\Documents\GitHub\Project-Base
+
+--------------------------------------------------
