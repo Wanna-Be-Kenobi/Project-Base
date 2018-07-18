@@ -14,6 +14,8 @@ const int Nbuttons = 4;
 
 COLORREF dStarColor = TX_CYAN;
 
+int Levels = 10;
+
 //-----------------------------------------------------------------------------
 
 struct Hero
@@ -62,7 +64,9 @@ int CheckMouse (struct Button button);
 
 void DrawXwing (const Hero* rebel, double beam, double beamX1, double beamY1, double beamX2, double beamY2);
 
-void MoveHero (double lvls);
+void MoveHero (double lvls, char playerName []);
+
+void EnterName (char playerName []);
 
 void VehicleSpeed (struct Hero* rebel, double dt);
 
@@ -91,7 +95,7 @@ void XWingsSpeed  (struct Hero miniWing [NxWings], double dt);
 
 void Random (double min, double max);
 
-void ScoreBoard (double lvls, double x, double y, double width, double height, double cooldown, double shots);
+void ScoreBoard (double lvls, double x, double y, double width, double height, double cooldown, double shots, char playerName[]);
 
 void DrawShadowRect (double x1, double y1, double x2, double y2, double corner,
                       COLORREF fillColor, COLORREF color);
@@ -122,6 +126,8 @@ void MainMenu()
 
     CreateButtons (buttons);
 
+    char playerName [20] = "Me";
+
     while (true)
         {
         DrawMenu (buttons);
@@ -130,29 +136,32 @@ void MainMenu()
             {
             if (CheckMouse (buttons [0]) == 1)
                 {
-                double lvls = 1;
+                int    lvls = 1;
 
-                while (lvls < 11)
+                while (lvls <= Levels)
                     {
                     //printf ("Уровень: %lg \n", lvls);
 
-                    MoveHero (lvls);
+                    MoveHero (lvls, playerName);
 
                     lvls ++;
                     }
                 }
-
-           /* if (GetAsyncKeyState (VK_BUTTON))
-                {
-                if (850 < txMouseX() && txMouseX() < 1050 &&
-
-                } */
-
-
             }
+
+        if (GetAsyncKeyState (VK_LBUTTON))
+            {
+            if (CheckMouse (buttons [1]) == 1)
+                {
+                EnterName (playerName);
+                }
+            }
+
         txSleep (10);
-        }
+
     txEnd();
+
+        }
     }
 
 //-----------------------------------------------------------------------------
@@ -209,9 +218,7 @@ void DrawButton (struct Button button, double corner)
 
 int CheckMouse (struct Button button)
     {
-    //printf ("Check x = %lg y = %lg mouse x = %d  mouse y = %d \n", button.x, button.y, txMouseX(), txMouseY());
-
-    printf ("x = %lg y = %lg \n", button.x, button.y);
+    //printf ("x = %lg y = %lg \n", button.x, button.y);
 
     //printf ("mouse x = %d mouse y = %d \n", txMouseX(), txMouseY());
 
@@ -227,7 +234,7 @@ int CheckMouse (struct Button button)
 
 //-----------------------------------------------------------------------------
 
-void MoveHero (double lvls)
+void MoveHero (double lvls, char playerName [])
     {
     txBegin();
 
@@ -257,7 +264,7 @@ void MoveHero (double lvls)
 
         //txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 1920,  0, (sin (t / 25.0) + 1) / 2);
 
-        ScoreBoard (lvls, 5, 5, 240, 100, cooldown, shots);
+        ScoreBoard (lvls, 5, 5, 240, 150, cooldown, shots, playerName);
 
         DrawDeathStar (&deathStar);
 
@@ -371,6 +378,16 @@ void MoveHero (double lvls)
 
     txEnd();
     }
+
+//-----------------------------------------------------------------------------
+
+void EnterName (char playerName [])
+    {
+    strcpy (playerName, txInputBox() );
+    }
+
+//-----------------------------------------------------------------------------
+
 
 //-----------------------------------------------------------------------------
 
@@ -816,9 +833,9 @@ void XWingsSpeed (struct Hero miniWing [NxWings], double dt)
     }
 
 //-----------------------------------------------------------------------------
- void ScoreBoard (double lvls, double x, double y, double width, double height, double cooldown, double shots)
+ void ScoreBoard (double lvls, double x, double y, double width, double height, double cooldown, double shots, char playerName [])
     {
-    char str     [20] = "";
+    char str [50] = "";
 
     //Win32::RoundRect (txDC(), 5, 5, 165 + 5, 65 + 5, 10, 10);
 
@@ -828,7 +845,7 @@ void XWingsSpeed (struct Hero miniWing [NxWings], double dt)
 
     txSelectFont ("FixedSys", 40);
 
-    sprintf   (str, "Level: %lg \n \nShots Left %lg", lvls, shots);
+    sprintf   (str, "Level: %lg\n\nShots Left %lg\n%.14s", lvls, shots, playerName);
 
     DrawShadowText (x, y, x + width, y + height, str, TX_LIGHTGREEN);
 
