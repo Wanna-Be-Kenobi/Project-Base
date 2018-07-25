@@ -5,3 +5,7 @@ MoveBall.exe
 Game.exe
 Project.exe
 *.exe
+*.exe
+*.save
+*.log
+*.exe

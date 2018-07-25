@@ -66,6 +66,8 @@ void DrawXwing (const Hero* rebel, double beam, double beamX1, double beamY1, do
 
 void MoveHero (double lvls, char playerName []);
 
+void DrawContourText (double x1, double y1, double x2, double y2, char str [], double contour, COLORREF textColor, COLORREF contourColor);
+
 void EnterName (char playerName []);
 
 void VehicleSpeed (struct Hero* rebel, double dt);
@@ -258,6 +260,8 @@ void MoveHero (double lvls, char playerName [])
 
     double shots = 10;
 
+    char MessageToPlayer [100] = "";
+
     while (! GetAsyncKeyState (VK_ESCAPE))
         {
         txBitBlt (txDC(), 0, 0, 1920, 1080, fon,    0,  0                          );
@@ -285,6 +289,8 @@ void MoveHero (double lvls, char playerName [])
             cooldown = 0;
 
             shots --;
+
+            strcpy (MessageToPlayer, "PIU");
             }
 
         else
@@ -296,7 +302,9 @@ void MoveHero (double lvls, char playerName [])
 
         if (message == 1)
             {
-            txMessageBox ("Death Star is defeated.\nCongratulations!");
+            strcpy (MessageToPlayer, "+ 10 points");
+
+            //txMessageBox ("Death Star is defeated.\nCongratulations!");
             }
 
         //txMessageBox ("You've defeated your ally");
@@ -327,7 +335,13 @@ void MoveHero (double lvls, char playerName [])
 
         if (distance <= xWing.r * xWing.scale * Scale + deathStar.r * deathStar.scale * Scale)
             {
-            txMessageBox ("Game over");
+            strcpy (MessageToPlayer, "GAME OVER");
+
+            DrawContourText (0, txGetExtentY() * 0.85, txGetExtentX(), txGetExtentY(), MessageToPlayer, 2, TX_LIGHTGREEN, TX_BLACK);
+
+            txSleep (2000);
+
+            //txMessageBox ("Game over");
 
             break;
             }
@@ -369,6 +383,8 @@ void MoveHero (double lvls, char playerName [])
             planet.scale -= 0.1;
             }
 
+        DrawContourText (0, txGetExtentY() * 0.85, txGetExtentX(), txGetExtentY(), MessageToPlayer, 2, TX_LIGHTGREEN, TX_BLACK);
+
         txSleep (10);
 
         t++;
@@ -381,13 +397,44 @@ void MoveHero (double lvls, char playerName [])
 
 //-----------------------------------------------------------------------------
 
-void EnterName (char playerName [])
+void DrawContourText (double x1, double y1, double x2, double y2, char str [], double contour, COLORREF textColor, COLORREF contourColor)
     {
-    strcpy (playerName, txInputBox() );
+    txSetColor (contourColor);
+
+    txDrawText (x1 - contour, y1 - contour, x2 - contour, y2 - contour, str);
+
+    txDrawText (x1 + contour, y1 + contour, x2 + contour, y2 + contour, str);
+
+    txDrawText (x1 - contour, y1 + contour, x2 - contour, y2 + contour, str);
+
+    txDrawText (x1 + contour, y1 - contour, x2 + contour, y2 - contour, str);
+
+    txDrawText (x1 + contour, y1,           x2 + contour, y2,           str);
+
+    txDrawText (x1 - contour, y1,           x2 - contour, y2,           str);
+
+    txDrawText (x1,           y1 + contour, x2,           y2 + contour, str);
+
+    txDrawText (x1,           y1 - contour, x2,           y2 - contour, str);
+
+    txSetColor (textColor);
+
+    txDrawText (x1,           y1,           x2,           y2,           str);
+
     }
 
 //-----------------------------------------------------------------------------
 
+void DrawContourRect()
+    {
+    }
+
+//-----------------------------------------------------------------------------
+
+void EnterName (char playerName [])
+    {
+    strcpy (playerName, txInputBox() );
+    }
 
 //-----------------------------------------------------------------------------
 
