@@ -110,7 +110,13 @@ int main()
     {
     txCreateWindow (1920 - 20, 1080 - 120);
 
-    MainMenu();
+    //MainMenu();
+
+    char playerName [20] = "Me";
+
+    int    lvls = 1;
+
+    MoveHero (lvls, playerName);
 
     return 0;
     }
@@ -262,19 +268,23 @@ void MoveHero (double lvls, char playerName [])
 
     char MessageToPlayer [100] = "";
 
+    int DeathStarHP = 20;
+
+    double messageTime = 0;
+
     while (! GetAsyncKeyState (VK_ESCAPE))
         {
-        txBitBlt (txDC(), 0, 0, 1920, 1080, fon,    0,  0                          );
+        txBitBlt     (txDC(), 0, 0, 1920, 1080, fon,    0,  0);
 
-        //txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 1920,  0, (sin (t / 25.0) + 1) / 2);
+        txAlphaBlend (txDC(), 0, 0, 1920, 1080, fon, 1920,  0, (sin (t / 25.0) + 1) / 2);
 
         ScoreBoard (lvls, 5, 5, 240, 150, cooldown, shots, playerName);
 
-        DrawDeathStar (&deathStar);
+        if (DeathStarHP > 0) DrawDeathStar (&deathStar);
 
-        DrawPlanet       (&planet);
+        DrawPlanet (&planet);
 
-        DrawXWings      (miniWing);
+        DrawXWings (miniWing);
 
         int message = 0;
 
@@ -291,6 +301,8 @@ void MoveHero (double lvls, char playerName [])
             shots --;
 
             strcpy (MessageToPlayer, "PIU");
+
+            messageTime = t;
             }
 
         else
@@ -302,12 +314,17 @@ void MoveHero (double lvls, char playerName [])
 
         if (message == 1)
             {
-            strcpy (MessageToPlayer, "+ 10 points");
+            DeathStarHP = DeathStarHP - 10;
 
-            //txMessageBox ("Death Star is defeated.\nCongratulations!");
+            strcpy (MessageToPlayer, "- 10 Death Star HP");
+
+            if (DeathStarHP <= 0)
+                {
+                strcpy (MessageToPlayer, "Death Star is defeated!");
+                }
+
+            messageTime = t;
             }
-
-        //txMessageBox ("You've defeated your ally");
 
         int i = 0;
 
@@ -325,10 +342,6 @@ void MoveHero (double lvls, char playerName [])
             cooldown = 100;
             }
 
-        //printf ("shots = %lg", shots);
-
-        //dotLine (100, 100, 900, 800);
-
         double distance = Dist (xWing, deathStar);
 
         double route    = Dist (xWing, planet);
@@ -340,8 +353,6 @@ void MoveHero (double lvls, char playerName [])
             DrawContourText (0, txGetExtentY() * 0.85, txGetExtentX(), txGetExtentY(), MessageToPlayer, 2, TX_LIGHTGREEN, TX_BLACK);
 
             txSleep (2000);
-
-            //txMessageBox ("Game over");
 
             break;
             }
@@ -385,6 +396,11 @@ void MoveHero (double lvls, char playerName [])
 
         DrawContourText (0, txGetExtentY() * 0.85, txGetExtentX(), txGetExtentY(), MessageToPlayer, 2, TX_LIGHTGREEN, TX_BLACK);
 
+        if (t - messageTime > 15)
+            {
+            strcpy (MessageToPlayer, "");
+            }
+
         txSleep (10);
 
         t++;
@@ -421,12 +437,6 @@ void DrawContourText (double x1, double y1, double x2, double y2, char str [], d
 
     txDrawText (x1,           y1,           x2,           y2,           str);
 
-    }
-
-//-----------------------------------------------------------------------------
-
-void DrawContourRect()
-    {
     }
 
 //-----------------------------------------------------------------------------
@@ -774,17 +784,6 @@ double Dist (const Hero first, const Hero second)
 
 //-----------------------------------------------------------------------------
 
-/*void SetStartLocation (const Hero xWing, const Hero deathStar, const Hero planet)
-    {
-    xwing.x = 0, xWing.y = 0;
-
-    deathStar.x = 0, deathStar.y = 0;
-
-    planet.x = 0, planet.y = 0;
-    }   */
-
-//-----------------------------------------------------------------------------
-
 void ShotDist (const Hero rebel, const Hero star)
     {
     /*
@@ -940,16 +939,3 @@ void DrawShadowText (double x1, double y1, double x2, double  y2, char str [20],
     }
 
 //-----------------------------------------------------------------------------
-//void DrawShot (double x1, double y1, double x2, double y2);
-
-
-
-
-
-
-
-
-
-
-
-
